@@ -51,3 +51,9 @@ Each connected display performs about two D1 reads per second, plus session chec
 - Legacy video hosting, courses, and billing still use the original Supabase/Stripe modules. Those are not migrated by the Studio D1 setup.
 
 No Cloudflare resources are created by `npm run cf:build`. Remote database creation, migration, and deployment are explicit commands above.
+
+## Worker name and self-reference binding
+
+The deployed Worker is named `chaya-platform`. In `wrangler.jsonc`, both top-level `name` and `services[].service` for `WORKER_SELF_REFERENCE` must be `chaya-platform`. Keep the Cloudflare Workers GitHub project name aligned with this name. A stale reference to `chaya-studio` causes deployment error 10143. The D1 database can still be named `chaya-studio`; it is a separate resource and its existing database ID should be retained.
+
+If you rename the Worker again, update both values together. See the [OpenNext configuration guide](https://opennext.js.org/cloudflare/get-started).

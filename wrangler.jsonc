@@ -5,7 +5,7 @@
   "compatibility_date": "2025-11-21",
   "compatibility_flags": ["nodejs_compat", "global_fetch_strictly_public"],
   "assets": {"directory": ".open-next/assets", "binding": "ASSETS"},
-  "services": [{"binding": "WORKER_SELF_REFERENCE", "service": "chaya-studio"}],
+  "services": [{"binding": "WORKER_SELF_REFERENCE", "service": "chaya-platform"}],
   "d1_databases": [{
     "binding": "STUDIO_DB",
     "database_name": "chaya-studio",
