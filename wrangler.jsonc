@@ -9,7 +9,7 @@
   "d1_databases": [{
     "binding": "STUDIO_DB",
     "database_name": "chaya-studio",
-    "database_id": "00000000-0000-0000-0000-000000000000",
+    "database_id": "7ccc624d-bf4a-47b6-90f0-6e0c97dec00f",
     "migrations_dir": "migrations"
   }],
   "observability": {"enabled": true}
