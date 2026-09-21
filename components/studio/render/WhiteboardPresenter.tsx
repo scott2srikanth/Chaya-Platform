@@ -30,11 +30,13 @@ export default function WhiteboardPresenter({
     marker: [tx, ty],
     hand,
     elbow,
+    shoulder,
   } = whiteboardPresenterPose(
     [98 + (f.tip[0] - 145) * 1.37, 22 + (f.tip[1] - 42) * 1.48],
     content?.liveCommands?.length === 0 ? duration + 4 : time,
     duration,
   );
+  const id = React.useId().replace(/:/g, "");
   return (
     <svg
       width={width}
@@ -42,14 +44,45 @@ export default function WhiteboardPresenter({
       viewBox="0 0 400 230"
       aria-label="Presenter writing on a whiteboard"
     >
-      <rect width="400" height="230" rx="20" fill="#e8e1d7" />
-      <rect x="10" y="8" width="382" height="207" rx="22" fill="#fbfaf7" />
+      <defs>
+        <linearGradient id={`${id}skin`}>
+          <stop stopColor="#ffc999" />
+          <stop offset="1" stopColor="#f5ad78" />
+        </linearGradient>
+        <linearGradient id={`${id}shirt`} x2="1" y2="1">
+          <stop stopColor={shirt} />
+          <stop offset="1" stopColor="#5340dc" />
+        </linearGradient>
+        <linearGradient id={`${id}hair`}>
+          <stop stopColor="#724322" />
+          <stop offset="1" stopColor="#39291f" />
+        </linearGradient>
+      </defs>
+      <rect width="400" height="230" rx="12" fill="#eef1f6" />
+      <rect
+        x="10"
+        y="8"
+        width="382"
+        height="207"
+        rx="8"
+        fill="#ffffff"
+        stroke="#c9d0da"
+        strokeWidth="2"
+      />
       <path d="M24 214H378" stroke="#d5cec4" strokeWidth="3" />
       <g
         transform="translate(98 22) scale(1.37 1.48) translate(-145 -42)"
         fill="none"
         stroke={ink}
-        strokeWidth={content?.liveCommands?.some(e=>/^draw (?:(?:first|second|third|fourth|fifth|sixth) layer|vertical architecture diagram)$/.test(e.command)) ? 0.65 : 2.2}
+        strokeWidth={
+          content?.liveCommands?.some((e) =>
+            /^draw (?:(?:first|second|third|fourth|fifth|sixth) layer|vertical architecture diagram)$/.test(
+              e.command,
+            ),
+          )
+            ? 0.65
+            : 2.2
+        }
         strokeLinecap="round"
         strokeLinejoin="round"
       >
@@ -60,33 +93,45 @@ export default function WhiteboardPresenter({
             return (
               <path
                 key={i}
+                stroke={s.color ?? ink}
+                strokeWidth={s.penWidth}
                 d={`M${s.from.join(",")} L${s.from[0] + (s.to[0] - s.from[0]) * p},${s.from[1] + (s.to[1] - s.from[1]) * p}`}
               />
             );
           })}
       </g>
-      <g>
+      <g data-presenter-view="rear-three-quarter">
+        <ellipse cx={x} cy="223" rx="27" ry="3" fill="#1e293b" opacity=".12" />
         <path
-          d={`M${x - 13} 120 Q${x - 25} 125 ${x - 26} 145 L${x - 28} 210 Q${x} 218 ${x + 28} 210 L${x + 24} 140 Q${x + 22} 122 ${x + 10} 120Z`}
-          fill={shirt}
+          d={`M${x - 20} 184L${x - 22} 220H${x - 3}L${x} 199L${x + 4} 220H${x + 23}L${x + 19} 184Z`}
+          fill="#202938"
         />
         <path
-          d={`M${x - 24} 139 L${x - 42} 192`}
-          stroke="#f0c3a2"
-          strokeWidth="15"
+          d={`M${x - 20} 120Q${x - 25} 139 ${x - 22} 187Q${x} 193 ${x + 24} 186L${x + 20} 126Q${x} 114 ${x - 20} 120Z`}
+          fill={`url(#${id}shirt)`}
+        />
+        <path
+          d={`M${x - 21} 131 Q${x - 36} 156 ${x - 33} 187`}
+          stroke={`url(#${id}skin)`}
+          strokeWidth="13"
           strokeLinecap="round"
-        />
-        <rect x={x - 8} y="104" width="16" height="21" rx="7" fill="#f0c3a2" />
-        <ellipse cx={x} cy="82" rx="29" ry="33" fill="#f0c3a2" />
-        <path
-          d={`M${x - 29} 77 Q${x - 30} 40 ${x - 9} 47 Q${x - 3} 40 ${x + 6} 48 Q${x + 30} 44 ${x + 29} 77Z`}
-          fill="#59402e"
-        />
-        <path
-          d={`M${x + 23} 137 Q${elbow[0]} ${elbow[1]} ${hand[0]} ${hand[1]}`}
           fill="none"
-          stroke="#f0c3a2"
-          strokeWidth="15"
+        />
+        <ellipse cx={x - 33} cy="189" rx="7" ry="10" fill="#ffc394" />
+        <rect x={x - 8} y="104" width="16" height="21" rx="7" fill="#f6ae79" />
+        <ellipse cx={x} cy="82" rx="29" ry="33" fill={`url(#${id}skin)`} />
+        {/* One fixed rear three-quarter silhouette for writing and resting. */}
+        <path
+          d={`M${x - 29} 89Q${x - 40} 67 ${x - 28} 55Q${x - 29} 44 ${x - 18} 46Q${x - 12} 31 ${x + 1} 40Q${x + 17} 28 ${x + 23} 43Q${x + 39} 43 ${x + 31} 59L${x + 21} 68L${x + 20} 85Q${x + 10} 98 ${x - 1} 107Q${x - 19} 116 ${x - 30} 99Z`}
+          fill={`url(#${id}hair)`}
+        />
+        <ellipse cx={x + 18} cy="84" rx="7" ry="9" fill="#ffc394" />
+        <path
+          d={`M${shoulder.join(",")} L${elbow.join(",")} L${hand.join(",")}`}
+          fill="none"
+          stroke="#ffc394"
+          strokeWidth="13"
+          strokeLinejoin="round"
           strokeLinecap="round"
         />
         <path
@@ -112,7 +157,7 @@ export default function WhiteboardPresenter({
             strokeWidth="1"
           />
         )}
-        <circle cx={hand[0]} cy={hand[1]} r="6" fill="#f0c3a2" />
+        <circle cx={hand[0]} cy={hand[1]} r="6" fill="#ffc394" />
       </g>
     </svg>
   );

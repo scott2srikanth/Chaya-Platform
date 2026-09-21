@@ -80,3 +80,19 @@ test("drawing follows supplied points, and content roundtrips with the project",
  assert.deepEqual(parseProject(JSON.parse(serializeProject(p))).scenes[0].elements[0].whiteboard,content);
  p.scenes[0].elements[0].whiteboard!.strokes=[[[2,0],[1,1]]];assert.throws(()=>parseProject(p));
 });
+
+test('presenter reaches the board without stretching bones or crossing the head',()=>{
+ for(const x of [98,180,280,379])for(const y of [22,55,95,140,197]){
+  const pose=whiteboardPresenterPose([x,y],1,9);
+  const length=(a:number[],b:number[])=>Math.hypot(a[0]-b[0],a[1]-b[1]);
+  assert.ok(Math.abs(length(pose.shoulder,pose.elbow)-46)<1e-8);
+  assert.ok(Math.abs(length(pose.elbow,pose.hand)-50)<1e-8);
+  assert.ok(length(pose.marker,[x,y])<1e-8);
+  assert.ok(pose.hand[0]-6>pose.x+35);
+  for(const [a,b] of [[pose.shoulder,pose.elbow],[pose.elbow,pose.hand]])for(let i=0;i<=20;i++){
+   const px=a[0]+(b[0]-a[0])*i/20,py=a[1]+(b[1]-a[1])*i/20;
+   // Ellipse includes the head/hair silhouette plus half the arm's stroke width.
+   assert.ok(((px-pose.x)/39)**2+((py-77)/45)**2>1,'arm crosses head silhouette');
+  }
+ }
+});

@@ -7,7 +7,14 @@ const point = z
   })
   .strict();
 export const drawingSchema = z
-  .object({ strokes: z.array(z.array(point).min(2).max(150)).min(1).max(120) })
+  .object({
+    strokes: z.array(z.array(point).min(2).max(150)).min(1).max(120),
+    color: z
+      .string()
+      .regex(/^#[0-9a-f]{6}$/i)
+      .optional(),
+    penWidth: z.number().min(0.5).max(6).optional(),
+  })
   .strict();
 export const drawingJsonSchema = {
   type: "object",
@@ -71,8 +78,10 @@ export function generatedBoardCommand(
   if (length < 1) throw new Error("The drawing has no visible pen strokes.");
   return {
     command: command.trim(),
+    ...(parsed.data.color ? { color: parsed.data.color } : {}),
+    ...(parsed.data.penWidth ? { penWidth: parsed.data.penWidth } : {}),
     strokes,
     start,
-    duration: Math.max(3, Math.min(30, length / 65)),
+    duration: Math.max(0.75, Math.min(10, length / 195)),
   };
 }

@@ -147,6 +147,11 @@ export function applyLiveCommand(
     end = start + event.duration + 3;
     anchor = playing ? current : start;
     playing = true;
+  } else if (input.action === "reset") {
+    events = [];
+    anchor = 0;
+    end = 0;
+    playing = false;
   } else if (input.action === "pause") {
     playing = false;
   } else if (input.action === "replay") {

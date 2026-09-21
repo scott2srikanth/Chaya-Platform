@@ -7,6 +7,8 @@ import { libraryDrawing, normalizeBoardName } from "./drawing-library";
 import { whiteboardStrokes, type WhiteboardContent } from "./whiteboard";
 type Point = [number, number];
 export type BoardCommand = {
+  color?: string;
+  penWidth?: number;
   eraseTargets?: number[];
   command: string;
   start: number;
@@ -78,26 +80,31 @@ export function eraseBoardCommand(
       ? ARCHITECTURE_LAYERS[layerIndex].name
       : (libraryDrawing(name)?.name ?? name);
   const matches =
-    !name || /^(last|last one|last item|last drawing)$/.test(name)
-      ? active.slice(-1)
-      : active.filter(({ event }) => {
-          const label = normalizeBoardName(
-            event.command.replace(/^(write|draw)\s+/i, ""),
-          );
-          return label === canonical || label === name;
-        });
+    name === "all"
+      ? active
+      : !name || /^(last|last one|last item|last drawing)$/.test(name)
+        ? active.slice(-1)
+        : active.filter(({ event }) => {
+            const label = normalizeBoardName(
+              event.command.replace(/^(write|draw)\s+/i, ""),
+            );
+            return label === canonical || label === name;
+          });
   if (!matches.length)
     throw new Error(
       name
         ? `No item named “${name}” is on the board.`
         : "The board is already empty.",
     );
-  if (matches.length > 1)
+  if (matches.length > 1 && name !== "all")
     throw new Error(
       "More than one item matches. Say “remove” to erase the most recent item.",
     );
   return {
-    command: `erase ${matches[0].event.command.replace(/^(write|draw)\s+/i, "")}`,
+    command:
+      name === "all"
+        ? "erase all"
+        : `erase ${matches[0].event.command.replace(/^(write|draw)\s+/i, "")}`,
     start,
     duration: 2,
     eraseTargets: matches.map((m) => m.index),
@@ -276,7 +283,7 @@ export function createBoardCommand(
   return {
     command: canonical,
     start,
-    duration: Math.max(2, Math.min(10, strokes.length * 0.12)),
+    duration: Math.max(0.65, Math.min(3.4, strokes.length * 0.04)),
     strokes,
   };
 }
@@ -287,6 +294,11 @@ export function validLiveCommands(events: WhiteboardContent["liveCommands"]) {
     events.every(
       (e, i) =>
         e &&
+        (e.color === undefined || /^#[0-9a-f]{6}$/i.test(e.color)) &&
+        (e.penWidth === undefined ||
+          (Number.isFinite(e.penWidth) &&
+            e.penWidth >= 0.5 &&
+            e.penWidth <= 6)) &&
         (e.eraseTargets === undefined ||
           (Array.isArray(e.eraseTargets) &&
             e.eraseTargets.length > 0 &&

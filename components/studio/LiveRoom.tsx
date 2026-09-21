@@ -1,5 +1,43 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
+import {
+  Monitor,
+  Server,
+  House,
+  TreePine,
+  Cloud,
+  Database,
+  Smartphone,
+  UserRound,
+  Circle,
+  Square,
+  Triangle,
+  ArrowRight,
+  Star,
+  PanelsTopLeft,
+  Layers,
+  Shapes,
+} from "lucide-react";
+const libraryIcons: Record<string, typeof Monitor> = {
+  browser: PanelsTopLeft,
+  computer: Monitor,
+  server: Server,
+  house: House,
+  tree: TreePine,
+  cloud: Cloud,
+  database: Database,
+  phone: Smartphone,
+  person: UserRound,
+  circle: Circle,
+  rectangle: Square,
+  triangle: Triangle,
+  arrow: ArrowRight,
+  star: Star,
+};
+function LibraryIcon({ name }: { name: string }) {
+  const Icon = libraryIcons[name] ?? Shapes;
+  return <Icon size={25} strokeWidth={1.5} aria-hidden="true" />;
+}
 import type { LiveSessionState } from "../../lib/studio/live-session";
 import {
   DRAWING_LIBRARY,
@@ -25,6 +63,12 @@ export default function LiveRoom({
 }: {
   view?: "join" | "display" | "control";
 }) {
+  const [libraryQuery, setLibraryQuery] = useState(""),
+    [showLayers, setShowLayers] = useState(false),
+    [transcript, setTranscript] = useState(""),
+    [language, setLanguage] = useState("en-US");
+  const wantsMicrophone = useRef(false),
+    restartTimer = useRef<ReturnType<typeof setTimeout>>();
   const [room, setRoom] = useState(""),
     [token, setToken] = useState(""),
     [code, setCode] = useState(""),
@@ -54,7 +98,11 @@ export default function LiveRoom({
       !!(w.SpeechRecognition || w.webkitSpeechRecognition) &&
         window.isSecureContext,
     );
-    return () => recognition.current?.abort();
+    return () => {
+      wantsMicrophone.current = false;
+      clearTimeout(restartTimer.current);
+      recognition.current?.abort();
+    };
   }, []);
   useEffect(() => {
     if (!room) return;
@@ -167,13 +215,15 @@ export default function LiveRoom({
           else throw e;
         }
         setMessage(
-          action === "drawing"
-            ? "Drawing queued — the presenter will draw it next."
-            : action === "command"
-              ? `Sent: ${command}`
-              : action === "pause"
-                ? "Presenter paused."
-                : "Playback started.",
+          action === "reset"
+            ? "Timeline deleted. The board is ready for a new presentation."
+            : action === "drawing"
+              ? "Drawing queued — the presenter will draw it next."
+              : action === "command"
+                ? `Sent: ${command}`
+                : action === "pause"
+                  ? "Presenter paused."
+                  : "Playback started.",
         );
       } catch (e) {
         setMessage((e as Error).message);
@@ -192,36 +242,76 @@ export default function LiveRoom({
   }
   runRef.current = run;
   function microphone() {
-    if (listening) {
+    if (wantsMicrophone.current) {
+      wantsMicrophone.current = false;
+      clearTimeout(restartTimer.current);
       recognition.current?.stop();
+      setListening(false);
       return;
     }
     const w = window as any,
       Constructor = w.SpeechRecognition || w.webkitSpeechRecognition;
-    if (!Constructor) return;
+    if (!window.isSecureContext) {
+      setMessage(
+        "Open this controller over HTTPS on your phone. Mobile microphones are blocked on local Wi-Fi HTTP.",
+      );
+      return;
+    }
+    if (!Constructor) {
+      setMessage(
+        "Speech recognition is unavailable in this browser. Use keyboard dictation in the command field, or open Safari on iPad/iPhone or Chrome on Android.",
+      );
+      return;
+    }
+    wantsMicrophone.current = true;
     const r = new Constructor();
     recognition.current = r;
-    r.lang = "en-US";
-    r.continuous = true;
-    r.interimResults = false;
+    r.lang = language;
+    // Single utterances avoid mobile engines silently stopping continuous mode.
+    r.continuous = false;
+    r.interimResults = true;
     r.onresult = (event: any) => {
-      for (let i = event.resultIndex; i < event.results.length; i++)
-        if (event.results[i].isFinal)
-          runRef.current(event.results[i][0].transcript);
+      if (!wantsMicrophone.current) return;
+      let live = "";
+      for (let i = event.resultIndex; i < event.results.length; i++) {
+        const text = event.results[i][0].transcript;
+        if (event.results[i].isFinal) {
+          runRef.current(text);
+          setTranscript("");
+        } else live += text;
+      }
+      if (live) setTranscript(live);
     };
     r.onerror = (e: any) => {
+      if (e.error === "aborted" && !wantsMicrophone.current) return;
+      if (e.error === "no-speech") return;
+      wantsMicrophone.current = false;
       setListening(false);
       setMessage(
-        `Microphone: ${e.error}. You can still type or tap a command.`,
+        e.error === "not-allowed" || e.error === "service-not-allowed"
+          ? "Microphone permission was blocked. Allow microphone access in your browser/site settings, then tap Start microphone again."
+          : `Microphone: ${e.error}. Tap to retry or use keyboard dictation.`,
       );
     };
-    r.onend = () => setListening(false);
-    try {
-      r.start();
-      setListening(true);
-    } catch {
-      setMessage("Microphone unavailable. Type or tap a command.");
-    }
+    const start = () => {
+      if (!wantsMicrophone.current) return;
+      try {
+        r.start();
+        setListening(true);
+      } catch {
+        wantsMicrophone.current = false;
+        setListening(false);
+        setMessage(
+          "Unable to start microphone. Check microphone permissions and try again.",
+        );
+      }
+    };
+    r.onend = () => {
+      if (wantsMicrophone.current)
+        restartTimer.current = setTimeout(start, 350);
+      else setListening(false);
+    };
+    start();
   }
   async function download() {
     if (!session) return;
@@ -282,6 +372,7 @@ export default function LiveRoom({
       <main className="live-room">
         <header>
           <a href="/studio">← Studio</a>
+          <span className="live-eyebrow">PRESENT • TEACH • CREATE</span>
           <h1>Live presenter room</h1>
           <p>
             A clean display for your audience. A separate controller for your
@@ -342,9 +433,9 @@ export default function LiveRoom({
               </p>
             ))}
             <p>
-              Sessions are kept on this Studio server for four hours after the
-              last command and are lost if the server restarts. Download the
-              recording before closing the room.
+              Rooms expire after four hours without commands. Download your
+              recording to keep it. Use the deployed HTTPS address on mobile for
+              microphone access.
             </p>
           </section>
         )}
@@ -355,15 +446,25 @@ export default function LiveRoom({
     <main className="live-room live-controller">
       <header>
         <a href="/studio/live">← Rooms</a>
+        <span className="live-eyebrow">LIVE WORKSPACE</span>
         <h1>Presenter controller</h1>
-        <p role="status">
+        <p
+          className={`connection-pill ${connected ? "online" : ""}`}
+          role="status"
+        >
           {connected ? "Connected · changes are live" : "Reconnecting…"}
           {pending ? ` · ${pending} command(s) sending` : ""}
         </p>
       </header>
       {!token && <p>Join this room using its pairing code to send commands.</p>}
       <div className="live-preview">{board}</div>
-      <section>
+      <section className="command-panel">
+        <div className="section-heading">
+          <div>
+            <span className="live-eyebrow">DIRECT YOUR PRESENTER</span>
+            <h2>Speak it. Write it. Draw it.</h2>
+          </div>
+        </div>
         <form
           onSubmit={(e) => {
             e.preventDefault();
@@ -372,7 +473,8 @@ export default function LiveRoom({
         >
           <label>
             Presenter command
-            <input
+            <textarea
+              rows={2}
               aria-label="Remote presenter command"
               placeholder="write Hello / draw house / remove house"
               value={input}
@@ -385,7 +487,12 @@ export default function LiveRoom({
           </button>
         </form>
         <div className="live-buttons">
-          <button disabled={!voiceAvailable || !token} onClick={microphone}>
+          <button
+            className={listening ? "mic-active" : "primary-button"}
+            aria-pressed={listening}
+            disabled={!token || !connected}
+            onClick={microphone}
+          >
             {listening ? "Stop microphone" : "Start microphone"}
           </button>
           <button disabled={!token} onClick={() => send("pause")}>
@@ -401,7 +508,31 @@ export default function LiveRoom({
             Download recording
           </button>
         </div>
-        <p>
+        <div className="voice-options">
+          <label>
+            Speech language{" "}
+            <select
+              disabled={listening}
+              value={language}
+              onChange={(e) => setLanguage(e.target.value)}
+            >
+              <option value="en-US">English (US)</option>
+              <option value="en-IN">English (India)</option>
+              <option value="en-GB">English (UK)</option>
+            </select>
+          </label>
+          <span>
+            {listening
+              ? "● Listening — say “write”, then your sentence"
+              : "Say “draw computer” or “remove computer”"}
+          </span>
+        </div>
+        {transcript && (
+          <p className="live-transcript" aria-live="polite">
+            {transcript}
+          </p>
+        )}
+        <p className="helper-text">
           {voiceAvailable
             ? "Your browser may send microphone audio to its speech recognition service."
             : "Voice needs HTTPS and a supported browser. On local Wi-Fi HTTP, use the buttons or text commands."}
@@ -413,29 +544,70 @@ export default function LiveRoom({
       <LiveDrawingPad
         events={session?.events ?? []}
         disabled={!connected || !token}
-        onDraw={(points) =>
+        onErase={(name) => run(`remove ${name}`)}
+        onClear={() => {
+          if (
+            window.confirm(
+              "Erase all visible board items? The erasing action will be kept in the timeline.",
+            )
+          )
+            run("remove all");
+        }}
+        onDraw={(points, color, penWidth) =>
           send("drawing", undefined, {
+            color,
+            penWidth,
             strokes: [points.map(([x, y]) => ({ x, y }))],
           })
         }
       />
       <section>
-        <h2>Drawing library</h2>
-        <div className="live-buttons">
+        <div className="section-heading">
+          <div>
+            <span className="live-eyebrow">READY TO DRAW</span>
+            <h2>Drawing library</h2>
+          </div>
+          <input
+            aria-label="Search drawing library"
+            placeholder="Search components…"
+            value={libraryQuery}
+            onChange={(e) => setLibraryQuery(e.target.value)}
+          />
+        </div>
+        <div className="library-grid">
+          <button
+            className="architecture-card"
+            aria-expanded={showLayers}
+            onClick={() => setShowLayers(!showLayers)}
+          >
+            <span>
+              <Layers size={25} strokeWidth={1.5} aria-hidden="true" />
+            </span>
+            <strong>Architecture layers (ML)</strong>
+            <small>Dataset → deployment · 6 layers</small>
+          </button>
           {[
             "browser",
             "computer",
             "server",
             ...DRAWING_LIBRARY.map((d) => d.name),
-          ].map((name) => (
-            <button
-              disabled={!connected || !token}
-              key={name}
-              onClick={() => run(`draw ${name}`)}
-            >
-              {name}
-            </button>
-          ))}
+          ]
+            .filter((name) =>
+              name.toLowerCase().includes(libraryQuery.toLowerCase()),
+            )
+            .map((name) => (
+              <button
+                disabled={!connected || !token}
+                key={name}
+                onClick={() => run(`draw ${name}`)}
+              >
+                <span>
+                  <LibraryIcon name={name} />
+                </span>
+                <strong>{name}</strong>
+                <small>Tap to draw</small>
+              </button>
+            ))}
           <button disabled={!token} onClick={() => run("remove")}>
             Erase last item
           </button>
@@ -453,22 +625,68 @@ export default function LiveRoom({
           </button>
         </div>
       </section>
+      {showLayers && (
+        <section className="architecture-panel">
+          <div className="section-heading">
+            <h2>ML architecture layers</h2>
+            <button onClick={() => setShowLayers(false)}>Close layers</button>
+          </div>
+          <button
+            disabled={!connected || !token}
+            onClick={() => run("draw vertical architecture diagram")}
+          >
+            Draw all six layers
+          </button>
+          <div className="live-buttons">
+            {ARCHITECTURE_LAYERS.map((l) => (
+              <button
+                disabled={!connected || !token}
+                key={l.name}
+                onClick={() => run(`draw ${l.name}`)}
+              >
+                {l.name}: {l.title}
+              </button>
+            ))}
+          </div>
+        </section>
+      )}
       <section>
-        <h2>Architecture layers</h2>
-        <div className="live-buttons">
-          {ARCHITECTURE_LAYERS.map((l) => (
-            <button
-              disabled={!connected || !token}
-              key={l.name}
-              onClick={() => run(`draw ${l.name}`)}
-            >
-              {l.name}: {l.title}
-            </button>
-          ))}
+        <div className="section-heading">
+          <div>
+            <span className="live-eyebrow">YOUR RECORDING</span>
+            <h2>
+              Recorded timeline{" "}
+              <small>{session?.events.length ?? 0} actions</small>
+            </h2>
+          </div>
+          <button
+            className="danger-button"
+            disabled={
+              !connected || !token || !session?.events.length || pending > 0
+            }
+            onClick={() => {
+              if (
+                window.confirm(
+                  "Delete the entire recorded timeline and clear the board for all connected screens? This cannot be undone.",
+                )
+              ) {
+                wantsMicrophone.current = false;
+                clearTimeout(restartTimer.current);
+                recognition.current?.abort();
+                setListening(false);
+                send("reset");
+              }
+            }}
+          >
+            Delete all timeline
+          </button>
         </div>
-      </section>
-      <section>
-        <h2>Recorded timeline</h2>
+        {!session?.events.length && (
+          <p className="empty-state">
+            Your presentation starts here. Speak, type or draw to record an
+            action.
+          </p>
+        )}
         <ol>
           {session?.events.map((e, i) => (
             <li key={i}>

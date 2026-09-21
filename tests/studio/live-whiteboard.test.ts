@@ -40,7 +40,7 @@ test("new commands retain completed ink and animate independently when scrubbing
   const content = { liveCommands: [first, second] };
   const initial = whiteboardFrame("", 6, 8, { liveCommands: [first] });
   const waiting = whiteboardFrame("", 10, 8, content),
-    progress = whiteboardFrame("", 13, 8, content),
+    progress = whiteboardFrame("", second.start + second.duration / 2, 8, content),
     end = whiteboardFrame("", 30, 8, content);
   assert.equal(initial.distance, waiting.distance);
   assert.ok(progress.distance > waiting.distance);

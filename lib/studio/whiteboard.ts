@@ -42,6 +42,8 @@ const glyphs: Record<string, string> = {
   "?": "0,1 1,0 3,0 4,1 4,2 2,3 2,4|2,6 2.1,6",
 };
 export type InkSegment = {
+  color?: string;
+  penWidth?: number;
   from: [number, number];
   to: [number, number];
   start: number;
@@ -181,8 +183,8 @@ export function whiteboardFrame(
     let distance = 0,
       total = 0;
     let tip: [number, number] = [150, 65];
-    for (let index=0;index<content.liveCommands.length;index++) {
-      const event=content.liveCommands[index];
+    for (let index = 0; index < content.liveCommands.length; index++) {
+      const event = content.liveCommands[index];
       const data = whiteboardStrokes("", {
         mode: "drawing",
         strokes: event.strokes,
@@ -210,6 +212,8 @@ export function whiteboardFrame(
           const ratio = s.length ? cut / s.length : 0;
           return {
             ...s,
+            color: event.color,
+            penWidth: event.penWidth,
             from: s.from.map((v, i) => v + (s.to[i] - v) * ratio) as [
               number,
               number,
@@ -271,18 +275,41 @@ export function whiteboardPresenterPose(
   };
   const move = smooth((time - (duration + 0.5)) / 1.2),
     face = smooth((time - (duration + 1.1)) / 1.5);
-  const initialX = Math.max(95, Math.min(285, tip[0] - 55));
+  // Keep the pen to the right of the head, including the left edge of the board.
+  const initialX = tip[0] - 59;
   const x = initialX + (50 - initialX) * move;
   const marker: [number, number] = [
     tip[0] + (x + 35 - tip[0]) * move,
     tip[1] + (174 - tip[1]) * move,
   ];
   const hand: [number, number] = [marker[0] - 4, marker[1] + 18];
+  const shoulder: [number, number] = [x + 23, 128];
+  const upperArm = 46,
+    forearm = 50;
+  const dx = hand[0] - shoulder[0],
+    dy = hand[1] - shoulder[1];
+  const distance = Math.hypot(dx, dy);
+  const reach = Math.min(
+    upperArm + forearm - 0.001,
+    Math.max(Math.abs(upperArm - forearm) + 0.001, distance),
+  );
+  const ux = distance ? dx / distance : 1,
+    uy = distance ? dy / distance : 0;
+  // Clamp unreachable targets instead of stretching either bone.
+  if (distance !== reach) {
+    hand[0] = shoulder[0] + ux * reach;
+    hand[1] = shoulder[1] + uy * reach;
+    marker[0] = hand[0] + 4;
+    marker[1] = hand[1] - 18;
+  }
+  const along =
+    (upperArm * upperArm - forearm * forearm + reach * reach) / (2 * reach);
+  const bend = Math.sqrt(Math.max(0, upperArm * upperArm - along * along));
   const elbow: [number, number] = [
-    x + 43,
-    ((tip[1] + 140) / 2 + 18) * (1 - move) + 170 * move,
+    shoulder[0] + ux * along - uy * bend,
+    shoulder[1] + uy * along + ux * bend,
   ];
-  return { x, marker, hand, elbow, face, move };
+  return { x, marker, hand, elbow, shoulder, face, move };
 }
 
 /** Switch complete front/back artwork at the narrowest point, never fade facial features. */

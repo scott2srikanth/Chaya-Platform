@@ -43,3 +43,13 @@ This replaces Studio authentication. Existing legacy video/billing modules still
 ## Cloudflare Workers
 
 Cloud deployments use D1 for authentication and shared live room state, with revision-safe commands and 500 ms SSE polling. Local Node rooms still use process memory. See [deployment instructions](CLOUDFLARE_DEPLOYMENT.md) for database setup and feature/version limitations.
+
+## Refreshed live controller
+
+The presenter uses one fixed rear three-quarter vector view (no visible facial features) inspired by the supplied reference illustrations. The writing hand follows the ink and lowers when standing; the character does not flip, narrow, or swap front/back artwork. The controller has a responsive command panel, searchable drawing cards, and an expandable ML architecture library item.
+
+Open the drawing workspace full screen for pen, line, arrow, rectangle, ellipse, color and thickness controls. The item eraser removes a whole drawing/text item when tapped. Undo last and Clear board record animated erasing; Delete all timeline permanently resets the recording and synchronized board after confirmation. Colors and widths persist in recordings.
+
+Speech uses single-utterance recognition with automatic restart for mobile browsers, interim text, permission/error guidance, and English locale selection. It requires HTTPS on phones (ordinary LAN HTTP cannot enable microphone access). Use browser keyboard dictation when native speech recognition is unavailable. Physical iOS/Android microphone behavior must be verified on the target device.
+
+New live text and library actions draw approximately three times faster; freehand/generated drawing durations use a 195-unit/second target, bounded to 0.75–10 seconds. Existing recordings retain their saved timing.

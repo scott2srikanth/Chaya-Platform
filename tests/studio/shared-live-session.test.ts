@@ -42,3 +42,71 @@ test("shared rooms survive new store instances, concurrent commands, retries and
   await assert.rejects(() => first.get(created.state.id), /expired/);
   sqlite.close();
 });
+
+test("colored ink, animated clear board and timeline reset survive shared storage", async () => {
+  const sqlite = new DatabaseSync(":memory:");
+  sqlite.exec(readFileSync("migrations/0001_studio.sql", "utf8"));
+  const db: SqlDatabase = {
+    first: async (sql, ...v) => sqlite.prepare(sql).get(...v),
+    run: async (sql, ...v) => sqlite.prepare(sql).run(...v),
+  };
+  const store = sharedLiveStore(db),
+    room = await store.create();
+  const draw = {
+    action: "drawing",
+    requestId: "color",
+    drawing: {
+      color: "#ff0066",
+      penWidth: 3,
+      strokes: [
+        [
+          { x: 0.1, y: 0.1 },
+          { x: 0.3, y: 0.3 },
+        ],
+      ],
+    },
+  };
+  let state = await store.command(room.state.id, room.token, draw);
+  assert.equal(state.events[0].color, "#ff0066");
+  assert.equal(state.events[0].penWidth, 3);
+  await store.command(room.state.id, room.token, {
+    action: "command",
+    command: "write hello",
+    requestId: "text",
+  });
+  state = await store.command(room.state.id, room.token, {
+    action: "command",
+    command: "remove all",
+    requestId: "erase",
+  });
+  assert.deepEqual(state.events[2].eraseTargets, [0, 1]);
+  state = await store.command(room.state.id, room.token, {
+    action: "reset",
+    requestId: "reset",
+  });
+  assert.deepEqual(state.events, []);
+  assert.equal(state.playing, false);
+  assert.equal(state.end, 0);
+  assert.deepEqual(
+    (await sharedLiveStore(db).get(room.state.id)).state.events,
+    [],
+  );
+  assert.equal(
+    (
+      await store.command(room.state.id, room.token, {
+        action: "reset",
+        requestId: "reset",
+      })
+    ).revision,
+    state.revision,
+  );
+  await assert.rejects(
+    () =>
+      store.command(room.state.id, "bad", {
+        action: "reset",
+        requestId: "unauthorized",
+      }),
+    /denied/,
+  );
+  sqlite.close();
+});
