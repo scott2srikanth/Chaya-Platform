@@ -34,3 +34,19 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Generated studio preview/render artifacts
+/artifacts/studio/
+
+/.studio-tools/
+
+# Embedded local account database
+data/*.sqlite*
+
+# Cloudflare local databases, build output, and secrets
+.open-next/
+.wrangler/
+.dev.vars*
+*.sqlite
+*.sqlite-shm
+*.sqlite-wal

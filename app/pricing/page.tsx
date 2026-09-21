@@ -282,7 +282,7 @@ export default function PricingPage() {
               </h3>
               <p className="text-slate-600 dark:text-slate-400 leading-relaxed">
                 Yes, you can upgrade from Free to Pro or Elite, or from Pro to Elite at any time.
-                When you cancel, you'll continue to have access until the end of your billing period.
+                When you cancel, you&apos;ll continue to have access until the end of your billing period.
               </p>
             </div>
             <div className="bg-white dark:bg-slate-800 rounded-xl p-6 shadow-sm border border-slate-200 dark:border-slate-700">
@@ -290,8 +290,8 @@ export default function PricingPage() {
                 What happens to my videos if I downgrade?
               </h3>
               <p className="text-slate-600 dark:text-slate-400 leading-relaxed">
-                Your existing videos will remain accessible, but you won't be able to upload new videos
-                if you exceed the Free plan's limit of 2 videos.
+                Your existing videos will remain accessible, but you won&apos;t be able to upload new videos
+                if you exceed the Free plan&apos;s limit of 2 videos.
               </p>
             </div>
             <div className="bg-white dark:bg-slate-800 rounded-xl p-6 shadow-sm border border-slate-200 dark:border-slate-700">
@@ -299,7 +299,7 @@ export default function PricingPage() {
                 What happens to my courses if I downgrade from Elite?
               </h3>
               <p className="text-slate-600 dark:text-slate-400 leading-relaxed">
-                Your existing courses and enrollments will remain intact, but you won't be able to
+                Your existing courses and enrollments will remain intact, but you won&apos;t be able to
                 create new courses or accept new paid enrollments until you re-subscribe to Elite.
               </p>
             </div>
@@ -318,7 +318,7 @@ export default function PricingPage() {
                 Do you offer refunds?
               </h3>
               <p className="text-slate-600 dark:text-slate-400 leading-relaxed">
-                We offer a 30-day money-back guarantee. If you're not satisfied with your plan,
+                We offer a 30-day money-back guarantee. If you&apos;re not satisfied with your plan,
                 contact our support team for a full refund.
               </p>
             </div>

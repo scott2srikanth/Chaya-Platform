@@ -1,0 +1,7982 @@
+{
+  "id": "24e3190c-932b-4f01-8758-5883e3a30566",
+  "version": "2.0",
+  "metadata": {
+    "name": "A better way to plan",
+    "createdAt": "2026-09-20T10:27:01.041Z",
+    "updatedAt": "2026-09-20T10:27:01.042Z"
+  },
+  "settings": {
+    "width": 1920,
+    "height": 1080,
+    "fps": 30
+  },
+  "scenes": [
+    {
+      "id": "914d98a3-d7d5-4a69-90ac-d6c2efa14660",
+      "name": "Studio conversation",
+      "duration": 18,
+      "background": "#f0f4f8",
+      "elements": [
+        {
+          "id": "900f7289-6a7d-43a5-a260-2ee5f5fa1ac7",
+          "type": "character",
+          "name": "Alex",
+          "x": 430,
+          "y": 260,
+          "width": 320,
+          "height": 650,
+          "rotation": 0,
+          "scaleX": 1,
+          "scaleY": 1,
+          "opacity": 1,
+          "locked": false,
+          "visible": true,
+          "fill": "transparent",
+          "stroke": "transparent",
+          "strokeWidth": 0,
+          "borderRadius": 0,
+          "text": "",
+          "fontSize": 48,
+          "fontFamily": "Inter, sans-serif",
+          "fontWeight": "600",
+          "textAlign": "center",
+          "x2": 0,
+          "y2": 0,
+          "animations": [],
+          "characterGesture": "idle",
+          "characterReaction": "none",
+          "facingRight": true,
+          "characterId": "alex",
+          "voice": {
+            "name": "Daniel (English (UK))",
+            "rate": 165
+          },
+          "actor3d": {
+            "x": -0.95,
+            "z": 0,
+            "rotation": 0.18,
+            "shirt": "#567b83",
+            "skin": "#d3a080",
+            "hair": "#322920"
+          }
+        },
+        {
+          "id": "87f029e8-6b4b-4d24-a4f3-5f076cbf4a53",
+          "type": "character",
+          "name": "Sarah",
+          "x": 1130,
+          "y": 260,
+          "width": 320,
+          "height": 650,
+          "rotation": 0,
+          "scaleX": 1,
+          "scaleY": 1,
+          "opacity": 1,
+          "locked": false,
+          "visible": true,
+          "fill": "transparent",
+          "stroke": "transparent",
+          "strokeWidth": 0,
+          "borderRadius": 0,
+          "text": "",
+          "fontSize": 48,
+          "fontFamily": "Inter, sans-serif",
+          "fontWeight": "600",
+          "textAlign": "center",
+          "x2": 0,
+          "y2": 0,
+          "animations": [],
+          "characterGesture": "idle",
+          "characterReaction": "none",
+          "facingRight": true,
+          "characterId": "sarah",
+          "voice": {
+            "name": "Samantha",
+            "rate": 170
+          },
+          "actor3d": {
+            "x": 0.95,
+            "z": 0,
+            "rotation": -0.18,
+            "shirt": "#c36d4d",
+            "skin": "#b77958",
+            "hair": "#26212a"
+          }
+        }
+      ],
+      "script": [
+        {
+          "id": "f2633866-2dc2-4a6f-b337-45d6c04939be",
+          "characterElementId": "900f7289-6a7d-43a5-a260-2ee5f5fa1ac7",
+          "text": "What if planning your day could be this simple?",
+          "duration": 4.5,
+          "gesture": "talking",
+          "reaction": "none",
+          "shot": "wide"
+        },
+        {
+          "id": "fb76893c-8ef5-4c9f-9bf9-b16ee51527df",
+          "characterElementId": "87f029e8-6b4b-4d24-a4f3-5f076cbf4a53",
+          "text": "Start with one clear plan. Everything you need, in one place.",
+          "duration": 5,
+          "gesture": "pointing",
+          "reaction": "none",
+          "shot": "medium"
+        },
+        {
+          "id": "0dbc2f3b-cf66-4855-9c7f-d9f8e366c5a6",
+          "characterElementId": "900f7289-6a7d-43a5-a260-2ee5f5fa1ac7",
+          "text": "Less time organizing. More time for the work that matters.",
+          "duration": 4.5,
+          "gesture": "talking",
+          "reaction": "none",
+          "shot": "closeup"
+        },
+        {
+          "id": "146448c4-cbac-4b67-a486-75e2f746f474",
+          "characterElementId": "87f029e8-6b4b-4d24-a4f3-5f076cbf4a53",
+          "text": "Exactly. Let us make today a little easier.",
+          "duration": 4,
+          "gesture": "waving",
+          "reaction": "none",
+          "shot": "closeup"
+        }
+      ],
+      "cameras": [
+        {
+          "id": "1fc84247-75f0-490e-8073-ba84da068cc5",
+          "name": "Wide",
+          "x": 0,
+          "y": 0,
+          "viewWidth": 1920,
+          "viewHeight": 1080,
+          "transition": "cut",
+          "transitionDuration": 0
+        }
+      ],
+      "camera": {
+        "x": 0,
+        "y": 0,
+        "zoom": 1,
+        "rotation": 0
+      },
+      "transition": "cut",
+      "stage3d": true,
+      "cameraMode": "dialogue",
+      "subtitles": true,
+      "cameraKeys": [],
+      "transitionDuration": 0.5
+    }
+  ],
+  "assets": [],
+  "audio": [],
+  "clips": [],
+  "characters": [
+    {
+      "id": "alex-rigged",
+      "version": "1.0",
+      "name": "Alex",
+      "gender": "male",
+      "rig": {
+        "id": "alex-rig",
+        "name": "Alex Rig",
+        "bones": [
+          {
+            "id": "root",
+            "name": "Root",
+            "parentId": null,
+            "x": 120,
+            "y": 230,
+            "rotation": 0,
+            "length": 0,
+            "zIndex": 0,
+            "visuals": []
+          },
+          {
+            "id": "torso",
+            "name": "Torso",
+            "parentId": "root",
+            "x": 0,
+            "y": 0,
+            "rotation": 0,
+            "length": 120,
+            "zIndex": 5,
+            "colorToken": "shirt",
+            "visuals": [
+              {
+                "type": "rect",
+                "fill": "#2563eb",
+                "offsetX": -32,
+                "offsetY": -120,
+                "width": 64,
+                "height": 120,
+                "borderRadius": 14
+              },
+              {
+                "type": "path",
+                "fill": "#f4c7a3",
+                "d": "M -12 -120 Q 0 -110 12 -120",
+                "stroke": "#f4c7a3",
+                "strokeWidth": 2
+              }
+            ]
+          },
+          {
+            "id": "neck",
+            "name": "Neck",
+            "parentId": "torso",
+            "x": 0,
+            "y": -120,
+            "rotation": 0,
+            "length": 16,
+            "zIndex": 4,
+            "colorToken": "skin",
+            "visuals": [
+              {
+                "type": "rect",
+                "fill": "#f4c7a3",
+                "offsetX": -7,
+                "offsetY": -16,
+                "width": 14,
+                "height": 16,
+                "borderRadius": 5
+              }
+            ]
+          },
+          {
+            "id": "head",
+            "name": "Head",
+            "parentId": "neck",
+            "x": 0,
+            "y": -16,
+            "rotation": 0,
+            "length": 76,
+            "zIndex": 10,
+            "colorToken": "skin",
+            "visuals": [
+              {
+                "type": "ellipse",
+                "fill": "#f4c7a3",
+                "cx": -32,
+                "cy": -38,
+                "rx": 6,
+                "ry": 8
+              },
+              {
+                "type": "ellipse",
+                "fill": "#f4c7a3",
+                "cx": 32,
+                "cy": -38,
+                "rx": 6,
+                "ry": 8
+              },
+              {
+                "type": "ellipse",
+                "fill": "#f4c7a3",
+                "cx": 0,
+                "cy": -38,
+                "rx": 32,
+                "ry": 38
+              }
+            ]
+          },
+          {
+            "id": "hair",
+            "name": "Hair",
+            "parentId": "head",
+            "x": 0,
+            "y": 0,
+            "rotation": 0,
+            "length": 0,
+            "zIndex": 11,
+            "colorToken": "hair",
+            "visuals": [
+              {
+                "type": "path",
+                "fill": "#5b3a20",
+                "d": "M -29 -32 Q -30 -62 0 -77 Q 30 -62 29 -32"
+              }
+            ]
+          },
+          {
+            "id": "eyeL",
+            "name": "Left Eye",
+            "parentId": "head",
+            "x": -12,
+            "y": -44,
+            "rotation": 0,
+            "length": 0,
+            "zIndex": 12,
+            "colorToken": "eye",
+            "visuals": [
+              {
+                "type": "ellipse",
+                "fill": "white",
+                "cx": 0,
+                "cy": 0,
+                "rx": 7,
+                "ry": 5.5,
+                "stroke": "#c4a882",
+                "strokeWidth": 0.5
+              },
+              {
+                "type": "circle",
+                "fill": "#3b6fb5",
+                "cx": 0,
+                "cy": 0,
+                "r": 4.5
+              },
+              {
+                "type": "circle",
+                "fill": "#111",
+                "cx": 0,
+                "cy": 0,
+                "r": 2.2
+              },
+              {
+                "type": "circle",
+                "fill": "white",
+                "cx": -1.2,
+                "cy": -1.5,
+                "r": 1,
+                "opacity": 0.9
+              }
+            ]
+          },
+          {
+            "id": "eyeR",
+            "name": "Right Eye",
+            "parentId": "head",
+            "x": 12,
+            "y": -44,
+            "rotation": 0,
+            "length": 0,
+            "zIndex": 12,
+            "colorToken": "eye",
+            "visuals": [
+              {
+                "type": "ellipse",
+                "fill": "white",
+                "cx": 0,
+                "cy": 0,
+                "rx": 7,
+                "ry": 5.5,
+                "stroke": "#c4a882",
+                "strokeWidth": 0.5
+              },
+              {
+                "type": "circle",
+                "fill": "#3b6fb5",
+                "cx": 0,
+                "cy": 0,
+                "r": 4.5
+              },
+              {
+                "type": "circle",
+                "fill": "#111",
+                "cx": 0,
+                "cy": 0,
+                "r": 2.2
+              },
+              {
+                "type": "circle",
+                "fill": "white",
+                "cx": -1.2,
+                "cy": -1.5,
+                "r": 1,
+                "opacity": 0.9
+              }
+            ]
+          },
+          {
+            "id": "browL",
+            "name": "Left Brow",
+            "parentId": "head",
+            "x": -12,
+            "y": -52,
+            "rotation": 0,
+            "length": 0,
+            "zIndex": 13,
+            "colorToken": "hair",
+            "visuals": [
+              {
+                "type": "path",
+                "fill": "none",
+                "d": "M -6 0 Q 0 -3 6 0.5",
+                "stroke": "#5b3a20",
+                "strokeWidth": 2.2
+              }
+            ]
+          },
+          {
+            "id": "browR",
+            "name": "Right Brow",
+            "parentId": "head",
+            "x": 12,
+            "y": -52,
+            "rotation": 0,
+            "length": 0,
+            "zIndex": 13,
+            "colorToken": "hair",
+            "visuals": [
+              {
+                "type": "path",
+                "fill": "none",
+                "d": "M -6 0.5 Q 0 -3 6 0",
+                "stroke": "#5b3a20",
+                "strokeWidth": 2.2
+              }
+            ]
+          },
+          {
+            "id": "mouth",
+            "name": "Mouth",
+            "parentId": "head",
+            "x": 0,
+            "y": -24,
+            "rotation": 0,
+            "length": 0,
+            "zIndex": 12,
+            "visuals": [
+              {
+                "type": "ellipse",
+                "cx": 0,
+                "cy": 0,
+                "rx": 7,
+                "ry": 2,
+                "fill": "#7f1d1d"
+              }
+            ]
+          },
+          {
+            "id": "nose",
+            "name": "Nose",
+            "parentId": "head",
+            "x": 0,
+            "y": -36,
+            "rotation": 0,
+            "length": 0,
+            "zIndex": 12,
+            "visuals": [
+              {
+                "type": "path",
+                "fill": "none",
+                "d": "M -1 0 Q 0 4 2 2 Q 4 1 3 -1",
+                "stroke": "#d4a070",
+                "strokeWidth": 1.2
+              }
+            ]
+          },
+          {
+            "id": "upperArmL",
+            "name": "Upper Arm L",
+            "parentId": "torso",
+            "x": -32,
+            "y": -112,
+            "rotation": 10,
+            "length": 55,
+            "zIndex": 3,
+            "colorToken": "skin",
+            "visuals": [
+              {
+                "type": "rect",
+                "fill": "#f4c7a3",
+                "offsetX": -6.5,
+                "offsetY": 0,
+                "width": 13,
+                "height": 55,
+                "borderRadius": 6
+              }
+            ]
+          },
+          {
+            "id": "lowerArmL",
+            "name": "Lower Arm L",
+            "parentId": "upperArmL",
+            "x": 0,
+            "y": 55,
+            "rotation": 0,
+            "length": 50,
+            "zIndex": 3,
+            "colorToken": "skin",
+            "visuals": [
+              {
+                "type": "rect",
+                "fill": "#f4c7a3",
+                "offsetX": -5.5,
+                "offsetY": 0,
+                "width": 11,
+                "height": 50,
+                "borderRadius": 5
+              }
+            ]
+          },
+          {
+            "id": "handL",
+            "name": "Hand L",
+            "parentId": "lowerArmL",
+            "x": 0,
+            "y": 50,
+            "rotation": 0,
+            "length": 12,
+            "zIndex": 3,
+            "colorToken": "skin",
+            "visuals": [
+              {
+                "type": "ellipse",
+                "fill": "#f4c7a3",
+                "cx": 0,
+                "cy": 6,
+                "rx": 7,
+                "ry": 8
+              }
+            ]
+          },
+          {
+            "id": "upperArmR",
+            "name": "Upper Arm R",
+            "parentId": "torso",
+            "x": 32,
+            "y": -112,
+            "rotation": -10,
+            "length": 55,
+            "zIndex": 3,
+            "colorToken": "skin",
+            "visuals": [
+              {
+                "type": "rect",
+                "fill": "#f4c7a3",
+                "offsetX": -6.5,
+                "offsetY": 0,
+                "width": 13,
+                "height": 55,
+                "borderRadius": 6
+              }
+            ]
+          },
+          {
+            "id": "lowerArmR",
+            "name": "Lower Arm R",
+            "parentId": "upperArmR",
+            "x": 0,
+            "y": 55,
+            "rotation": 0,
+            "length": 50,
+            "zIndex": 3,
+            "colorToken": "skin",
+            "visuals": [
+              {
+                "type": "rect",
+                "fill": "#f4c7a3",
+                "offsetX": -5.5,
+                "offsetY": 0,
+                "width": 11,
+                "height": 50,
+                "borderRadius": 5
+              }
+            ]
+          },
+          {
+            "id": "handR",
+            "name": "Hand R",
+            "parentId": "lowerArmR",
+            "x": 0,
+            "y": 50,
+            "rotation": 0,
+            "length": 12,
+            "zIndex": 3,
+            "colorToken": "skin",
+            "visuals": [
+              {
+                "type": "ellipse",
+                "fill": "#f4c7a3",
+                "cx": 0,
+                "cy": 6,
+                "rx": 7,
+                "ry": 8
+              }
+            ]
+          },
+          {
+            "id": "upperLegL",
+            "name": "Upper Leg L",
+            "parentId": "root",
+            "x": -14,
+            "y": 0,
+            "rotation": 0,
+            "length": 70,
+            "zIndex": 2,
+            "colorToken": "pants",
+            "visuals": [
+              {
+                "type": "rect",
+                "fill": "#1e293b",
+                "offsetX": -7.5,
+                "offsetY": 0,
+                "width": 15,
+                "height": 70,
+                "borderRadius": 6
+              }
+            ]
+          },
+          {
+            "id": "lowerLegL",
+            "name": "Lower Leg L",
+            "parentId": "upperLegL",
+            "x": 0,
+            "y": 70,
+            "rotation": 0,
+            "length": 72,
+            "zIndex": 2,
+            "colorToken": "pants",
+            "visuals": [
+              {
+                "type": "rect",
+                "fill": "#1e293b",
+                "offsetX": -7,
+                "offsetY": 0,
+                "width": 14,
+                "height": 72,
+                "borderRadius": 5
+              }
+            ]
+          },
+          {
+            "id": "footL",
+            "name": "Foot L",
+            "parentId": "lowerLegL",
+            "x": 0,
+            "y": 72,
+            "rotation": 0,
+            "length": 18,
+            "zIndex": 2,
+            "colorToken": "shoe",
+            "visuals": [
+              {
+                "type": "ellipse",
+                "fill": "#334155",
+                "cx": 0,
+                "cy": 6,
+                "rx": 15,
+                "ry": 9
+              }
+            ]
+          },
+          {
+            "id": "upperLegR",
+            "name": "Upper Leg R",
+            "parentId": "root",
+            "x": 14,
+            "y": 0,
+            "rotation": 0,
+            "length": 70,
+            "zIndex": 2,
+            "colorToken": "pants",
+            "visuals": [
+              {
+                "type": "rect",
+                "fill": "#1e293b",
+                "offsetX": -7.5,
+                "offsetY": 0,
+                "width": 15,
+                "height": 70,
+                "borderRadius": 6
+              }
+            ]
+          },
+          {
+            "id": "lowerLegR",
+            "name": "Lower Leg R",
+            "parentId": "upperLegR",
+            "x": 0,
+            "y": 70,
+            "rotation": 0,
+            "length": 72,
+            "zIndex": 2,
+            "colorToken": "pants",
+            "visuals": [
+              {
+                "type": "rect",
+                "fill": "#1e293b",
+                "offsetX": -7,
+                "offsetY": 0,
+                "width": 14,
+                "height": 72,
+                "borderRadius": 5
+              }
+            ]
+          },
+          {
+            "id": "footR",
+            "name": "Foot R",
+            "parentId": "lowerLegR",
+            "x": 0,
+            "y": 72,
+            "rotation": 0,
+            "length": 18,
+            "zIndex": 2,
+            "colorToken": "shoe",
+            "visuals": [
+              {
+                "type": "ellipse",
+                "fill": "#334155",
+                "cx": 0,
+                "cy": 6,
+                "rx": 15,
+                "ry": 9
+              }
+            ]
+          }
+        ],
+        "defaultPoseId": "idle"
+      },
+      "appearance": {
+        "skinColor": "#f4c7a3",
+        "hairColor": "#5b3a20",
+        "eyeColor": "#3b6fb5",
+        "shirtColor": "#2563eb",
+        "pantsColor": "#1e293b",
+        "shoeColor": "#334155",
+        "hairStyle": "short"
+      },
+      "poses": [
+        {
+          "id": "idle",
+          "name": "Idle",
+          "category": "idle",
+          "icon": "user",
+          "boneTransforms": {}
+        },
+        {
+          "id": "wave",
+          "name": "Wave",
+          "category": "action",
+          "icon": "hand",
+          "boneTransforms": {
+            "upperArmR": {
+              "rotation": -130
+            },
+            "lowerArmR": {
+              "rotation": -40
+            },
+            "handR": {
+              "rotation": 10
+            },
+            "torso": {
+              "rotation": -2
+            },
+            "head": {
+              "rotation": 3
+            }
+          }
+        },
+        {
+          "id": "point",
+          "name": "Point",
+          "category": "action",
+          "icon": "pointer",
+          "boneTransforms": {
+            "upperArmR": {
+              "rotation": -100
+            },
+            "lowerArmR": {
+              "rotation": 0
+            },
+            "handR": {
+              "rotation": -5
+            },
+            "torso": {
+              "rotation": -3
+            },
+            "head": {
+              "rotation": 2
+            }
+          }
+        },
+        {
+          "id": "talk",
+          "name": "Talk",
+          "category": "action",
+          "icon": "message-square",
+          "boneTransforms": {
+            "upperArmR": {
+              "rotation": -40
+            },
+            "lowerArmR": {
+              "rotation": -30
+            },
+            "upperArmL": {
+              "rotation": 40
+            },
+            "lowerArmL": {
+              "rotation": 30
+            },
+            "torso": {
+              "rotation": -2
+            },
+            "head": {
+              "rotation": 1
+            }
+          }
+        },
+        {
+          "id": "think",
+          "name": "Think",
+          "category": "action",
+          "icon": "brain",
+          "boneTransforms": {
+            "upperArmR": {
+              "rotation": -80
+            },
+            "lowerArmR": {
+              "rotation": -90
+            },
+            "handR": {
+              "rotation": 15
+            },
+            "head": {
+              "rotation": 8,
+              "y": -2
+            },
+            "torso": {
+              "rotation": 2
+            }
+          }
+        },
+        {
+          "id": "celebrate",
+          "name": "Celebrate",
+          "category": "action",
+          "icon": "party-popper",
+          "boneTransforms": {
+            "upperArmR": {
+              "rotation": -150
+            },
+            "lowerArmR": {
+              "rotation": -20
+            },
+            "upperArmL": {
+              "rotation": 150
+            },
+            "lowerArmL": {
+              "rotation": 20
+            },
+            "head": {
+              "y": -3
+            },
+            "torso": {
+              "rotation": 0
+            }
+          }
+        },
+        {
+          "id": "sit",
+          "name": "Sit",
+          "category": "seated",
+          "icon": "armchair",
+          "boneTransforms": {
+            "upperLegL": {
+              "rotation": -85
+            },
+            "lowerLegL": {
+              "rotation": 85
+            },
+            "footL": {
+              "rotation": 5
+            },
+            "upperLegR": {
+              "rotation": -85
+            },
+            "lowerLegR": {
+              "rotation": 85
+            },
+            "footR": {
+              "rotation": 5
+            },
+            "root": {
+              "y": -20
+            }
+          }
+        },
+        {
+          "id": "walkA",
+          "name": "Walk A",
+          "category": "action",
+          "icon": "footprints",
+          "boneTransforms": {
+            "upperLegL": {
+              "rotation": -20
+            },
+            "lowerLegL": {
+              "rotation": 10
+            },
+            "upperLegR": {
+              "rotation": 15
+            },
+            "lowerLegR": {
+              "rotation": -25
+            },
+            "upperArmL": {
+              "rotation": 20
+            },
+            "upperArmR": {
+              "rotation": -20
+            },
+            "torso": {
+              "rotation": -1
+            }
+          }
+        },
+        {
+          "id": "walkB",
+          "name": "Walk B",
+          "category": "action",
+          "icon": "footprints",
+          "boneTransforms": {
+            "upperLegL": {
+              "rotation": 15
+            },
+            "lowerLegL": {
+              "rotation": -25
+            },
+            "upperLegR": {
+              "rotation": -20
+            },
+            "lowerLegR": {
+              "rotation": 10
+            },
+            "upperArmL": {
+              "rotation": -20
+            },
+            "upperArmR": {
+              "rotation": 20
+            },
+            "torso": {
+              "rotation": 1
+            }
+          }
+        },
+        {
+          "id": "present",
+          "name": "Present",
+          "category": "action",
+          "icon": "presentation",
+          "boneTransforms": {
+            "upperArmR": {
+              "rotation": -70
+            },
+            "lowerArmR": {
+              "rotation": -40
+            },
+            "upperArmL": {
+              "rotation": 70
+            },
+            "lowerArmL": {
+              "rotation": 40
+            },
+            "torso": {
+              "rotation": 0
+            },
+            "head": {
+              "rotation": 0,
+              "y": -1
+            }
+          }
+        },
+        {
+          "id": "standing",
+          "name": "Standing",
+          "category": "action",
+          "boneTransforms": {}
+        },
+        {
+          "id": "running",
+          "name": "Running",
+          "category": "action",
+          "boneTransforms": {
+            "upperLegL": {
+              "rotation": 45
+            },
+            "lowerLegR": {
+              "rotation": 70
+            },
+            "upperArmR": {
+              "rotation": -45
+            }
+          }
+        },
+        {
+          "id": "listening",
+          "name": "Listening",
+          "category": "action",
+          "boneTransforms": {
+            "head": {
+              "rotation": 8
+            }
+          }
+        },
+        {
+          "id": "surprised",
+          "name": "Surprised",
+          "category": "action",
+          "boneTransforms": {
+            "mouth": {
+              "scaleY": 3
+            },
+            "browL": {
+              "y": -4
+            },
+            "browR": {
+              "y": -4
+            }
+          }
+        },
+        {
+          "id": "happy",
+          "name": "Happy",
+          "category": "action",
+          "boneTransforms": {
+            "head": {
+              "rotation": 4
+            },
+            "mouth": {
+              "scaleX": 1.4
+            }
+          }
+        },
+        {
+          "id": "sad",
+          "name": "Sad",
+          "category": "action",
+          "boneTransforms": {
+            "head": {
+              "rotation": 12,
+              "y": 4
+            }
+          }
+        },
+        {
+          "id": "confused",
+          "name": "Confused",
+          "category": "action",
+          "boneTransforms": {
+            "head": {
+              "rotation": -12
+            }
+          }
+        },
+        {
+          "id": "working",
+          "name": "Working",
+          "category": "action",
+          "boneTransforms": {
+            "upperArmL": {
+              "rotation": -40
+            },
+            "upperArmR": {
+              "rotation": 40
+            },
+            "lowerArmL": {
+              "rotation": -60
+            },
+            "lowerArmR": {
+              "rotation": 60
+            }
+          }
+        },
+        {
+          "id": "typing",
+          "name": "Typing",
+          "category": "action",
+          "boneTransforms": {
+            "upperArmL": {
+              "rotation": -25
+            },
+            "upperArmR": {
+              "rotation": 25
+            },
+            "lowerArmL": {
+              "rotation": -70
+            },
+            "lowerArmR": {
+              "rotation": 70
+            }
+          }
+        },
+        {
+          "id": "pointLeft",
+          "name": "Point left",
+          "category": "action",
+          "boneTransforms": {
+            "upperArmL": {
+              "rotation": 85
+            },
+            "lowerArmL": {
+              "rotation": 0
+            }
+          }
+        },
+        {
+          "id": "jump",
+          "name": "Jump",
+          "category": "action",
+          "boneTransforms": {
+            "root": {
+              "y": -40
+            },
+            "upperArmL": {
+              "rotation": 140
+            },
+            "upperArmR": {
+              "rotation": -140
+            }
+          }
+        },
+        {
+          "id": "nod",
+          "name": "Nod",
+          "category": "action",
+          "boneTransforms": {
+            "head": {
+              "rotation": 10,
+              "y": 3
+            }
+          }
+        },
+        {
+          "id": "shakeHead",
+          "name": "Shake head",
+          "category": "action",
+          "boneTransforms": {
+            "head": {
+              "rotation": -12
+            }
+          }
+        },
+        {
+          "id": "standing",
+          "name": "Standing",
+          "category": "action",
+          "boneTransforms": {}
+        },
+        {
+          "id": "running",
+          "name": "Running",
+          "category": "action",
+          "boneTransforms": {
+            "upperLegL": {
+              "rotation": 45
+            },
+            "lowerLegR": {
+              "rotation": 70
+            },
+            "upperArmR": {
+              "rotation": -45
+            }
+          }
+        },
+        {
+          "id": "listening",
+          "name": "Listening",
+          "category": "action",
+          "boneTransforms": {
+            "head": {
+              "rotation": 8
+            }
+          }
+        },
+        {
+          "id": "surprised",
+          "name": "Surprised",
+          "category": "action",
+          "boneTransforms": {
+            "mouth": {
+              "scaleY": 3
+            },
+            "browL": {
+              "y": -4
+            },
+            "browR": {
+              "y": -4
+            }
+          }
+        },
+        {
+          "id": "happy",
+          "name": "Happy",
+          "category": "action",
+          "boneTransforms": {
+            "head": {
+              "rotation": 4
+            },
+            "mouth": {
+              "scaleX": 1.4
+            }
+          }
+        },
+        {
+          "id": "sad",
+          "name": "Sad",
+          "category": "action",
+          "boneTransforms": {
+            "head": {
+              "rotation": 12,
+              "y": 4
+            }
+          }
+        },
+        {
+          "id": "confused",
+          "name": "Confused",
+          "category": "action",
+          "boneTransforms": {
+            "head": {
+              "rotation": -12
+            }
+          }
+        },
+        {
+          "id": "working",
+          "name": "Working",
+          "category": "action",
+          "boneTransforms": {
+            "upperArmL": {
+              "rotation": -40
+            },
+            "upperArmR": {
+              "rotation": 40
+            },
+            "lowerArmL": {
+              "rotation": -60
+            },
+            "lowerArmR": {
+              "rotation": 60
+            }
+          }
+        },
+        {
+          "id": "typing",
+          "name": "Typing",
+          "category": "action",
+          "boneTransforms": {
+            "upperArmL": {
+              "rotation": -25
+            },
+            "upperArmR": {
+              "rotation": 25
+            },
+            "lowerArmL": {
+              "rotation": -70
+            },
+            "lowerArmR": {
+              "rotation": 70
+            }
+          }
+        },
+        {
+          "id": "pointLeft",
+          "name": "Point left",
+          "category": "action",
+          "boneTransforms": {
+            "upperArmL": {
+              "rotation": 85
+            },
+            "lowerArmL": {
+              "rotation": 0
+            }
+          }
+        },
+        {
+          "id": "jump",
+          "name": "Jump",
+          "category": "action",
+          "boneTransforms": {
+            "root": {
+              "y": -40
+            },
+            "upperArmL": {
+              "rotation": 140
+            },
+            "upperArmR": {
+              "rotation": -140
+            }
+          }
+        },
+        {
+          "id": "nod",
+          "name": "Nod",
+          "category": "action",
+          "boneTransforms": {
+            "head": {
+              "rotation": 10,
+              "y": 3
+            }
+          }
+        },
+        {
+          "id": "shakeHead",
+          "name": "Shake head",
+          "category": "action",
+          "boneTransforms": {
+            "head": {
+              "rotation": -12
+            }
+          }
+        },
+        {
+          "id": "standing",
+          "name": "Standing",
+          "category": "action",
+          "boneTransforms": {}
+        },
+        {
+          "id": "running",
+          "name": "Running",
+          "category": "action",
+          "boneTransforms": {
+            "upperLegL": {
+              "rotation": 45
+            },
+            "lowerLegR": {
+              "rotation": 70
+            },
+            "upperArmR": {
+              "rotation": -45
+            }
+          }
+        },
+        {
+          "id": "listening",
+          "name": "Listening",
+          "category": "action",
+          "boneTransforms": {
+            "head": {
+              "rotation": 8
+            }
+          }
+        },
+        {
+          "id": "surprised",
+          "name": "Surprised",
+          "category": "action",
+          "boneTransforms": {
+            "mouth": {
+              "scaleY": 3
+            },
+            "browL": {
+              "y": -4
+            },
+            "browR": {
+              "y": -4
+            }
+          }
+        },
+        {
+          "id": "happy",
+          "name": "Happy",
+          "category": "action",
+          "boneTransforms": {
+            "head": {
+              "rotation": 4
+            },
+            "mouth": {
+              "scaleX": 1.4
+            }
+          }
+        },
+        {
+          "id": "sad",
+          "name": "Sad",
+          "category": "action",
+          "boneTransforms": {
+            "head": {
+              "rotation": 12,
+              "y": 4
+            }
+          }
+        },
+        {
+          "id": "confused",
+          "name": "Confused",
+          "category": "action",
+          "boneTransforms": {
+            "head": {
+              "rotation": -12
+            }
+          }
+        },
+        {
+          "id": "working",
+          "name": "Working",
+          "category": "action",
+          "boneTransforms": {
+            "upperArmL": {
+              "rotation": -40
+            },
+            "upperArmR": {
+              "rotation": 40
+            },
+            "lowerArmL": {
+              "rotation": -60
+            },
+            "lowerArmR": {
+              "rotation": 60
+            }
+          }
+        },
+        {
+          "id": "typing",
+          "name": "Typing",
+          "category": "action",
+          "boneTransforms": {
+            "upperArmL": {
+              "rotation": -25
+            },
+            "upperArmR": {
+              "rotation": 25
+            },
+            "lowerArmL": {
+              "rotation": -70
+            },
+            "lowerArmR": {
+              "rotation": 70
+            }
+          }
+        },
+        {
+          "id": "pointLeft",
+          "name": "Point left",
+          "category": "action",
+          "boneTransforms": {
+            "upperArmL": {
+              "rotation": 85
+            },
+            "lowerArmL": {
+              "rotation": 0
+            }
+          }
+        },
+        {
+          "id": "jump",
+          "name": "Jump",
+          "category": "action",
+          "boneTransforms": {
+            "root": {
+              "y": -40
+            },
+            "upperArmL": {
+              "rotation": 140
+            },
+            "upperArmR": {
+              "rotation": -140
+            }
+          }
+        },
+        {
+          "id": "nod",
+          "name": "Nod",
+          "category": "action",
+          "boneTransforms": {
+            "head": {
+              "rotation": 10,
+              "y": 3
+            }
+          }
+        },
+        {
+          "id": "shakeHead",
+          "name": "Shake head",
+          "category": "action",
+          "boneTransforms": {
+            "head": {
+              "rotation": -12
+            }
+          }
+        },
+        {
+          "id": "standing",
+          "name": "Standing",
+          "category": "action",
+          "boneTransforms": {}
+        },
+        {
+          "id": "running",
+          "name": "Running",
+          "category": "action",
+          "boneTransforms": {
+            "upperLegL": {
+              "rotation": 45
+            },
+            "lowerLegR": {
+              "rotation": 70
+            },
+            "upperArmR": {
+              "rotation": -45
+            }
+          }
+        },
+        {
+          "id": "listening",
+          "name": "Listening",
+          "category": "action",
+          "boneTransforms": {
+            "head": {
+              "rotation": 8
+            }
+          }
+        },
+        {
+          "id": "surprised",
+          "name": "Surprised",
+          "category": "action",
+          "boneTransforms": {
+            "mouth": {
+              "scaleY": 3
+            },
+            "browL": {
+              "y": -4
+            },
+            "browR": {
+              "y": -4
+            }
+          }
+        },
+        {
+          "id": "happy",
+          "name": "Happy",
+          "category": "action",
+          "boneTransforms": {
+            "head": {
+              "rotation": 4
+            },
+            "mouth": {
+              "scaleX": 1.4
+            }
+          }
+        },
+        {
+          "id": "sad",
+          "name": "Sad",
+          "category": "action",
+          "boneTransforms": {
+            "head": {
+              "rotation": 12,
+              "y": 4
+            }
+          }
+        },
+        {
+          "id": "confused",
+          "name": "Confused",
+          "category": "action",
+          "boneTransforms": {
+            "head": {
+              "rotation": -12
+            }
+          }
+        },
+        {
+          "id": "working",
+          "name": "Working",
+          "category": "action",
+          "boneTransforms": {
+            "upperArmL": {
+              "rotation": -40
+            },
+            "upperArmR": {
+              "rotation": 40
+            },
+            "lowerArmL": {
+              "rotation": -60
+            },
+            "lowerArmR": {
+              "rotation": 60
+            }
+          }
+        },
+        {
+          "id": "typing",
+          "name": "Typing",
+          "category": "action",
+          "boneTransforms": {
+            "upperArmL": {
+              "rotation": -25
+            },
+            "upperArmR": {
+              "rotation": 25
+            },
+            "lowerArmL": {
+              "rotation": -70
+            },
+            "lowerArmR": {
+              "rotation": 70
+            }
+          }
+        },
+        {
+          "id": "pointLeft",
+          "name": "Point left",
+          "category": "action",
+          "boneTransforms": {
+            "upperArmL": {
+              "rotation": 85
+            },
+            "lowerArmL": {
+              "rotation": 0
+            }
+          }
+        },
+        {
+          "id": "jump",
+          "name": "Jump",
+          "category": "action",
+          "boneTransforms": {
+            "root": {
+              "y": -40
+            },
+            "upperArmL": {
+              "rotation": 140
+            },
+            "upperArmR": {
+              "rotation": -140
+            }
+          }
+        },
+        {
+          "id": "nod",
+          "name": "Nod",
+          "category": "action",
+          "boneTransforms": {
+            "head": {
+              "rotation": 10,
+              "y": 3
+            }
+          }
+        },
+        {
+          "id": "shakeHead",
+          "name": "Shake head",
+          "category": "action",
+          "boneTransforms": {
+            "head": {
+              "rotation": -12
+            }
+          }
+        }
+      ],
+      "voicePitch": 0.85,
+      "voiceRate": 0.92,
+      "representation": {
+        "type": "rigged"
+      },
+      "expressions": [
+        {
+          "id": "neutral",
+          "name": "Neutral",
+          "boneTransforms": {}
+        },
+        {
+          "id": "surprised",
+          "name": "Surprised",
+          "boneTransforms": {
+            "mouth": {
+              "scaleY": 3
+            },
+            "browL": {
+              "y": -4
+            },
+            "browR": {
+              "y": -4
+            }
+          }
+        },
+        {
+          "id": "happy",
+          "name": "Happy",
+          "boneTransforms": {
+            "head": {
+              "rotation": 4
+            },
+            "mouth": {
+              "scaleX": 1.4
+            }
+          }
+        },
+        {
+          "id": "sad",
+          "name": "Sad",
+          "boneTransforms": {
+            "head": {
+              "rotation": 12,
+              "y": 4
+            }
+          }
+        },
+        {
+          "id": "confused",
+          "name": "Confused",
+          "boneTransforms": {
+            "head": {
+              "rotation": -12
+            }
+          }
+        },
+        {
+          "id": "thinking",
+          "name": "Thinking",
+          "boneTransforms": {
+            "head": {
+              "rotation": -10
+            },
+            "browL": {
+              "rotation": 8
+            }
+          }
+        },
+        {
+          "id": "angry",
+          "name": "Angry",
+          "boneTransforms": {
+            "browL": {
+              "rotation": 20
+            },
+            "browR": {
+              "rotation": -20
+            }
+          }
+        },
+        {
+          "id": "speaking",
+          "name": "Speaking",
+          "boneTransforms": {
+            "mouth": {
+              "scaleY": 1.7
+            }
+          }
+        }
+      ],
+      "animations": [
+        {
+          "id": "alex-rigged-animation-idle",
+          "characterId": "alex-rigged",
+          "elementId": "",
+          "name": "Idle",
+          "duration": 2,
+          "loop": true,
+          "keyframes": [
+            {
+              "id": "a0",
+              "time": 0,
+              "poseId": "idle",
+              "easing": "easeInOut"
+            },
+            {
+              "id": "b0",
+              "time": 0.6,
+              "poseId": "idle",
+              "easing": "easeInOut"
+            },
+            {
+              "id": "c0",
+              "time": 1.7,
+              "poseId": "idle",
+              "easing": "easeInOut"
+            }
+          ]
+        },
+        {
+          "id": "alex-rigged-animation-walkA",
+          "characterId": "alex-rigged",
+          "elementId": "",
+          "name": "Walk",
+          "duration": 2,
+          "loop": true,
+          "keyframes": [
+            {
+              "id": "a1",
+              "time": 0,
+              "poseId": "walkA",
+              "easing": "easeInOut"
+            },
+            {
+              "id": "b1",
+              "time": 0.6,
+              "poseId": "walkB",
+              "easing": "easeInOut"
+            },
+            {
+              "id": "c1",
+              "time": 1.7,
+              "poseId": "walkA",
+              "easing": "easeInOut"
+            }
+          ]
+        },
+        {
+          "id": "alex-rigged-animation-running",
+          "characterId": "alex-rigged",
+          "elementId": "",
+          "name": "Running",
+          "duration": 2,
+          "loop": true,
+          "keyframes": [
+            {
+              "id": "a2",
+              "time": 0,
+              "poseId": "idle",
+              "easing": "easeInOut"
+            },
+            {
+              "id": "b2",
+              "time": 0.6,
+              "poseId": "running",
+              "easing": "easeInOut"
+            },
+            {
+              "id": "c2",
+              "time": 1.7,
+              "poseId": "idle",
+              "easing": "easeInOut"
+            }
+          ]
+        },
+        {
+          "id": "alex-rigged-animation-jump",
+          "characterId": "alex-rigged",
+          "elementId": "",
+          "name": "Jump",
+          "duration": 2,
+          "loop": false,
+          "keyframes": [
+            {
+              "id": "a3",
+              "time": 0,
+              "poseId": "idle",
+              "easing": "easeInOut"
+            },
+            {
+              "id": "b3",
+              "time": 0.6,
+              "poseId": "jump",
+              "easing": "easeInOut"
+            },
+            {
+              "id": "c3",
+              "time": 1.7,
+              "poseId": "idle",
+              "easing": "easeInOut"
+            }
+          ]
+        },
+        {
+          "id": "alex-rigged-animation-wave",
+          "characterId": "alex-rigged",
+          "elementId": "",
+          "name": "Wave",
+          "duration": 2,
+          "loop": false,
+          "keyframes": [
+            {
+              "id": "a4",
+              "time": 0,
+              "poseId": "idle",
+              "easing": "easeInOut"
+            },
+            {
+              "id": "b4",
+              "time": 0.6,
+              "poseId": "wave",
+              "easing": "easeInOut"
+            },
+            {
+              "id": "c4",
+              "time": 1.7,
+              "poseId": "idle",
+              "easing": "easeInOut"
+            }
+          ]
+        },
+        {
+          "id": "alex-rigged-animation-talk",
+          "characterId": "alex-rigged",
+          "elementId": "",
+          "name": "Talk",
+          "duration": 2,
+          "loop": true,
+          "keyframes": [
+            {
+              "id": "a5",
+              "time": 0,
+              "poseId": "idle",
+              "easing": "easeInOut"
+            },
+            {
+              "id": "b5",
+              "time": 0.6,
+              "poseId": "talk",
+              "easing": "easeInOut"
+            },
+            {
+              "id": "c5",
+              "time": 1.7,
+              "poseId": "idle",
+              "easing": "easeInOut"
+            }
+          ]
+        },
+        {
+          "id": "alex-rigged-animation-point",
+          "characterId": "alex-rigged",
+          "elementId": "",
+          "name": "Point",
+          "duration": 2,
+          "loop": false,
+          "keyframes": [
+            {
+              "id": "a6",
+              "time": 0,
+              "poseId": "idle",
+              "easing": "easeInOut"
+            },
+            {
+              "id": "b6",
+              "time": 0.6,
+              "poseId": "point",
+              "easing": "easeInOut"
+            },
+            {
+              "id": "c6",
+              "time": 1.7,
+              "poseId": "idle",
+              "easing": "easeInOut"
+            }
+          ]
+        },
+        {
+          "id": "alex-rigged-animation-think",
+          "characterId": "alex-rigged",
+          "elementId": "",
+          "name": "Think",
+          "duration": 2,
+          "loop": false,
+          "keyframes": [
+            {
+              "id": "a7",
+              "time": 0,
+              "poseId": "idle",
+              "easing": "easeInOut"
+            },
+            {
+              "id": "b7",
+              "time": 0.6,
+              "poseId": "think",
+              "easing": "easeInOut"
+            },
+            {
+              "id": "c7",
+              "time": 1.7,
+              "poseId": "idle",
+              "easing": "easeInOut"
+            }
+          ]
+        },
+        {
+          "id": "alex-rigged-animation-sit",
+          "characterId": "alex-rigged",
+          "elementId": "",
+          "name": "Sit",
+          "duration": 2,
+          "loop": false,
+          "keyframes": [
+            {
+              "id": "a8",
+              "time": 0,
+              "poseId": "idle",
+              "easing": "easeInOut"
+            },
+            {
+              "id": "b8",
+              "time": 0.6,
+              "poseId": "sit",
+              "easing": "easeInOut"
+            },
+            {
+              "id": "c8",
+              "time": 1.7,
+              "poseId": "idle",
+              "easing": "easeInOut"
+            }
+          ]
+        },
+        {
+          "id": "alex-rigged-animation-standing",
+          "characterId": "alex-rigged",
+          "elementId": "",
+          "name": "Standing",
+          "duration": 2,
+          "loop": false,
+          "keyframes": [
+            {
+              "id": "a9",
+              "time": 0,
+              "poseId": "idle",
+              "easing": "easeInOut"
+            },
+            {
+              "id": "b9",
+              "time": 0.6,
+              "poseId": "standing",
+              "easing": "easeInOut"
+            },
+            {
+              "id": "c9",
+              "time": 1.7,
+              "poseId": "idle",
+              "easing": "easeInOut"
+            }
+          ]
+        },
+        {
+          "id": "alex-rigged-animation-celebrate",
+          "characterId": "alex-rigged",
+          "elementId": "",
+          "name": "Celebrate",
+          "duration": 2,
+          "loop": false,
+          "keyframes": [
+            {
+              "id": "a10",
+              "time": 0,
+              "poseId": "idle",
+              "easing": "easeInOut"
+            },
+            {
+              "id": "b10",
+              "time": 0.6,
+              "poseId": "celebrate",
+              "easing": "easeInOut"
+            },
+            {
+              "id": "c10",
+              "time": 1.7,
+              "poseId": "idle",
+              "easing": "easeInOut"
+            }
+          ]
+        },
+        {
+          "id": "alex-rigged-animation-shakeHead",
+          "characterId": "alex-rigged",
+          "elementId": "",
+          "name": "ShakeHead",
+          "duration": 2,
+          "loop": false,
+          "keyframes": [
+            {
+              "id": "a11",
+              "time": 0,
+              "poseId": "idle",
+              "easing": "easeInOut"
+            },
+            {
+              "id": "b11",
+              "time": 0.6,
+              "poseId": "shakeHead",
+              "easing": "easeInOut"
+            },
+            {
+              "id": "c11",
+              "time": 1.7,
+              "poseId": "idle",
+              "easing": "easeInOut"
+            }
+          ]
+        },
+        {
+          "id": "alex-rigged-animation-nod",
+          "characterId": "alex-rigged",
+          "elementId": "",
+          "name": "Nod",
+          "duration": 2,
+          "loop": false,
+          "keyframes": [
+            {
+              "id": "a12",
+              "time": 0,
+              "poseId": "idle",
+              "easing": "easeInOut"
+            },
+            {
+              "id": "b12",
+              "time": 0.6,
+              "poseId": "nod",
+              "easing": "easeInOut"
+            },
+            {
+              "id": "c12",
+              "time": 1.7,
+              "poseId": "idle",
+              "easing": "easeInOut"
+            }
+          ]
+        }
+      ],
+      "variants": []
+    },
+    {
+      "id": "sarah-rigged",
+      "version": "1.0",
+      "name": "Sarah",
+      "gender": "female",
+      "rig": {
+        "id": "sarah-rig",
+        "name": "Sarah Rig",
+        "bones": [
+          {
+            "id": "root",
+            "name": "Root",
+            "parentId": null,
+            "x": 120,
+            "y": 230,
+            "rotation": 0,
+            "length": 0,
+            "zIndex": 0,
+            "visuals": []
+          },
+          {
+            "id": "torso",
+            "name": "Torso",
+            "parentId": "root",
+            "x": 0,
+            "y": 0,
+            "rotation": 0,
+            "length": 120,
+            "zIndex": 5,
+            "colorToken": "shirt",
+            "visuals": [
+              {
+                "type": "rect",
+                "fill": "#2563eb",
+                "offsetX": -32,
+                "offsetY": -120,
+                "width": 64,
+                "height": 120,
+                "borderRadius": 14
+              },
+              {
+                "type": "path",
+                "fill": "#f4c7a3",
+                "d": "M -12 -120 Q 0 -110 12 -120",
+                "stroke": "#f4c7a3",
+                "strokeWidth": 2
+              }
+            ]
+          },
+          {
+            "id": "neck",
+            "name": "Neck",
+            "parentId": "torso",
+            "x": 0,
+            "y": -120,
+            "rotation": 0,
+            "length": 16,
+            "zIndex": 4,
+            "colorToken": "skin",
+            "visuals": [
+              {
+                "type": "rect",
+                "fill": "#f4c7a3",
+                "offsetX": -7,
+                "offsetY": -16,
+                "width": 14,
+                "height": 16,
+                "borderRadius": 5
+              }
+            ]
+          },
+          {
+            "id": "head",
+            "name": "Head",
+            "parentId": "neck",
+            "x": 0,
+            "y": -16,
+            "rotation": 0,
+            "length": 76,
+            "zIndex": 10,
+            "colorToken": "skin",
+            "visuals": [
+              {
+                "type": "ellipse",
+                "fill": "#f4c7a3",
+                "cx": -32,
+                "cy": -38,
+                "rx": 6,
+                "ry": 8
+              },
+              {
+                "type": "ellipse",
+                "fill": "#f4c7a3",
+                "cx": 32,
+                "cy": -38,
+                "rx": 6,
+                "ry": 8
+              },
+              {
+                "type": "ellipse",
+                "fill": "#f4c7a3",
+                "cx": 0,
+                "cy": -38,
+                "rx": 32,
+                "ry": 38
+              }
+            ]
+          },
+          {
+            "id": "hair",
+            "name": "Hair",
+            "parentId": "head",
+            "x": 0,
+            "y": 0,
+            "rotation": 0,
+            "length": 0,
+            "zIndex": 11,
+            "colorToken": "hair",
+            "visuals": [
+              {
+                "type": "path",
+                "fill": "#5b3a20",
+                "d": "M -29 -32 Q -30 -62 0 -77 Q 30 -62 29 -32"
+              }
+            ]
+          },
+          {
+            "id": "eyeL",
+            "name": "Left Eye",
+            "parentId": "head",
+            "x": -12,
+            "y": -44,
+            "rotation": 0,
+            "length": 0,
+            "zIndex": 12,
+            "colorToken": "eye",
+            "visuals": [
+              {
+                "type": "ellipse",
+                "fill": "white",
+                "cx": 0,
+                "cy": 0,
+                "rx": 7,
+                "ry": 5.5,
+                "stroke": "#c4a882",
+                "strokeWidth": 0.5
+              },
+              {
+                "type": "circle",
+                "fill": "#3b6fb5",
+                "cx": 0,
+                "cy": 0,
+                "r": 4.5
+              },
+              {
+                "type": "circle",
+                "fill": "#111",
+                "cx": 0,
+                "cy": 0,
+                "r": 2.2
+              },
+              {
+                "type": "circle",
+                "fill": "white",
+                "cx": -1.2,
+                "cy": -1.5,
+                "r": 1,
+                "opacity": 0.9
+              }
+            ]
+          },
+          {
+            "id": "eyeR",
+            "name": "Right Eye",
+            "parentId": "head",
+            "x": 12,
+            "y": -44,
+            "rotation": 0,
+            "length": 0,
+            "zIndex": 12,
+            "colorToken": "eye",
+            "visuals": [
+              {
+                "type": "ellipse",
+                "fill": "white",
+                "cx": 0,
+                "cy": 0,
+                "rx": 7,
+                "ry": 5.5,
+                "stroke": "#c4a882",
+                "strokeWidth": 0.5
+              },
+              {
+                "type": "circle",
+                "fill": "#3b6fb5",
+                "cx": 0,
+                "cy": 0,
+                "r": 4.5
+              },
+              {
+                "type": "circle",
+                "fill": "#111",
+                "cx": 0,
+                "cy": 0,
+                "r": 2.2
+              },
+              {
+                "type": "circle",
+                "fill": "white",
+                "cx": -1.2,
+                "cy": -1.5,
+                "r": 1,
+                "opacity": 0.9
+              }
+            ]
+          },
+          {
+            "id": "browL",
+            "name": "Left Brow",
+            "parentId": "head",
+            "x": -12,
+            "y": -52,
+            "rotation": 0,
+            "length": 0,
+            "zIndex": 13,
+            "colorToken": "hair",
+            "visuals": [
+              {
+                "type": "path",
+                "fill": "none",
+                "d": "M -6 0 Q 0 -3 6 0.5",
+                "stroke": "#5b3a20",
+                "strokeWidth": 2.2
+              }
+            ]
+          },
+          {
+            "id": "browR",
+            "name": "Right Brow",
+            "parentId": "head",
+            "x": 12,
+            "y": -52,
+            "rotation": 0,
+            "length": 0,
+            "zIndex": 13,
+            "colorToken": "hair",
+            "visuals": [
+              {
+                "type": "path",
+                "fill": "none",
+                "d": "M -6 0.5 Q 0 -3 6 0",
+                "stroke": "#5b3a20",
+                "strokeWidth": 2.2
+              }
+            ]
+          },
+          {
+            "id": "mouth",
+            "name": "Mouth",
+            "parentId": "head",
+            "x": 0,
+            "y": -24,
+            "rotation": 0,
+            "length": 0,
+            "zIndex": 12,
+            "visuals": [
+              {
+                "type": "ellipse",
+                "cx": 0,
+                "cy": 0,
+                "rx": 7,
+                "ry": 2,
+                "fill": "#7f1d1d"
+              }
+            ]
+          },
+          {
+            "id": "nose",
+            "name": "Nose",
+            "parentId": "head",
+            "x": 0,
+            "y": -36,
+            "rotation": 0,
+            "length": 0,
+            "zIndex": 12,
+            "visuals": [
+              {
+                "type": "path",
+                "fill": "none",
+                "d": "M -1 0 Q 0 4 2 2 Q 4 1 3 -1",
+                "stroke": "#d4a070",
+                "strokeWidth": 1.2
+              }
+            ]
+          },
+          {
+            "id": "upperArmL",
+            "name": "Upper Arm L",
+            "parentId": "torso",
+            "x": -32,
+            "y": -112,
+            "rotation": 10,
+            "length": 55,
+            "zIndex": 3,
+            "colorToken": "skin",
+            "visuals": [
+              {
+                "type": "rect",
+                "fill": "#f4c7a3",
+                "offsetX": -6.5,
+                "offsetY": 0,
+                "width": 13,
+                "height": 55,
+                "borderRadius": 6
+              }
+            ]
+          },
+          {
+            "id": "lowerArmL",
+            "name": "Lower Arm L",
+            "parentId": "upperArmL",
+            "x": 0,
+            "y": 55,
+            "rotation": 0,
+            "length": 50,
+            "zIndex": 3,
+            "colorToken": "skin",
+            "visuals": [
+              {
+                "type": "rect",
+                "fill": "#f4c7a3",
+                "offsetX": -5.5,
+                "offsetY": 0,
+                "width": 11,
+                "height": 50,
+                "borderRadius": 5
+              }
+            ]
+          },
+          {
+            "id": "handL",
+            "name": "Hand L",
+            "parentId": "lowerArmL",
+            "x": 0,
+            "y": 50,
+            "rotation": 0,
+            "length": 12,
+            "zIndex": 3,
+            "colorToken": "skin",
+            "visuals": [
+              {
+                "type": "ellipse",
+                "fill": "#f4c7a3",
+                "cx": 0,
+                "cy": 6,
+                "rx": 7,
+                "ry": 8
+              }
+            ]
+          },
+          {
+            "id": "upperArmR",
+            "name": "Upper Arm R",
+            "parentId": "torso",
+            "x": 32,
+            "y": -112,
+            "rotation": -10,
+            "length": 55,
+            "zIndex": 3,
+            "colorToken": "skin",
+            "visuals": [
+              {
+                "type": "rect",
+                "fill": "#f4c7a3",
+                "offsetX": -6.5,
+                "offsetY": 0,
+                "width": 13,
+                "height": 55,
+                "borderRadius": 6
+              }
+            ]
+          },
+          {
+            "id": "lowerArmR",
+            "name": "Lower Arm R",
+            "parentId": "upperArmR",
+            "x": 0,
+            "y": 55,
+            "rotation": 0,
+            "length": 50,
+            "zIndex": 3,
+            "colorToken": "skin",
+            "visuals": [
+              {
+                "type": "rect",
+                "fill": "#f4c7a3",
+                "offsetX": -5.5,
+                "offsetY": 0,
+                "width": 11,
+                "height": 50,
+                "borderRadius": 5
+              }
+            ]
+          },
+          {
+            "id": "handR",
+            "name": "Hand R",
+            "parentId": "lowerArmR",
+            "x": 0,
+            "y": 50,
+            "rotation": 0,
+            "length": 12,
+            "zIndex": 3,
+            "colorToken": "skin",
+            "visuals": [
+              {
+                "type": "ellipse",
+                "fill": "#f4c7a3",
+                "cx": 0,
+                "cy": 6,
+                "rx": 7,
+                "ry": 8
+              }
+            ]
+          },
+          {
+            "id": "upperLegL",
+            "name": "Upper Leg L",
+            "parentId": "root",
+            "x": -14,
+            "y": 0,
+            "rotation": 0,
+            "length": 70,
+            "zIndex": 2,
+            "colorToken": "pants",
+            "visuals": [
+              {
+                "type": "rect",
+                "fill": "#1e293b",
+                "offsetX": -7.5,
+                "offsetY": 0,
+                "width": 15,
+                "height": 70,
+                "borderRadius": 6
+              }
+            ]
+          },
+          {
+            "id": "lowerLegL",
+            "name": "Lower Leg L",
+            "parentId": "upperLegL",
+            "x": 0,
+            "y": 70,
+            "rotation": 0,
+            "length": 72,
+            "zIndex": 2,
+            "colorToken": "pants",
+            "visuals": [
+              {
+                "type": "rect",
+                "fill": "#1e293b",
+                "offsetX": -7,
+                "offsetY": 0,
+                "width": 14,
+                "height": 72,
+                "borderRadius": 5
+              }
+            ]
+          },
+          {
+            "id": "footL",
+            "name": "Foot L",
+            "parentId": "lowerLegL",
+            "x": 0,
+            "y": 72,
+            "rotation": 0,
+            "length": 18,
+            "zIndex": 2,
+            "colorToken": "shoe",
+            "visuals": [
+              {
+                "type": "ellipse",
+                "fill": "#334155",
+                "cx": 0,
+                "cy": 6,
+                "rx": 15,
+                "ry": 9
+              }
+            ]
+          },
+          {
+            "id": "upperLegR",
+            "name": "Upper Leg R",
+            "parentId": "root",
+            "x": 14,
+            "y": 0,
+            "rotation": 0,
+            "length": 70,
+            "zIndex": 2,
+            "colorToken": "pants",
+            "visuals": [
+              {
+                "type": "rect",
+                "fill": "#1e293b",
+                "offsetX": -7.5,
+                "offsetY": 0,
+                "width": 15,
+                "height": 70,
+                "borderRadius": 6
+              }
+            ]
+          },
+          {
+            "id": "lowerLegR",
+            "name": "Lower Leg R",
+            "parentId": "upperLegR",
+            "x": 0,
+            "y": 70,
+            "rotation": 0,
+            "length": 72,
+            "zIndex": 2,
+            "colorToken": "pants",
+            "visuals": [
+              {
+                "type": "rect",
+                "fill": "#1e293b",
+                "offsetX": -7,
+                "offsetY": 0,
+                "width": 14,
+                "height": 72,
+                "borderRadius": 5
+              }
+            ]
+          },
+          {
+            "id": "footR",
+            "name": "Foot R",
+            "parentId": "lowerLegR",
+            "x": 0,
+            "y": 72,
+            "rotation": 0,
+            "length": 18,
+            "zIndex": 2,
+            "colorToken": "shoe",
+            "visuals": [
+              {
+                "type": "ellipse",
+                "fill": "#334155",
+                "cx": 0,
+                "cy": 6,
+                "rx": 15,
+                "ry": 9
+              }
+            ]
+          }
+        ],
+        "defaultPoseId": "idle"
+      },
+      "appearance": {
+        "skinColor": "#deb887",
+        "hairColor": "#1a1a2e",
+        "eyeColor": "#2d6a4f",
+        "shirtColor": "#059669",
+        "pantsColor": "#1e293b",
+        "shoeColor": "#475569",
+        "hairStyle": "long"
+      },
+      "poses": [
+        {
+          "id": "idle",
+          "name": "Idle",
+          "category": "idle",
+          "icon": "user",
+          "boneTransforms": {}
+        },
+        {
+          "id": "wave",
+          "name": "Wave",
+          "category": "action",
+          "icon": "hand",
+          "boneTransforms": {
+            "upperArmR": {
+              "rotation": -130
+            },
+            "lowerArmR": {
+              "rotation": -40
+            },
+            "handR": {
+              "rotation": 10
+            },
+            "torso": {
+              "rotation": -2
+            },
+            "head": {
+              "rotation": 3
+            }
+          }
+        },
+        {
+          "id": "point",
+          "name": "Point",
+          "category": "action",
+          "icon": "pointer",
+          "boneTransforms": {
+            "upperArmR": {
+              "rotation": -100
+            },
+            "lowerArmR": {
+              "rotation": 0
+            },
+            "handR": {
+              "rotation": -5
+            },
+            "torso": {
+              "rotation": -3
+            },
+            "head": {
+              "rotation": 2
+            }
+          }
+        },
+        {
+          "id": "talk",
+          "name": "Talk",
+          "category": "action",
+          "icon": "message-square",
+          "boneTransforms": {
+            "upperArmR": {
+              "rotation": -40
+            },
+            "lowerArmR": {
+              "rotation": -30
+            },
+            "upperArmL": {
+              "rotation": 40
+            },
+            "lowerArmL": {
+              "rotation": 30
+            },
+            "torso": {
+              "rotation": -2
+            },
+            "head": {
+              "rotation": 1
+            }
+          }
+        },
+        {
+          "id": "think",
+          "name": "Think",
+          "category": "action",
+          "icon": "brain",
+          "boneTransforms": {
+            "upperArmR": {
+              "rotation": -80
+            },
+            "lowerArmR": {
+              "rotation": -90
+            },
+            "handR": {
+              "rotation": 15
+            },
+            "head": {
+              "rotation": 8,
+              "y": -2
+            },
+            "torso": {
+              "rotation": 2
+            }
+          }
+        },
+        {
+          "id": "celebrate",
+          "name": "Celebrate",
+          "category": "action",
+          "icon": "party-popper",
+          "boneTransforms": {
+            "upperArmR": {
+              "rotation": -150
+            },
+            "lowerArmR": {
+              "rotation": -20
+            },
+            "upperArmL": {
+              "rotation": 150
+            },
+            "lowerArmL": {
+              "rotation": 20
+            },
+            "head": {
+              "y": -3
+            },
+            "torso": {
+              "rotation": 0
+            }
+          }
+        },
+        {
+          "id": "sit",
+          "name": "Sit",
+          "category": "seated",
+          "icon": "armchair",
+          "boneTransforms": {
+            "upperLegL": {
+              "rotation": -85
+            },
+            "lowerLegL": {
+              "rotation": 85
+            },
+            "footL": {
+              "rotation": 5
+            },
+            "upperLegR": {
+              "rotation": -85
+            },
+            "lowerLegR": {
+              "rotation": 85
+            },
+            "footR": {
+              "rotation": 5
+            },
+            "root": {
+              "y": -20
+            }
+          }
+        },
+        {
+          "id": "walkA",
+          "name": "Walk A",
+          "category": "action",
+          "icon": "footprints",
+          "boneTransforms": {
+            "upperLegL": {
+              "rotation": -20
+            },
+            "lowerLegL": {
+              "rotation": 10
+            },
+            "upperLegR": {
+              "rotation": 15
+            },
+            "lowerLegR": {
+              "rotation": -25
+            },
+            "upperArmL": {
+              "rotation": 20
+            },
+            "upperArmR": {
+              "rotation": -20
+            },
+            "torso": {
+              "rotation": -1
+            }
+          }
+        },
+        {
+          "id": "walkB",
+          "name": "Walk B",
+          "category": "action",
+          "icon": "footprints",
+          "boneTransforms": {
+            "upperLegL": {
+              "rotation": 15
+            },
+            "lowerLegL": {
+              "rotation": -25
+            },
+            "upperLegR": {
+              "rotation": -20
+            },
+            "lowerLegR": {
+              "rotation": 10
+            },
+            "upperArmL": {
+              "rotation": -20
+            },
+            "upperArmR": {
+              "rotation": 20
+            },
+            "torso": {
+              "rotation": 1
+            }
+          }
+        },
+        {
+          "id": "present",
+          "name": "Present",
+          "category": "action",
+          "icon": "presentation",
+          "boneTransforms": {
+            "upperArmR": {
+              "rotation": -70
+            },
+            "lowerArmR": {
+              "rotation": -40
+            },
+            "upperArmL": {
+              "rotation": 70
+            },
+            "lowerArmL": {
+              "rotation": 40
+            },
+            "torso": {
+              "rotation": 0
+            },
+            "head": {
+              "rotation": 0,
+              "y": -1
+            }
+          }
+        },
+        {
+          "id": "standing",
+          "name": "Standing",
+          "category": "action",
+          "boneTransforms": {}
+        },
+        {
+          "id": "running",
+          "name": "Running",
+          "category": "action",
+          "boneTransforms": {
+            "upperLegL": {
+              "rotation": 45
+            },
+            "lowerLegR": {
+              "rotation": 70
+            },
+            "upperArmR": {
+              "rotation": -45
+            }
+          }
+        },
+        {
+          "id": "listening",
+          "name": "Listening",
+          "category": "action",
+          "boneTransforms": {
+            "head": {
+              "rotation": 8
+            }
+          }
+        },
+        {
+          "id": "surprised",
+          "name": "Surprised",
+          "category": "action",
+          "boneTransforms": {
+            "mouth": {
+              "scaleY": 3
+            },
+            "browL": {
+              "y": -4
+            },
+            "browR": {
+              "y": -4
+            }
+          }
+        },
+        {
+          "id": "happy",
+          "name": "Happy",
+          "category": "action",
+          "boneTransforms": {
+            "head": {
+              "rotation": 4
+            },
+            "mouth": {
+              "scaleX": 1.4
+            }
+          }
+        },
+        {
+          "id": "sad",
+          "name": "Sad",
+          "category": "action",
+          "boneTransforms": {
+            "head": {
+              "rotation": 12,
+              "y": 4
+            }
+          }
+        },
+        {
+          "id": "confused",
+          "name": "Confused",
+          "category": "action",
+          "boneTransforms": {
+            "head": {
+              "rotation": -12
+            }
+          }
+        },
+        {
+          "id": "working",
+          "name": "Working",
+          "category": "action",
+          "boneTransforms": {
+            "upperArmL": {
+              "rotation": -40
+            },
+            "upperArmR": {
+              "rotation": 40
+            },
+            "lowerArmL": {
+              "rotation": -60
+            },
+            "lowerArmR": {
+              "rotation": 60
+            }
+          }
+        },
+        {
+          "id": "typing",
+          "name": "Typing",
+          "category": "action",
+          "boneTransforms": {
+            "upperArmL": {
+              "rotation": -25
+            },
+            "upperArmR": {
+              "rotation": 25
+            },
+            "lowerArmL": {
+              "rotation": -70
+            },
+            "lowerArmR": {
+              "rotation": 70
+            }
+          }
+        },
+        {
+          "id": "pointLeft",
+          "name": "Point left",
+          "category": "action",
+          "boneTransforms": {
+            "upperArmL": {
+              "rotation": 85
+            },
+            "lowerArmL": {
+              "rotation": 0
+            }
+          }
+        },
+        {
+          "id": "jump",
+          "name": "Jump",
+          "category": "action",
+          "boneTransforms": {
+            "root": {
+              "y": -40
+            },
+            "upperArmL": {
+              "rotation": 140
+            },
+            "upperArmR": {
+              "rotation": -140
+            }
+          }
+        },
+        {
+          "id": "nod",
+          "name": "Nod",
+          "category": "action",
+          "boneTransforms": {
+            "head": {
+              "rotation": 10,
+              "y": 3
+            }
+          }
+        },
+        {
+          "id": "shakeHead",
+          "name": "Shake head",
+          "category": "action",
+          "boneTransforms": {
+            "head": {
+              "rotation": -12
+            }
+          }
+        },
+        {
+          "id": "standing",
+          "name": "Standing",
+          "category": "action",
+          "boneTransforms": {}
+        },
+        {
+          "id": "running",
+          "name": "Running",
+          "category": "action",
+          "boneTransforms": {
+            "upperLegL": {
+              "rotation": 45
+            },
+            "lowerLegR": {
+              "rotation": 70
+            },
+            "upperArmR": {
+              "rotation": -45
+            }
+          }
+        },
+        {
+          "id": "listening",
+          "name": "Listening",
+          "category": "action",
+          "boneTransforms": {
+            "head": {
+              "rotation": 8
+            }
+          }
+        },
+        {
+          "id": "surprised",
+          "name": "Surprised",
+          "category": "action",
+          "boneTransforms": {
+            "mouth": {
+              "scaleY": 3
+            },
+            "browL": {
+              "y": -4
+            },
+            "browR": {
+              "y": -4
+            }
+          }
+        },
+        {
+          "id": "happy",
+          "name": "Happy",
+          "category": "action",
+          "boneTransforms": {
+            "head": {
+              "rotation": 4
+            },
+            "mouth": {
+              "scaleX": 1.4
+            }
+          }
+        },
+        {
+          "id": "sad",
+          "name": "Sad",
+          "category": "action",
+          "boneTransforms": {
+            "head": {
+              "rotation": 12,
+              "y": 4
+            }
+          }
+        },
+        {
+          "id": "confused",
+          "name": "Confused",
+          "category": "action",
+          "boneTransforms": {
+            "head": {
+              "rotation": -12
+            }
+          }
+        },
+        {
+          "id": "working",
+          "name": "Working",
+          "category": "action",
+          "boneTransforms": {
+            "upperArmL": {
+              "rotation": -40
+            },
+            "upperArmR": {
+              "rotation": 40
+            },
+            "lowerArmL": {
+              "rotation": -60
+            },
+            "lowerArmR": {
+              "rotation": 60
+            }
+          }
+        },
+        {
+          "id": "typing",
+          "name": "Typing",
+          "category": "action",
+          "boneTransforms": {
+            "upperArmL": {
+              "rotation": -25
+            },
+            "upperArmR": {
+              "rotation": 25
+            },
+            "lowerArmL": {
+              "rotation": -70
+            },
+            "lowerArmR": {
+              "rotation": 70
+            }
+          }
+        },
+        {
+          "id": "pointLeft",
+          "name": "Point left",
+          "category": "action",
+          "boneTransforms": {
+            "upperArmL": {
+              "rotation": 85
+            },
+            "lowerArmL": {
+              "rotation": 0
+            }
+          }
+        },
+        {
+          "id": "jump",
+          "name": "Jump",
+          "category": "action",
+          "boneTransforms": {
+            "root": {
+              "y": -40
+            },
+            "upperArmL": {
+              "rotation": 140
+            },
+            "upperArmR": {
+              "rotation": -140
+            }
+          }
+        },
+        {
+          "id": "nod",
+          "name": "Nod",
+          "category": "action",
+          "boneTransforms": {
+            "head": {
+              "rotation": 10,
+              "y": 3
+            }
+          }
+        },
+        {
+          "id": "shakeHead",
+          "name": "Shake head",
+          "category": "action",
+          "boneTransforms": {
+            "head": {
+              "rotation": -12
+            }
+          }
+        },
+        {
+          "id": "standing",
+          "name": "Standing",
+          "category": "action",
+          "boneTransforms": {}
+        },
+        {
+          "id": "running",
+          "name": "Running",
+          "category": "action",
+          "boneTransforms": {
+            "upperLegL": {
+              "rotation": 45
+            },
+            "lowerLegR": {
+              "rotation": 70
+            },
+            "upperArmR": {
+              "rotation": -45
+            }
+          }
+        },
+        {
+          "id": "listening",
+          "name": "Listening",
+          "category": "action",
+          "boneTransforms": {
+            "head": {
+              "rotation": 8
+            }
+          }
+        },
+        {
+          "id": "surprised",
+          "name": "Surprised",
+          "category": "action",
+          "boneTransforms": {
+            "mouth": {
+              "scaleY": 3
+            },
+            "browL": {
+              "y": -4
+            },
+            "browR": {
+              "y": -4
+            }
+          }
+        },
+        {
+          "id": "happy",
+          "name": "Happy",
+          "category": "action",
+          "boneTransforms": {
+            "head": {
+              "rotation": 4
+            },
+            "mouth": {
+              "scaleX": 1.4
+            }
+          }
+        },
+        {
+          "id": "sad",
+          "name": "Sad",
+          "category": "action",
+          "boneTransforms": {
+            "head": {
+              "rotation": 12,
+              "y": 4
+            }
+          }
+        },
+        {
+          "id": "confused",
+          "name": "Confused",
+          "category": "action",
+          "boneTransforms": {
+            "head": {
+              "rotation": -12
+            }
+          }
+        },
+        {
+          "id": "working",
+          "name": "Working",
+          "category": "action",
+          "boneTransforms": {
+            "upperArmL": {
+              "rotation": -40
+            },
+            "upperArmR": {
+              "rotation": 40
+            },
+            "lowerArmL": {
+              "rotation": -60
+            },
+            "lowerArmR": {
+              "rotation": 60
+            }
+          }
+        },
+        {
+          "id": "typing",
+          "name": "Typing",
+          "category": "action",
+          "boneTransforms": {
+            "upperArmL": {
+              "rotation": -25
+            },
+            "upperArmR": {
+              "rotation": 25
+            },
+            "lowerArmL": {
+              "rotation": -70
+            },
+            "lowerArmR": {
+              "rotation": 70
+            }
+          }
+        },
+        {
+          "id": "pointLeft",
+          "name": "Point left",
+          "category": "action",
+          "boneTransforms": {
+            "upperArmL": {
+              "rotation": 85
+            },
+            "lowerArmL": {
+              "rotation": 0
+            }
+          }
+        },
+        {
+          "id": "jump",
+          "name": "Jump",
+          "category": "action",
+          "boneTransforms": {
+            "root": {
+              "y": -40
+            },
+            "upperArmL": {
+              "rotation": 140
+            },
+            "upperArmR": {
+              "rotation": -140
+            }
+          }
+        },
+        {
+          "id": "nod",
+          "name": "Nod",
+          "category": "action",
+          "boneTransforms": {
+            "head": {
+              "rotation": 10,
+              "y": 3
+            }
+          }
+        },
+        {
+          "id": "shakeHead",
+          "name": "Shake head",
+          "category": "action",
+          "boneTransforms": {
+            "head": {
+              "rotation": -12
+            }
+          }
+        },
+        {
+          "id": "standing",
+          "name": "Standing",
+          "category": "action",
+          "boneTransforms": {}
+        },
+        {
+          "id": "running",
+          "name": "Running",
+          "category": "action",
+          "boneTransforms": {
+            "upperLegL": {
+              "rotation": 45
+            },
+            "lowerLegR": {
+              "rotation": 70
+            },
+            "upperArmR": {
+              "rotation": -45
+            }
+          }
+        },
+        {
+          "id": "listening",
+          "name": "Listening",
+          "category": "action",
+          "boneTransforms": {
+            "head": {
+              "rotation": 8
+            }
+          }
+        },
+        {
+          "id": "surprised",
+          "name": "Surprised",
+          "category": "action",
+          "boneTransforms": {
+            "mouth": {
+              "scaleY": 3
+            },
+            "browL": {
+              "y": -4
+            },
+            "browR": {
+              "y": -4
+            }
+          }
+        },
+        {
+          "id": "happy",
+          "name": "Happy",
+          "category": "action",
+          "boneTransforms": {
+            "head": {
+              "rotation": 4
+            },
+            "mouth": {
+              "scaleX": 1.4
+            }
+          }
+        },
+        {
+          "id": "sad",
+          "name": "Sad",
+          "category": "action",
+          "boneTransforms": {
+            "head": {
+              "rotation": 12,
+              "y": 4
+            }
+          }
+        },
+        {
+          "id": "confused",
+          "name": "Confused",
+          "category": "action",
+          "boneTransforms": {
+            "head": {
+              "rotation": -12
+            }
+          }
+        },
+        {
+          "id": "working",
+          "name": "Working",
+          "category": "action",
+          "boneTransforms": {
+            "upperArmL": {
+              "rotation": -40
+            },
+            "upperArmR": {
+              "rotation": 40
+            },
+            "lowerArmL": {
+              "rotation": -60
+            },
+            "lowerArmR": {
+              "rotation": 60
+            }
+          }
+        },
+        {
+          "id": "typing",
+          "name": "Typing",
+          "category": "action",
+          "boneTransforms": {
+            "upperArmL": {
+              "rotation": -25
+            },
+            "upperArmR": {
+              "rotation": 25
+            },
+            "lowerArmL": {
+              "rotation": -70
+            },
+            "lowerArmR": {
+              "rotation": 70
+            }
+          }
+        },
+        {
+          "id": "pointLeft",
+          "name": "Point left",
+          "category": "action",
+          "boneTransforms": {
+            "upperArmL": {
+              "rotation": 85
+            },
+            "lowerArmL": {
+              "rotation": 0
+            }
+          }
+        },
+        {
+          "id": "jump",
+          "name": "Jump",
+          "category": "action",
+          "boneTransforms": {
+            "root": {
+              "y": -40
+            },
+            "upperArmL": {
+              "rotation": 140
+            },
+            "upperArmR": {
+              "rotation": -140
+            }
+          }
+        },
+        {
+          "id": "nod",
+          "name": "Nod",
+          "category": "action",
+          "boneTransforms": {
+            "head": {
+              "rotation": 10,
+              "y": 3
+            }
+          }
+        },
+        {
+          "id": "shakeHead",
+          "name": "Shake head",
+          "category": "action",
+          "boneTransforms": {
+            "head": {
+              "rotation": -12
+            }
+          }
+        }
+      ],
+      "voicePitch": 1.25,
+      "voiceRate": 0.95,
+      "representation": {
+        "type": "rigged"
+      },
+      "expressions": [
+        {
+          "id": "neutral",
+          "name": "Neutral",
+          "boneTransforms": {}
+        },
+        {
+          "id": "surprised",
+          "name": "Surprised",
+          "boneTransforms": {
+            "mouth": {
+              "scaleY": 3
+            },
+            "browL": {
+              "y": -4
+            },
+            "browR": {
+              "y": -4
+            }
+          }
+        },
+        {
+          "id": "happy",
+          "name": "Happy",
+          "boneTransforms": {
+            "head": {
+              "rotation": 4
+            },
+            "mouth": {
+              "scaleX": 1.4
+            }
+          }
+        },
+        {
+          "id": "sad",
+          "name": "Sad",
+          "boneTransforms": {
+            "head": {
+              "rotation": 12,
+              "y": 4
+            }
+          }
+        },
+        {
+          "id": "confused",
+          "name": "Confused",
+          "boneTransforms": {
+            "head": {
+              "rotation": -12
+            }
+          }
+        },
+        {
+          "id": "thinking",
+          "name": "Thinking",
+          "boneTransforms": {
+            "head": {
+              "rotation": -10
+            },
+            "browL": {
+              "rotation": 8
+            }
+          }
+        },
+        {
+          "id": "angry",
+          "name": "Angry",
+          "boneTransforms": {
+            "browL": {
+              "rotation": 20
+            },
+            "browR": {
+              "rotation": -20
+            }
+          }
+        },
+        {
+          "id": "speaking",
+          "name": "Speaking",
+          "boneTransforms": {
+            "mouth": {
+              "scaleY": 1.7
+            }
+          }
+        }
+      ],
+      "animations": [
+        {
+          "id": "sarah-rigged-animation-idle",
+          "characterId": "sarah-rigged",
+          "elementId": "",
+          "name": "Idle",
+          "duration": 2,
+          "loop": true,
+          "keyframes": [
+            {
+              "id": "a0",
+              "time": 0,
+              "poseId": "idle",
+              "easing": "easeInOut"
+            },
+            {
+              "id": "b0",
+              "time": 0.6,
+              "poseId": "idle",
+              "easing": "easeInOut"
+            },
+            {
+              "id": "c0",
+              "time": 1.7,
+              "poseId": "idle",
+              "easing": "easeInOut"
+            }
+          ]
+        },
+        {
+          "id": "sarah-rigged-animation-walkA",
+          "characterId": "sarah-rigged",
+          "elementId": "",
+          "name": "Walk",
+          "duration": 2,
+          "loop": true,
+          "keyframes": [
+            {
+              "id": "a1",
+              "time": 0,
+              "poseId": "walkA",
+              "easing": "easeInOut"
+            },
+            {
+              "id": "b1",
+              "time": 0.6,
+              "poseId": "walkB",
+              "easing": "easeInOut"
+            },
+            {
+              "id": "c1",
+              "time": 1.7,
+              "poseId": "walkA",
+              "easing": "easeInOut"
+            }
+          ]
+        },
+        {
+          "id": "sarah-rigged-animation-running",
+          "characterId": "sarah-rigged",
+          "elementId": "",
+          "name": "Running",
+          "duration": 2,
+          "loop": true,
+          "keyframes": [
+            {
+              "id": "a2",
+              "time": 0,
+              "poseId": "idle",
+              "easing": "easeInOut"
+            },
+            {
+              "id": "b2",
+              "time": 0.6,
+              "poseId": "running",
+              "easing": "easeInOut"
+            },
+            {
+              "id": "c2",
+              "time": 1.7,
+              "poseId": "idle",
+              "easing": "easeInOut"
+            }
+          ]
+        },
+        {
+          "id": "sarah-rigged-animation-jump",
+          "characterId": "sarah-rigged",
+          "elementId": "",
+          "name": "Jump",
+          "duration": 2,
+          "loop": false,
+          "keyframes": [
+            {
+              "id": "a3",
+              "time": 0,
+              "poseId": "idle",
+              "easing": "easeInOut"
+            },
+            {
+              "id": "b3",
+              "time": 0.6,
+              "poseId": "jump",
+              "easing": "easeInOut"
+            },
+            {
+              "id": "c3",
+              "time": 1.7,
+              "poseId": "idle",
+              "easing": "easeInOut"
+            }
+          ]
+        },
+        {
+          "id": "sarah-rigged-animation-wave",
+          "characterId": "sarah-rigged",
+          "elementId": "",
+          "name": "Wave",
+          "duration": 2,
+          "loop": false,
+          "keyframes": [
+            {
+              "id": "a4",
+              "time": 0,
+              "poseId": "idle",
+              "easing": "easeInOut"
+            },
+            {
+              "id": "b4",
+              "time": 0.6,
+              "poseId": "wave",
+              "easing": "easeInOut"
+            },
+            {
+              "id": "c4",
+              "time": 1.7,
+              "poseId": "idle",
+              "easing": "easeInOut"
+            }
+          ]
+        },
+        {
+          "id": "sarah-rigged-animation-talk",
+          "characterId": "sarah-rigged",
+          "elementId": "",
+          "name": "Talk",
+          "duration": 2,
+          "loop": true,
+          "keyframes": [
+            {
+              "id": "a5",
+              "time": 0,
+              "poseId": "idle",
+              "easing": "easeInOut"
+            },
+            {
+              "id": "b5",
+              "time": 0.6,
+              "poseId": "talk",
+              "easing": "easeInOut"
+            },
+            {
+              "id": "c5",
+              "time": 1.7,
+              "poseId": "idle",
+              "easing": "easeInOut"
+            }
+          ]
+        },
+        {
+          "id": "sarah-rigged-animation-point",
+          "characterId": "sarah-rigged",
+          "elementId": "",
+          "name": "Point",
+          "duration": 2,
+          "loop": false,
+          "keyframes": [
+            {
+              "id": "a6",
+              "time": 0,
+              "poseId": "idle",
+              "easing": "easeInOut"
+            },
+            {
+              "id": "b6",
+              "time": 0.6,
+              "poseId": "point",
+              "easing": "easeInOut"
+            },
+            {
+              "id": "c6",
+              "time": 1.7,
+              "poseId": "idle",
+              "easing": "easeInOut"
+            }
+          ]
+        },
+        {
+          "id": "sarah-rigged-animation-think",
+          "characterId": "sarah-rigged",
+          "elementId": "",
+          "name": "Think",
+          "duration": 2,
+          "loop": false,
+          "keyframes": [
+            {
+              "id": "a7",
+              "time": 0,
+              "poseId": "idle",
+              "easing": "easeInOut"
+            },
+            {
+              "id": "b7",
+              "time": 0.6,
+              "poseId": "think",
+              "easing": "easeInOut"
+            },
+            {
+              "id": "c7",
+              "time": 1.7,
+              "poseId": "idle",
+              "easing": "easeInOut"
+            }
+          ]
+        },
+        {
+          "id": "sarah-rigged-animation-sit",
+          "characterId": "sarah-rigged",
+          "elementId": "",
+          "name": "Sit",
+          "duration": 2,
+          "loop": false,
+          "keyframes": [
+            {
+              "id": "a8",
+              "time": 0,
+              "poseId": "idle",
+              "easing": "easeInOut"
+            },
+            {
+              "id": "b8",
+              "time": 0.6,
+              "poseId": "sit",
+              "easing": "easeInOut"
+            },
+            {
+              "id": "c8",
+              "time": 1.7,
+              "poseId": "idle",
+              "easing": "easeInOut"
+            }
+          ]
+        },
+        {
+          "id": "sarah-rigged-animation-standing",
+          "characterId": "sarah-rigged",
+          "elementId": "",
+          "name": "Standing",
+          "duration": 2,
+          "loop": false,
+          "keyframes": [
+            {
+              "id": "a9",
+              "time": 0,
+              "poseId": "idle",
+              "easing": "easeInOut"
+            },
+            {
+              "id": "b9",
+              "time": 0.6,
+              "poseId": "standing",
+              "easing": "easeInOut"
+            },
+            {
+              "id": "c9",
+              "time": 1.7,
+              "poseId": "idle",
+              "easing": "easeInOut"
+            }
+          ]
+        },
+        {
+          "id": "sarah-rigged-animation-celebrate",
+          "characterId": "sarah-rigged",
+          "elementId": "",
+          "name": "Celebrate",
+          "duration": 2,
+          "loop": false,
+          "keyframes": [
+            {
+              "id": "a10",
+              "time": 0,
+              "poseId": "idle",
+              "easing": "easeInOut"
+            },
+            {
+              "id": "b10",
+              "time": 0.6,
+              "poseId": "celebrate",
+              "easing": "easeInOut"
+            },
+            {
+              "id": "c10",
+              "time": 1.7,
+              "poseId": "idle",
+              "easing": "easeInOut"
+            }
+          ]
+        },
+        {
+          "id": "sarah-rigged-animation-shakeHead",
+          "characterId": "sarah-rigged",
+          "elementId": "",
+          "name": "ShakeHead",
+          "duration": 2,
+          "loop": false,
+          "keyframes": [
+            {
+              "id": "a11",
+              "time": 0,
+              "poseId": "idle",
+              "easing": "easeInOut"
+            },
+            {
+              "id": "b11",
+              "time": 0.6,
+              "poseId": "shakeHead",
+              "easing": "easeInOut"
+            },
+            {
+              "id": "c11",
+              "time": 1.7,
+              "poseId": "idle",
+              "easing": "easeInOut"
+            }
+          ]
+        },
+        {
+          "id": "sarah-rigged-animation-nod",
+          "characterId": "sarah-rigged",
+          "elementId": "",
+          "name": "Nod",
+          "duration": 2,
+          "loop": false,
+          "keyframes": [
+            {
+              "id": "a12",
+              "time": 0,
+              "poseId": "idle",
+              "easing": "easeInOut"
+            },
+            {
+              "id": "b12",
+              "time": 0.6,
+              "poseId": "nod",
+              "easing": "easeInOut"
+            },
+            {
+              "id": "c12",
+              "time": 1.7,
+              "poseId": "idle",
+              "easing": "easeInOut"
+            }
+          ]
+        }
+      ],
+      "variants": []
+    },
+    {
+      "id": "max-rigged",
+      "version": "1.0",
+      "name": "Max",
+      "gender": "male",
+      "rig": {
+        "id": "max-rig",
+        "name": "Max Rig",
+        "bones": [
+          {
+            "id": "root",
+            "name": "Root",
+            "parentId": null,
+            "x": 120,
+            "y": 230,
+            "rotation": 0,
+            "length": 0,
+            "zIndex": 0,
+            "visuals": []
+          },
+          {
+            "id": "torso",
+            "name": "Torso",
+            "parentId": "root",
+            "x": 0,
+            "y": 0,
+            "rotation": 0,
+            "length": 120,
+            "zIndex": 5,
+            "colorToken": "shirt",
+            "visuals": [
+              {
+                "type": "rect",
+                "fill": "#2563eb",
+                "offsetX": -32,
+                "offsetY": -120,
+                "width": 64,
+                "height": 120,
+                "borderRadius": 14
+              },
+              {
+                "type": "path",
+                "fill": "#f4c7a3",
+                "d": "M -12 -120 Q 0 -110 12 -120",
+                "stroke": "#f4c7a3",
+                "strokeWidth": 2
+              }
+            ]
+          },
+          {
+            "id": "neck",
+            "name": "Neck",
+            "parentId": "torso",
+            "x": 0,
+            "y": -120,
+            "rotation": 0,
+            "length": 16,
+            "zIndex": 4,
+            "colorToken": "skin",
+            "visuals": [
+              {
+                "type": "rect",
+                "fill": "#f4c7a3",
+                "offsetX": -7,
+                "offsetY": -16,
+                "width": 14,
+                "height": 16,
+                "borderRadius": 5
+              }
+            ]
+          },
+          {
+            "id": "head",
+            "name": "Head",
+            "parentId": "neck",
+            "x": 0,
+            "y": -16,
+            "rotation": 0,
+            "length": 76,
+            "zIndex": 10,
+            "colorToken": "skin",
+            "visuals": [
+              {
+                "type": "ellipse",
+                "fill": "#f4c7a3",
+                "cx": -32,
+                "cy": -38,
+                "rx": 6,
+                "ry": 8
+              },
+              {
+                "type": "ellipse",
+                "fill": "#f4c7a3",
+                "cx": 32,
+                "cy": -38,
+                "rx": 6,
+                "ry": 8
+              },
+              {
+                "type": "ellipse",
+                "fill": "#f4c7a3",
+                "cx": 0,
+                "cy": -38,
+                "rx": 32,
+                "ry": 38
+              }
+            ]
+          },
+          {
+            "id": "hair",
+            "name": "Hair",
+            "parentId": "head",
+            "x": 0,
+            "y": 0,
+            "rotation": 0,
+            "length": 0,
+            "zIndex": 11,
+            "colorToken": "hair",
+            "visuals": [
+              {
+                "type": "path",
+                "fill": "#5b3a20",
+                "d": "M -29 -32 Q -30 -62 0 -77 Q 30 -62 29 -32"
+              }
+            ]
+          },
+          {
+            "id": "eyeL",
+            "name": "Left Eye",
+            "parentId": "head",
+            "x": -12,
+            "y": -44,
+            "rotation": 0,
+            "length": 0,
+            "zIndex": 12,
+            "colorToken": "eye",
+            "visuals": [
+              {
+                "type": "ellipse",
+                "fill": "white",
+                "cx": 0,
+                "cy": 0,
+                "rx": 7,
+                "ry": 5.5,
+                "stroke": "#c4a882",
+                "strokeWidth": 0.5
+              },
+              {
+                "type": "circle",
+                "fill": "#3b6fb5",
+                "cx": 0,
+                "cy": 0,
+                "r": 4.5
+              },
+              {
+                "type": "circle",
+                "fill": "#111",
+                "cx": 0,
+                "cy": 0,
+                "r": 2.2
+              },
+              {
+                "type": "circle",
+                "fill": "white",
+                "cx": -1.2,
+                "cy": -1.5,
+                "r": 1,
+                "opacity": 0.9
+              }
+            ]
+          },
+          {
+            "id": "eyeR",
+            "name": "Right Eye",
+            "parentId": "head",
+            "x": 12,
+            "y": -44,
+            "rotation": 0,
+            "length": 0,
+            "zIndex": 12,
+            "colorToken": "eye",
+            "visuals": [
+              {
+                "type": "ellipse",
+                "fill": "white",
+                "cx": 0,
+                "cy": 0,
+                "rx": 7,
+                "ry": 5.5,
+                "stroke": "#c4a882",
+                "strokeWidth": 0.5
+              },
+              {
+                "type": "circle",
+                "fill": "#3b6fb5",
+                "cx": 0,
+                "cy": 0,
+                "r": 4.5
+              },
+              {
+                "type": "circle",
+                "fill": "#111",
+                "cx": 0,
+                "cy": 0,
+                "r": 2.2
+              },
+              {
+                "type": "circle",
+                "fill": "white",
+                "cx": -1.2,
+                "cy": -1.5,
+                "r": 1,
+                "opacity": 0.9
+              }
+            ]
+          },
+          {
+            "id": "browL",
+            "name": "Left Brow",
+            "parentId": "head",
+            "x": -12,
+            "y": -52,
+            "rotation": 0,
+            "length": 0,
+            "zIndex": 13,
+            "colorToken": "hair",
+            "visuals": [
+              {
+                "type": "path",
+                "fill": "none",
+                "d": "M -6 0 Q 0 -3 6 0.5",
+                "stroke": "#5b3a20",
+                "strokeWidth": 2.2
+              }
+            ]
+          },
+          {
+            "id": "browR",
+            "name": "Right Brow",
+            "parentId": "head",
+            "x": 12,
+            "y": -52,
+            "rotation": 0,
+            "length": 0,
+            "zIndex": 13,
+            "colorToken": "hair",
+            "visuals": [
+              {
+                "type": "path",
+                "fill": "none",
+                "d": "M -6 0.5 Q 0 -3 6 0",
+                "stroke": "#5b3a20",
+                "strokeWidth": 2.2
+              }
+            ]
+          },
+          {
+            "id": "mouth",
+            "name": "Mouth",
+            "parentId": "head",
+            "x": 0,
+            "y": -24,
+            "rotation": 0,
+            "length": 0,
+            "zIndex": 12,
+            "visuals": [
+              {
+                "type": "ellipse",
+                "cx": 0,
+                "cy": 0,
+                "rx": 7,
+                "ry": 2,
+                "fill": "#7f1d1d"
+              }
+            ]
+          },
+          {
+            "id": "nose",
+            "name": "Nose",
+            "parentId": "head",
+            "x": 0,
+            "y": -36,
+            "rotation": 0,
+            "length": 0,
+            "zIndex": 12,
+            "visuals": [
+              {
+                "type": "path",
+                "fill": "none",
+                "d": "M -1 0 Q 0 4 2 2 Q 4 1 3 -1",
+                "stroke": "#d4a070",
+                "strokeWidth": 1.2
+              }
+            ]
+          },
+          {
+            "id": "upperArmL",
+            "name": "Upper Arm L",
+            "parentId": "torso",
+            "x": -32,
+            "y": -112,
+            "rotation": 10,
+            "length": 55,
+            "zIndex": 3,
+            "colorToken": "skin",
+            "visuals": [
+              {
+                "type": "rect",
+                "fill": "#f4c7a3",
+                "offsetX": -6.5,
+                "offsetY": 0,
+                "width": 13,
+                "height": 55,
+                "borderRadius": 6
+              }
+            ]
+          },
+          {
+            "id": "lowerArmL",
+            "name": "Lower Arm L",
+            "parentId": "upperArmL",
+            "x": 0,
+            "y": 55,
+            "rotation": 0,
+            "length": 50,
+            "zIndex": 3,
+            "colorToken": "skin",
+            "visuals": [
+              {
+                "type": "rect",
+                "fill": "#f4c7a3",
+                "offsetX": -5.5,
+                "offsetY": 0,
+                "width": 11,
+                "height": 50,
+                "borderRadius": 5
+              }
+            ]
+          },
+          {
+            "id": "handL",
+            "name": "Hand L",
+            "parentId": "lowerArmL",
+            "x": 0,
+            "y": 50,
+            "rotation": 0,
+            "length": 12,
+            "zIndex": 3,
+            "colorToken": "skin",
+            "visuals": [
+              {
+                "type": "ellipse",
+                "fill": "#f4c7a3",
+                "cx": 0,
+                "cy": 6,
+                "rx": 7,
+                "ry": 8
+              }
+            ]
+          },
+          {
+            "id": "upperArmR",
+            "name": "Upper Arm R",
+            "parentId": "torso",
+            "x": 32,
+            "y": -112,
+            "rotation": -10,
+            "length": 55,
+            "zIndex": 3,
+            "colorToken": "skin",
+            "visuals": [
+              {
+                "type": "rect",
+                "fill": "#f4c7a3",
+                "offsetX": -6.5,
+                "offsetY": 0,
+                "width": 13,
+                "height": 55,
+                "borderRadius": 6
+              }
+            ]
+          },
+          {
+            "id": "lowerArmR",
+            "name": "Lower Arm R",
+            "parentId": "upperArmR",
+            "x": 0,
+            "y": 55,
+            "rotation": 0,
+            "length": 50,
+            "zIndex": 3,
+            "colorToken": "skin",
+            "visuals": [
+              {
+                "type": "rect",
+                "fill": "#f4c7a3",
+                "offsetX": -5.5,
+                "offsetY": 0,
+                "width": 11,
+                "height": 50,
+                "borderRadius": 5
+              }
+            ]
+          },
+          {
+            "id": "handR",
+            "name": "Hand R",
+            "parentId": "lowerArmR",
+            "x": 0,
+            "y": 50,
+            "rotation": 0,
+            "length": 12,
+            "zIndex": 3,
+            "colorToken": "skin",
+            "visuals": [
+              {
+                "type": "ellipse",
+                "fill": "#f4c7a3",
+                "cx": 0,
+                "cy": 6,
+                "rx": 7,
+                "ry": 8
+              }
+            ]
+          },
+          {
+            "id": "upperLegL",
+            "name": "Upper Leg L",
+            "parentId": "root",
+            "x": -14,
+            "y": 0,
+            "rotation": 0,
+            "length": 70,
+            "zIndex": 2,
+            "colorToken": "pants",
+            "visuals": [
+              {
+                "type": "rect",
+                "fill": "#1e293b",
+                "offsetX": -7.5,
+                "offsetY": 0,
+                "width": 15,
+                "height": 70,
+                "borderRadius": 6
+              }
+            ]
+          },
+          {
+            "id": "lowerLegL",
+            "name": "Lower Leg L",
+            "parentId": "upperLegL",
+            "x": 0,
+            "y": 70,
+            "rotation": 0,
+            "length": 72,
+            "zIndex": 2,
+            "colorToken": "pants",
+            "visuals": [
+              {
+                "type": "rect",
+                "fill": "#1e293b",
+                "offsetX": -7,
+                "offsetY": 0,
+                "width": 14,
+                "height": 72,
+                "borderRadius": 5
+              }
+            ]
+          },
+          {
+            "id": "footL",
+            "name": "Foot L",
+            "parentId": "lowerLegL",
+            "x": 0,
+            "y": 72,
+            "rotation": 0,
+            "length": 18,
+            "zIndex": 2,
+            "colorToken": "shoe",
+            "visuals": [
+              {
+                "type": "ellipse",
+                "fill": "#334155",
+                "cx": 0,
+                "cy": 6,
+                "rx": 15,
+                "ry": 9
+              }
+            ]
+          },
+          {
+            "id": "upperLegR",
+            "name": "Upper Leg R",
+            "parentId": "root",
+            "x": 14,
+            "y": 0,
+            "rotation": 0,
+            "length": 70,
+            "zIndex": 2,
+            "colorToken": "pants",
+            "visuals": [
+              {
+                "type": "rect",
+                "fill": "#1e293b",
+                "offsetX": -7.5,
+                "offsetY": 0,
+                "width": 15,
+                "height": 70,
+                "borderRadius": 6
+              }
+            ]
+          },
+          {
+            "id": "lowerLegR",
+            "name": "Lower Leg R",
+            "parentId": "upperLegR",
+            "x": 0,
+            "y": 70,
+            "rotation": 0,
+            "length": 72,
+            "zIndex": 2,
+            "colorToken": "pants",
+            "visuals": [
+              {
+                "type": "rect",
+                "fill": "#1e293b",
+                "offsetX": -7,
+                "offsetY": 0,
+                "width": 14,
+                "height": 72,
+                "borderRadius": 5
+              }
+            ]
+          },
+          {
+            "id": "footR",
+            "name": "Foot R",
+            "parentId": "lowerLegR",
+            "x": 0,
+            "y": 72,
+            "rotation": 0,
+            "length": 18,
+            "zIndex": 2,
+            "colorToken": "shoe",
+            "visuals": [
+              {
+                "type": "ellipse",
+                "fill": "#334155",
+                "cx": 0,
+                "cy": 6,
+                "rx": 15,
+                "ry": 9
+              }
+            ]
+          }
+        ],
+        "defaultPoseId": "idle"
+      },
+      "appearance": {
+        "skinColor": "#ffe0bd",
+        "hairColor": "#d4a843",
+        "eyeColor": "#6b7b3a",
+        "shirtColor": "#dc2626",
+        "pantsColor": "#374151",
+        "shoeColor": "#1f2937",
+        "hairStyle": "spiky"
+      },
+      "poses": [
+        {
+          "id": "idle",
+          "name": "Idle",
+          "category": "idle",
+          "icon": "user",
+          "boneTransforms": {}
+        },
+        {
+          "id": "wave",
+          "name": "Wave",
+          "category": "action",
+          "icon": "hand",
+          "boneTransforms": {
+            "upperArmR": {
+              "rotation": -130
+            },
+            "lowerArmR": {
+              "rotation": -40
+            },
+            "handR": {
+              "rotation": 10
+            },
+            "torso": {
+              "rotation": -2
+            },
+            "head": {
+              "rotation": 3
+            }
+          }
+        },
+        {
+          "id": "point",
+          "name": "Point",
+          "category": "action",
+          "icon": "pointer",
+          "boneTransforms": {
+            "upperArmR": {
+              "rotation": -100
+            },
+            "lowerArmR": {
+              "rotation": 0
+            },
+            "handR": {
+              "rotation": -5
+            },
+            "torso": {
+              "rotation": -3
+            },
+            "head": {
+              "rotation": 2
+            }
+          }
+        },
+        {
+          "id": "talk",
+          "name": "Talk",
+          "category": "action",
+          "icon": "message-square",
+          "boneTransforms": {
+            "upperArmR": {
+              "rotation": -40
+            },
+            "lowerArmR": {
+              "rotation": -30
+            },
+            "upperArmL": {
+              "rotation": 40
+            },
+            "lowerArmL": {
+              "rotation": 30
+            },
+            "torso": {
+              "rotation": -2
+            },
+            "head": {
+              "rotation": 1
+            }
+          }
+        },
+        {
+          "id": "think",
+          "name": "Think",
+          "category": "action",
+          "icon": "brain",
+          "boneTransforms": {
+            "upperArmR": {
+              "rotation": -80
+            },
+            "lowerArmR": {
+              "rotation": -90
+            },
+            "handR": {
+              "rotation": 15
+            },
+            "head": {
+              "rotation": 8,
+              "y": -2
+            },
+            "torso": {
+              "rotation": 2
+            }
+          }
+        },
+        {
+          "id": "celebrate",
+          "name": "Celebrate",
+          "category": "action",
+          "icon": "party-popper",
+          "boneTransforms": {
+            "upperArmR": {
+              "rotation": -150
+            },
+            "lowerArmR": {
+              "rotation": -20
+            },
+            "upperArmL": {
+              "rotation": 150
+            },
+            "lowerArmL": {
+              "rotation": 20
+            },
+            "head": {
+              "y": -3
+            },
+            "torso": {
+              "rotation": 0
+            }
+          }
+        },
+        {
+          "id": "sit",
+          "name": "Sit",
+          "category": "seated",
+          "icon": "armchair",
+          "boneTransforms": {
+            "upperLegL": {
+              "rotation": -85
+            },
+            "lowerLegL": {
+              "rotation": 85
+            },
+            "footL": {
+              "rotation": 5
+            },
+            "upperLegR": {
+              "rotation": -85
+            },
+            "lowerLegR": {
+              "rotation": 85
+            },
+            "footR": {
+              "rotation": 5
+            },
+            "root": {
+              "y": -20
+            }
+          }
+        },
+        {
+          "id": "walkA",
+          "name": "Walk A",
+          "category": "action",
+          "icon": "footprints",
+          "boneTransforms": {
+            "upperLegL": {
+              "rotation": -20
+            },
+            "lowerLegL": {
+              "rotation": 10
+            },
+            "upperLegR": {
+              "rotation": 15
+            },
+            "lowerLegR": {
+              "rotation": -25
+            },
+            "upperArmL": {
+              "rotation": 20
+            },
+            "upperArmR": {
+              "rotation": -20
+            },
+            "torso": {
+              "rotation": -1
+            }
+          }
+        },
+        {
+          "id": "walkB",
+          "name": "Walk B",
+          "category": "action",
+          "icon": "footprints",
+          "boneTransforms": {
+            "upperLegL": {
+              "rotation": 15
+            },
+            "lowerLegL": {
+              "rotation": -25
+            },
+            "upperLegR": {
+              "rotation": -20
+            },
+            "lowerLegR": {
+              "rotation": 10
+            },
+            "upperArmL": {
+              "rotation": -20
+            },
+            "upperArmR": {
+              "rotation": 20
+            },
+            "torso": {
+              "rotation": 1
+            }
+          }
+        },
+        {
+          "id": "present",
+          "name": "Present",
+          "category": "action",
+          "icon": "presentation",
+          "boneTransforms": {
+            "upperArmR": {
+              "rotation": -70
+            },
+            "lowerArmR": {
+              "rotation": -40
+            },
+            "upperArmL": {
+              "rotation": 70
+            },
+            "lowerArmL": {
+              "rotation": 40
+            },
+            "torso": {
+              "rotation": 0
+            },
+            "head": {
+              "rotation": 0,
+              "y": -1
+            }
+          }
+        },
+        {
+          "id": "standing",
+          "name": "Standing",
+          "category": "action",
+          "boneTransforms": {}
+        },
+        {
+          "id": "running",
+          "name": "Running",
+          "category": "action",
+          "boneTransforms": {
+            "upperLegL": {
+              "rotation": 45
+            },
+            "lowerLegR": {
+              "rotation": 70
+            },
+            "upperArmR": {
+              "rotation": -45
+            }
+          }
+        },
+        {
+          "id": "listening",
+          "name": "Listening",
+          "category": "action",
+          "boneTransforms": {
+            "head": {
+              "rotation": 8
+            }
+          }
+        },
+        {
+          "id": "surprised",
+          "name": "Surprised",
+          "category": "action",
+          "boneTransforms": {
+            "mouth": {
+              "scaleY": 3
+            },
+            "browL": {
+              "y": -4
+            },
+            "browR": {
+              "y": -4
+            }
+          }
+        },
+        {
+          "id": "happy",
+          "name": "Happy",
+          "category": "action",
+          "boneTransforms": {
+            "head": {
+              "rotation": 4
+            },
+            "mouth": {
+              "scaleX": 1.4
+            }
+          }
+        },
+        {
+          "id": "sad",
+          "name": "Sad",
+          "category": "action",
+          "boneTransforms": {
+            "head": {
+              "rotation": 12,
+              "y": 4
+            }
+          }
+        },
+        {
+          "id": "confused",
+          "name": "Confused",
+          "category": "action",
+          "boneTransforms": {
+            "head": {
+              "rotation": -12
+            }
+          }
+        },
+        {
+          "id": "working",
+          "name": "Working",
+          "category": "action",
+          "boneTransforms": {
+            "upperArmL": {
+              "rotation": -40
+            },
+            "upperArmR": {
+              "rotation": 40
+            },
+            "lowerArmL": {
+              "rotation": -60
+            },
+            "lowerArmR": {
+              "rotation": 60
+            }
+          }
+        },
+        {
+          "id": "typing",
+          "name": "Typing",
+          "category": "action",
+          "boneTransforms": {
+            "upperArmL": {
+              "rotation": -25
+            },
+            "upperArmR": {
+              "rotation": 25
+            },
+            "lowerArmL": {
+              "rotation": -70
+            },
+            "lowerArmR": {
+              "rotation": 70
+            }
+          }
+        },
+        {
+          "id": "pointLeft",
+          "name": "Point left",
+          "category": "action",
+          "boneTransforms": {
+            "upperArmL": {
+              "rotation": 85
+            },
+            "lowerArmL": {
+              "rotation": 0
+            }
+          }
+        },
+        {
+          "id": "jump",
+          "name": "Jump",
+          "category": "action",
+          "boneTransforms": {
+            "root": {
+              "y": -40
+            },
+            "upperArmL": {
+              "rotation": 140
+            },
+            "upperArmR": {
+              "rotation": -140
+            }
+          }
+        },
+        {
+          "id": "nod",
+          "name": "Nod",
+          "category": "action",
+          "boneTransforms": {
+            "head": {
+              "rotation": 10,
+              "y": 3
+            }
+          }
+        },
+        {
+          "id": "shakeHead",
+          "name": "Shake head",
+          "category": "action",
+          "boneTransforms": {
+            "head": {
+              "rotation": -12
+            }
+          }
+        },
+        {
+          "id": "standing",
+          "name": "Standing",
+          "category": "action",
+          "boneTransforms": {}
+        },
+        {
+          "id": "running",
+          "name": "Running",
+          "category": "action",
+          "boneTransforms": {
+            "upperLegL": {
+              "rotation": 45
+            },
+            "lowerLegR": {
+              "rotation": 70
+            },
+            "upperArmR": {
+              "rotation": -45
+            }
+          }
+        },
+        {
+          "id": "listening",
+          "name": "Listening",
+          "category": "action",
+          "boneTransforms": {
+            "head": {
+              "rotation": 8
+            }
+          }
+        },
+        {
+          "id": "surprised",
+          "name": "Surprised",
+          "category": "action",
+          "boneTransforms": {
+            "mouth": {
+              "scaleY": 3
+            },
+            "browL": {
+              "y": -4
+            },
+            "browR": {
+              "y": -4
+            }
+          }
+        },
+        {
+          "id": "happy",
+          "name": "Happy",
+          "category": "action",
+          "boneTransforms": {
+            "head": {
+              "rotation": 4
+            },
+            "mouth": {
+              "scaleX": 1.4
+            }
+          }
+        },
+        {
+          "id": "sad",
+          "name": "Sad",
+          "category": "action",
+          "boneTransforms": {
+            "head": {
+              "rotation": 12,
+              "y": 4
+            }
+          }
+        },
+        {
+          "id": "confused",
+          "name": "Confused",
+          "category": "action",
+          "boneTransforms": {
+            "head": {
+              "rotation": -12
+            }
+          }
+        },
+        {
+          "id": "working",
+          "name": "Working",
+          "category": "action",
+          "boneTransforms": {
+            "upperArmL": {
+              "rotation": -40
+            },
+            "upperArmR": {
+              "rotation": 40
+            },
+            "lowerArmL": {
+              "rotation": -60
+            },
+            "lowerArmR": {
+              "rotation": 60
+            }
+          }
+        },
+        {
+          "id": "typing",
+          "name": "Typing",
+          "category": "action",
+          "boneTransforms": {
+            "upperArmL": {
+              "rotation": -25
+            },
+            "upperArmR": {
+              "rotation": 25
+            },
+            "lowerArmL": {
+              "rotation": -70
+            },
+            "lowerArmR": {
+              "rotation": 70
+            }
+          }
+        },
+        {
+          "id": "pointLeft",
+          "name": "Point left",
+          "category": "action",
+          "boneTransforms": {
+            "upperArmL": {
+              "rotation": 85
+            },
+            "lowerArmL": {
+              "rotation": 0
+            }
+          }
+        },
+        {
+          "id": "jump",
+          "name": "Jump",
+          "category": "action",
+          "boneTransforms": {
+            "root": {
+              "y": -40
+            },
+            "upperArmL": {
+              "rotation": 140
+            },
+            "upperArmR": {
+              "rotation": -140
+            }
+          }
+        },
+        {
+          "id": "nod",
+          "name": "Nod",
+          "category": "action",
+          "boneTransforms": {
+            "head": {
+              "rotation": 10,
+              "y": 3
+            }
+          }
+        },
+        {
+          "id": "shakeHead",
+          "name": "Shake head",
+          "category": "action",
+          "boneTransforms": {
+            "head": {
+              "rotation": -12
+            }
+          }
+        },
+        {
+          "id": "standing",
+          "name": "Standing",
+          "category": "action",
+          "boneTransforms": {}
+        },
+        {
+          "id": "running",
+          "name": "Running",
+          "category": "action",
+          "boneTransforms": {
+            "upperLegL": {
+              "rotation": 45
+            },
+            "lowerLegR": {
+              "rotation": 70
+            },
+            "upperArmR": {
+              "rotation": -45
+            }
+          }
+        },
+        {
+          "id": "listening",
+          "name": "Listening",
+          "category": "action",
+          "boneTransforms": {
+            "head": {
+              "rotation": 8
+            }
+          }
+        },
+        {
+          "id": "surprised",
+          "name": "Surprised",
+          "category": "action",
+          "boneTransforms": {
+            "mouth": {
+              "scaleY": 3
+            },
+            "browL": {
+              "y": -4
+            },
+            "browR": {
+              "y": -4
+            }
+          }
+        },
+        {
+          "id": "happy",
+          "name": "Happy",
+          "category": "action",
+          "boneTransforms": {
+            "head": {
+              "rotation": 4
+            },
+            "mouth": {
+              "scaleX": 1.4
+            }
+          }
+        },
+        {
+          "id": "sad",
+          "name": "Sad",
+          "category": "action",
+          "boneTransforms": {
+            "head": {
+              "rotation": 12,
+              "y": 4
+            }
+          }
+        },
+        {
+          "id": "confused",
+          "name": "Confused",
+          "category": "action",
+          "boneTransforms": {
+            "head": {
+              "rotation": -12
+            }
+          }
+        },
+        {
+          "id": "working",
+          "name": "Working",
+          "category": "action",
+          "boneTransforms": {
+            "upperArmL": {
+              "rotation": -40
+            },
+            "upperArmR": {
+              "rotation": 40
+            },
+            "lowerArmL": {
+              "rotation": -60
+            },
+            "lowerArmR": {
+              "rotation": 60
+            }
+          }
+        },
+        {
+          "id": "typing",
+          "name": "Typing",
+          "category": "action",
+          "boneTransforms": {
+            "upperArmL": {
+              "rotation": -25
+            },
+            "upperArmR": {
+              "rotation": 25
+            },
+            "lowerArmL": {
+              "rotation": -70
+            },
+            "lowerArmR": {
+              "rotation": 70
+            }
+          }
+        },
+        {
+          "id": "pointLeft",
+          "name": "Point left",
+          "category": "action",
+          "boneTransforms": {
+            "upperArmL": {
+              "rotation": 85
+            },
+            "lowerArmL": {
+              "rotation": 0
+            }
+          }
+        },
+        {
+          "id": "jump",
+          "name": "Jump",
+          "category": "action",
+          "boneTransforms": {
+            "root": {
+              "y": -40
+            },
+            "upperArmL": {
+              "rotation": 140
+            },
+            "upperArmR": {
+              "rotation": -140
+            }
+          }
+        },
+        {
+          "id": "nod",
+          "name": "Nod",
+          "category": "action",
+          "boneTransforms": {
+            "head": {
+              "rotation": 10,
+              "y": 3
+            }
+          }
+        },
+        {
+          "id": "shakeHead",
+          "name": "Shake head",
+          "category": "action",
+          "boneTransforms": {
+            "head": {
+              "rotation": -12
+            }
+          }
+        },
+        {
+          "id": "standing",
+          "name": "Standing",
+          "category": "action",
+          "boneTransforms": {}
+        },
+        {
+          "id": "running",
+          "name": "Running",
+          "category": "action",
+          "boneTransforms": {
+            "upperLegL": {
+              "rotation": 45
+            },
+            "lowerLegR": {
+              "rotation": 70
+            },
+            "upperArmR": {
+              "rotation": -45
+            }
+          }
+        },
+        {
+          "id": "listening",
+          "name": "Listening",
+          "category": "action",
+          "boneTransforms": {
+            "head": {
+              "rotation": 8
+            }
+          }
+        },
+        {
+          "id": "surprised",
+          "name": "Surprised",
+          "category": "action",
+          "boneTransforms": {
+            "mouth": {
+              "scaleY": 3
+            },
+            "browL": {
+              "y": -4
+            },
+            "browR": {
+              "y": -4
+            }
+          }
+        },
+        {
+          "id": "happy",
+          "name": "Happy",
+          "category": "action",
+          "boneTransforms": {
+            "head": {
+              "rotation": 4
+            },
+            "mouth": {
+              "scaleX": 1.4
+            }
+          }
+        },
+        {
+          "id": "sad",
+          "name": "Sad",
+          "category": "action",
+          "boneTransforms": {
+            "head": {
+              "rotation": 12,
+              "y": 4
+            }
+          }
+        },
+        {
+          "id": "confused",
+          "name": "Confused",
+          "category": "action",
+          "boneTransforms": {
+            "head": {
+              "rotation": -12
+            }
+          }
+        },
+        {
+          "id": "working",
+          "name": "Working",
+          "category": "action",
+          "boneTransforms": {
+            "upperArmL": {
+              "rotation": -40
+            },
+            "upperArmR": {
+              "rotation": 40
+            },
+            "lowerArmL": {
+              "rotation": -60
+            },
+            "lowerArmR": {
+              "rotation": 60
+            }
+          }
+        },
+        {
+          "id": "typing",
+          "name": "Typing",
+          "category": "action",
+          "boneTransforms": {
+            "upperArmL": {
+              "rotation": -25
+            },
+            "upperArmR": {
+              "rotation": 25
+            },
+            "lowerArmL": {
+              "rotation": -70
+            },
+            "lowerArmR": {
+              "rotation": 70
+            }
+          }
+        },
+        {
+          "id": "pointLeft",
+          "name": "Point left",
+          "category": "action",
+          "boneTransforms": {
+            "upperArmL": {
+              "rotation": 85
+            },
+            "lowerArmL": {
+              "rotation": 0
+            }
+          }
+        },
+        {
+          "id": "jump",
+          "name": "Jump",
+          "category": "action",
+          "boneTransforms": {
+            "root": {
+              "y": -40
+            },
+            "upperArmL": {
+              "rotation": 140
+            },
+            "upperArmR": {
+              "rotation": -140
+            }
+          }
+        },
+        {
+          "id": "nod",
+          "name": "Nod",
+          "category": "action",
+          "boneTransforms": {
+            "head": {
+              "rotation": 10,
+              "y": 3
+            }
+          }
+        },
+        {
+          "id": "shakeHead",
+          "name": "Shake head",
+          "category": "action",
+          "boneTransforms": {
+            "head": {
+              "rotation": -12
+            }
+          }
+        }
+      ],
+      "voicePitch": 0.75,
+      "voiceRate": 1,
+      "representation": {
+        "type": "rigged"
+      },
+      "expressions": [
+        {
+          "id": "neutral",
+          "name": "Neutral",
+          "boneTransforms": {}
+        },
+        {
+          "id": "surprised",
+          "name": "Surprised",
+          "boneTransforms": {
+            "mouth": {
+              "scaleY": 3
+            },
+            "browL": {
+              "y": -4
+            },
+            "browR": {
+              "y": -4
+            }
+          }
+        },
+        {
+          "id": "happy",
+          "name": "Happy",
+          "boneTransforms": {
+            "head": {
+              "rotation": 4
+            },
+            "mouth": {
+              "scaleX": 1.4
+            }
+          }
+        },
+        {
+          "id": "sad",
+          "name": "Sad",
+          "boneTransforms": {
+            "head": {
+              "rotation": 12,
+              "y": 4
+            }
+          }
+        },
+        {
+          "id": "confused",
+          "name": "Confused",
+          "boneTransforms": {
+            "head": {
+              "rotation": -12
+            }
+          }
+        },
+        {
+          "id": "thinking",
+          "name": "Thinking",
+          "boneTransforms": {
+            "head": {
+              "rotation": -10
+            },
+            "browL": {
+              "rotation": 8
+            }
+          }
+        },
+        {
+          "id": "angry",
+          "name": "Angry",
+          "boneTransforms": {
+            "browL": {
+              "rotation": 20
+            },
+            "browR": {
+              "rotation": -20
+            }
+          }
+        },
+        {
+          "id": "speaking",
+          "name": "Speaking",
+          "boneTransforms": {
+            "mouth": {
+              "scaleY": 1.7
+            }
+          }
+        }
+      ],
+      "animations": [
+        {
+          "id": "max-rigged-animation-idle",
+          "characterId": "max-rigged",
+          "elementId": "",
+          "name": "Idle",
+          "duration": 2,
+          "loop": true,
+          "keyframes": [
+            {
+              "id": "a0",
+              "time": 0,
+              "poseId": "idle",
+              "easing": "easeInOut"
+            },
+            {
+              "id": "b0",
+              "time": 0.6,
+              "poseId": "idle",
+              "easing": "easeInOut"
+            },
+            {
+              "id": "c0",
+              "time": 1.7,
+              "poseId": "idle",
+              "easing": "easeInOut"
+            }
+          ]
+        },
+        {
+          "id": "max-rigged-animation-walkA",
+          "characterId": "max-rigged",
+          "elementId": "",
+          "name": "Walk",
+          "duration": 2,
+          "loop": true,
+          "keyframes": [
+            {
+              "id": "a1",
+              "time": 0,
+              "poseId": "walkA",
+              "easing": "easeInOut"
+            },
+            {
+              "id": "b1",
+              "time": 0.6,
+              "poseId": "walkB",
+              "easing": "easeInOut"
+            },
+            {
+              "id": "c1",
+              "time": 1.7,
+              "poseId": "walkA",
+              "easing": "easeInOut"
+            }
+          ]
+        },
+        {
+          "id": "max-rigged-animation-running",
+          "characterId": "max-rigged",
+          "elementId": "",
+          "name": "Running",
+          "duration": 2,
+          "loop": true,
+          "keyframes": [
+            {
+              "id": "a2",
+              "time": 0,
+              "poseId": "idle",
+              "easing": "easeInOut"
+            },
+            {
+              "id": "b2",
+              "time": 0.6,
+              "poseId": "running",
+              "easing": "easeInOut"
+            },
+            {
+              "id": "c2",
+              "time": 1.7,
+              "poseId": "idle",
+              "easing": "easeInOut"
+            }
+          ]
+        },
+        {
+          "id": "max-rigged-animation-jump",
+          "characterId": "max-rigged",
+          "elementId": "",
+          "name": "Jump",
+          "duration": 2,
+          "loop": false,
+          "keyframes": [
+            {
+              "id": "a3",
+              "time": 0,
+              "poseId": "idle",
+              "easing": "easeInOut"
+            },
+            {
+              "id": "b3",
+              "time": 0.6,
+              "poseId": "jump",
+              "easing": "easeInOut"
+            },
+            {
+              "id": "c3",
+              "time": 1.7,
+              "poseId": "idle",
+              "easing": "easeInOut"
+            }
+          ]
+        },
+        {
+          "id": "max-rigged-animation-wave",
+          "characterId": "max-rigged",
+          "elementId": "",
+          "name": "Wave",
+          "duration": 2,
+          "loop": false,
+          "keyframes": [
+            {
+              "id": "a4",
+              "time": 0,
+              "poseId": "idle",
+              "easing": "easeInOut"
+            },
+            {
+              "id": "b4",
+              "time": 0.6,
+              "poseId": "wave",
+              "easing": "easeInOut"
+            },
+            {
+              "id": "c4",
+              "time": 1.7,
+              "poseId": "idle",
+              "easing": "easeInOut"
+            }
+          ]
+        },
+        {
+          "id": "max-rigged-animation-talk",
+          "characterId": "max-rigged",
+          "elementId": "",
+          "name": "Talk",
+          "duration": 2,
+          "loop": true,
+          "keyframes": [
+            {
+              "id": "a5",
+              "time": 0,
+              "poseId": "idle",
+              "easing": "easeInOut"
+            },
+            {
+              "id": "b5",
+              "time": 0.6,
+              "poseId": "talk",
+              "easing": "easeInOut"
+            },
+            {
+              "id": "c5",
+              "time": 1.7,
+              "poseId": "idle",
+              "easing": "easeInOut"
+            }
+          ]
+        },
+        {
+          "id": "max-rigged-animation-point",
+          "characterId": "max-rigged",
+          "elementId": "",
+          "name": "Point",
+          "duration": 2,
+          "loop": false,
+          "keyframes": [
+            {
+              "id": "a6",
+              "time": 0,
+              "poseId": "idle",
+              "easing": "easeInOut"
+            },
+            {
+              "id": "b6",
+              "time": 0.6,
+              "poseId": "point",
+              "easing": "easeInOut"
+            },
+            {
+              "id": "c6",
+              "time": 1.7,
+              "poseId": "idle",
+              "easing": "easeInOut"
+            }
+          ]
+        },
+        {
+          "id": "max-rigged-animation-think",
+          "characterId": "max-rigged",
+          "elementId": "",
+          "name": "Think",
+          "duration": 2,
+          "loop": false,
+          "keyframes": [
+            {
+              "id": "a7",
+              "time": 0,
+              "poseId": "idle",
+              "easing": "easeInOut"
+            },
+            {
+              "id": "b7",
+              "time": 0.6,
+              "poseId": "think",
+              "easing": "easeInOut"
+            },
+            {
+              "id": "c7",
+              "time": 1.7,
+              "poseId": "idle",
+              "easing": "easeInOut"
+            }
+          ]
+        },
+        {
+          "id": "max-rigged-animation-sit",
+          "characterId": "max-rigged",
+          "elementId": "",
+          "name": "Sit",
+          "duration": 2,
+          "loop": false,
+          "keyframes": [
+            {
+              "id": "a8",
+              "time": 0,
+              "poseId": "idle",
+              "easing": "easeInOut"
+            },
+            {
+              "id": "b8",
+              "time": 0.6,
+              "poseId": "sit",
+              "easing": "easeInOut"
+            },
+            {
+              "id": "c8",
+              "time": 1.7,
+              "poseId": "idle",
+              "easing": "easeInOut"
+            }
+          ]
+        },
+        {
+          "id": "max-rigged-animation-standing",
+          "characterId": "max-rigged",
+          "elementId": "",
+          "name": "Standing",
+          "duration": 2,
+          "loop": false,
+          "keyframes": [
+            {
+              "id": "a9",
+              "time": 0,
+              "poseId": "idle",
+              "easing": "easeInOut"
+            },
+            {
+              "id": "b9",
+              "time": 0.6,
+              "poseId": "standing",
+              "easing": "easeInOut"
+            },
+            {
+              "id": "c9",
+              "time": 1.7,
+              "poseId": "idle",
+              "easing": "easeInOut"
+            }
+          ]
+        },
+        {
+          "id": "max-rigged-animation-celebrate",
+          "characterId": "max-rigged",
+          "elementId": "",
+          "name": "Celebrate",
+          "duration": 2,
+          "loop": false,
+          "keyframes": [
+            {
+              "id": "a10",
+              "time": 0,
+              "poseId": "idle",
+              "easing": "easeInOut"
+            },
+            {
+              "id": "b10",
+              "time": 0.6,
+              "poseId": "celebrate",
+              "easing": "easeInOut"
+            },
+            {
+              "id": "c10",
+              "time": 1.7,
+              "poseId": "idle",
+              "easing": "easeInOut"
+            }
+          ]
+        },
+        {
+          "id": "max-rigged-animation-shakeHead",
+          "characterId": "max-rigged",
+          "elementId": "",
+          "name": "ShakeHead",
+          "duration": 2,
+          "loop": false,
+          "keyframes": [
+            {
+              "id": "a11",
+              "time": 0,
+              "poseId": "idle",
+              "easing": "easeInOut"
+            },
+            {
+              "id": "b11",
+              "time": 0.6,
+              "poseId": "shakeHead",
+              "easing": "easeInOut"
+            },
+            {
+              "id": "c11",
+              "time": 1.7,
+              "poseId": "idle",
+              "easing": "easeInOut"
+            }
+          ]
+        },
+        {
+          "id": "max-rigged-animation-nod",
+          "characterId": "max-rigged",
+          "elementId": "",
+          "name": "Nod",
+          "duration": 2,
+          "loop": false,
+          "keyframes": [
+            {
+              "id": "a12",
+              "time": 0,
+              "poseId": "idle",
+              "easing": "easeInOut"
+            },
+            {
+              "id": "b12",
+              "time": 0.6,
+              "poseId": "nod",
+              "easing": "easeInOut"
+            },
+            {
+              "id": "c12",
+              "time": 1.7,
+              "poseId": "idle",
+              "easing": "easeInOut"
+            }
+          ]
+        }
+      ],
+      "variants": []
+    },
+    {
+      "id": "mia-rigged",
+      "version": "1.0",
+      "name": "Mia",
+      "gender": "female",
+      "rig": {
+        "id": "mia-rig",
+        "name": "Mia Rig",
+        "bones": [
+          {
+            "id": "root",
+            "name": "Root",
+            "parentId": null,
+            "x": 120,
+            "y": 230,
+            "rotation": 0,
+            "length": 0,
+            "zIndex": 0,
+            "visuals": []
+          },
+          {
+            "id": "torso",
+            "name": "Torso",
+            "parentId": "root",
+            "x": 0,
+            "y": 0,
+            "rotation": 0,
+            "length": 120,
+            "zIndex": 5,
+            "colorToken": "shirt",
+            "visuals": [
+              {
+                "type": "rect",
+                "fill": "#2563eb",
+                "offsetX": -32,
+                "offsetY": -120,
+                "width": 64,
+                "height": 120,
+                "borderRadius": 14
+              },
+              {
+                "type": "path",
+                "fill": "#f4c7a3",
+                "d": "M -12 -120 Q 0 -110 12 -120",
+                "stroke": "#f4c7a3",
+                "strokeWidth": 2
+              }
+            ]
+          },
+          {
+            "id": "neck",
+            "name": "Neck",
+            "parentId": "torso",
+            "x": 0,
+            "y": -120,
+            "rotation": 0,
+            "length": 16,
+            "zIndex": 4,
+            "colorToken": "skin",
+            "visuals": [
+              {
+                "type": "rect",
+                "fill": "#f4c7a3",
+                "offsetX": -7,
+                "offsetY": -16,
+                "width": 14,
+                "height": 16,
+                "borderRadius": 5
+              }
+            ]
+          },
+          {
+            "id": "head",
+            "name": "Head",
+            "parentId": "neck",
+            "x": 0,
+            "y": -16,
+            "rotation": 0,
+            "length": 76,
+            "zIndex": 10,
+            "colorToken": "skin",
+            "visuals": [
+              {
+                "type": "ellipse",
+                "fill": "#f4c7a3",
+                "cx": -32,
+                "cy": -38,
+                "rx": 6,
+                "ry": 8
+              },
+              {
+                "type": "ellipse",
+                "fill": "#f4c7a3",
+                "cx": 32,
+                "cy": -38,
+                "rx": 6,
+                "ry": 8
+              },
+              {
+                "type": "ellipse",
+                "fill": "#f4c7a3",
+                "cx": 0,
+                "cy": -38,
+                "rx": 32,
+                "ry": 38
+              }
+            ]
+          },
+          {
+            "id": "hair",
+            "name": "Hair",
+            "parentId": "head",
+            "x": 0,
+            "y": 0,
+            "rotation": 0,
+            "length": 0,
+            "zIndex": 11,
+            "colorToken": "hair",
+            "visuals": [
+              {
+                "type": "path",
+                "fill": "#5b3a20",
+                "d": "M -29 -32 Q -30 -62 0 -77 Q 30 -62 29 -32"
+              }
+            ]
+          },
+          {
+            "id": "eyeL",
+            "name": "Left Eye",
+            "parentId": "head",
+            "x": -12,
+            "y": -44,
+            "rotation": 0,
+            "length": 0,
+            "zIndex": 12,
+            "colorToken": "eye",
+            "visuals": [
+              {
+                "type": "ellipse",
+                "fill": "white",
+                "cx": 0,
+                "cy": 0,
+                "rx": 7,
+                "ry": 5.5,
+                "stroke": "#c4a882",
+                "strokeWidth": 0.5
+              },
+              {
+                "type": "circle",
+                "fill": "#3b6fb5",
+                "cx": 0,
+                "cy": 0,
+                "r": 4.5
+              },
+              {
+                "type": "circle",
+                "fill": "#111",
+                "cx": 0,
+                "cy": 0,
+                "r": 2.2
+              },
+              {
+                "type": "circle",
+                "fill": "white",
+                "cx": -1.2,
+                "cy": -1.5,
+                "r": 1,
+                "opacity": 0.9
+              }
+            ]
+          },
+          {
+            "id": "eyeR",
+            "name": "Right Eye",
+            "parentId": "head",
+            "x": 12,
+            "y": -44,
+            "rotation": 0,
+            "length": 0,
+            "zIndex": 12,
+            "colorToken": "eye",
+            "visuals": [
+              {
+                "type": "ellipse",
+                "fill": "white",
+                "cx": 0,
+                "cy": 0,
+                "rx": 7,
+                "ry": 5.5,
+                "stroke": "#c4a882",
+                "strokeWidth": 0.5
+              },
+              {
+                "type": "circle",
+                "fill": "#3b6fb5",
+                "cx": 0,
+                "cy": 0,
+                "r": 4.5
+              },
+              {
+                "type": "circle",
+                "fill": "#111",
+                "cx": 0,
+                "cy": 0,
+                "r": 2.2
+              },
+              {
+                "type": "circle",
+                "fill": "white",
+                "cx": -1.2,
+                "cy": -1.5,
+                "r": 1,
+                "opacity": 0.9
+              }
+            ]
+          },
+          {
+            "id": "browL",
+            "name": "Left Brow",
+            "parentId": "head",
+            "x": -12,
+            "y": -52,
+            "rotation": 0,
+            "length": 0,
+            "zIndex": 13,
+            "colorToken": "hair",
+            "visuals": [
+              {
+                "type": "path",
+                "fill": "none",
+                "d": "M -6 0 Q 0 -3 6 0.5",
+                "stroke": "#5b3a20",
+                "strokeWidth": 2.2
+              }
+            ]
+          },
+          {
+            "id": "browR",
+            "name": "Right Brow",
+            "parentId": "head",
+            "x": 12,
+            "y": -52,
+            "rotation": 0,
+            "length": 0,
+            "zIndex": 13,
+            "colorToken": "hair",
+            "visuals": [
+              {
+                "type": "path",
+                "fill": "none",
+                "d": "M -6 0.5 Q 0 -3 6 0",
+                "stroke": "#5b3a20",
+                "strokeWidth": 2.2
+              }
+            ]
+          },
+          {
+            "id": "mouth",
+            "name": "Mouth",
+            "parentId": "head",
+            "x": 0,
+            "y": -24,
+            "rotation": 0,
+            "length": 0,
+            "zIndex": 12,
+            "visuals": [
+              {
+                "type": "ellipse",
+                "cx": 0,
+                "cy": 0,
+                "rx": 7,
+                "ry": 2,
+                "fill": "#7f1d1d"
+              }
+            ]
+          },
+          {
+            "id": "nose",
+            "name": "Nose",
+            "parentId": "head",
+            "x": 0,
+            "y": -36,
+            "rotation": 0,
+            "length": 0,
+            "zIndex": 12,
+            "visuals": [
+              {
+                "type": "path",
+                "fill": "none",
+                "d": "M -1 0 Q 0 4 2 2 Q 4 1 3 -1",
+                "stroke": "#d4a070",
+                "strokeWidth": 1.2
+              }
+            ]
+          },
+          {
+            "id": "upperArmL",
+            "name": "Upper Arm L",
+            "parentId": "torso",
+            "x": -32,
+            "y": -112,
+            "rotation": 10,
+            "length": 55,
+            "zIndex": 3,
+            "colorToken": "skin",
+            "visuals": [
+              {
+                "type": "rect",
+                "fill": "#f4c7a3",
+                "offsetX": -6.5,
+                "offsetY": 0,
+                "width": 13,
+                "height": 55,
+                "borderRadius": 6
+              }
+            ]
+          },
+          {
+            "id": "lowerArmL",
+            "name": "Lower Arm L",
+            "parentId": "upperArmL",
+            "x": 0,
+            "y": 55,
+            "rotation": 0,
+            "length": 50,
+            "zIndex": 3,
+            "colorToken": "skin",
+            "visuals": [
+              {
+                "type": "rect",
+                "fill": "#f4c7a3",
+                "offsetX": -5.5,
+                "offsetY": 0,
+                "width": 11,
+                "height": 50,
+                "borderRadius": 5
+              }
+            ]
+          },
+          {
+            "id": "handL",
+            "name": "Hand L",
+            "parentId": "lowerArmL",
+            "x": 0,
+            "y": 50,
+            "rotation": 0,
+            "length": 12,
+            "zIndex": 3,
+            "colorToken": "skin",
+            "visuals": [
+              {
+                "type": "ellipse",
+                "fill": "#f4c7a3",
+                "cx": 0,
+                "cy": 6,
+                "rx": 7,
+                "ry": 8
+              }
+            ]
+          },
+          {
+            "id": "upperArmR",
+            "name": "Upper Arm R",
+            "parentId": "torso",
+            "x": 32,
+            "y": -112,
+            "rotation": -10,
+            "length": 55,
+            "zIndex": 3,
+            "colorToken": "skin",
+            "visuals": [
+              {
+                "type": "rect",
+                "fill": "#f4c7a3",
+                "offsetX": -6.5,
+                "offsetY": 0,
+                "width": 13,
+                "height": 55,
+                "borderRadius": 6
+              }
+            ]
+          },
+          {
+            "id": "lowerArmR",
+            "name": "Lower Arm R",
+            "parentId": "upperArmR",
+            "x": 0,
+            "y": 55,
+            "rotation": 0,
+            "length": 50,
+            "zIndex": 3,
+            "colorToken": "skin",
+            "visuals": [
+              {
+                "type": "rect",
+                "fill": "#f4c7a3",
+                "offsetX": -5.5,
+                "offsetY": 0,
+                "width": 11,
+                "height": 50,
+                "borderRadius": 5
+              }
+            ]
+          },
+          {
+            "id": "handR",
+            "name": "Hand R",
+            "parentId": "lowerArmR",
+            "x": 0,
+            "y": 50,
+            "rotation": 0,
+            "length": 12,
+            "zIndex": 3,
+            "colorToken": "skin",
+            "visuals": [
+              {
+                "type": "ellipse",
+                "fill": "#f4c7a3",
+                "cx": 0,
+                "cy": 6,
+                "rx": 7,
+                "ry": 8
+              }
+            ]
+          },
+          {
+            "id": "upperLegL",
+            "name": "Upper Leg L",
+            "parentId": "root",
+            "x": -14,
+            "y": 0,
+            "rotation": 0,
+            "length": 70,
+            "zIndex": 2,
+            "colorToken": "pants",
+            "visuals": [
+              {
+                "type": "rect",
+                "fill": "#1e293b",
+                "offsetX": -7.5,
+                "offsetY": 0,
+                "width": 15,
+                "height": 70,
+                "borderRadius": 6
+              }
+            ]
+          },
+          {
+            "id": "lowerLegL",
+            "name": "Lower Leg L",
+            "parentId": "upperLegL",
+            "x": 0,
+            "y": 70,
+            "rotation": 0,
+            "length": 72,
+            "zIndex": 2,
+            "colorToken": "pants",
+            "visuals": [
+              {
+                "type": "rect",
+                "fill": "#1e293b",
+                "offsetX": -7,
+                "offsetY": 0,
+                "width": 14,
+                "height": 72,
+                "borderRadius": 5
+              }
+            ]
+          },
+          {
+            "id": "footL",
+            "name": "Foot L",
+            "parentId": "lowerLegL",
+            "x": 0,
+            "y": 72,
+            "rotation": 0,
+            "length": 18,
+            "zIndex": 2,
+            "colorToken": "shoe",
+            "visuals": [
+              {
+                "type": "ellipse",
+                "fill": "#334155",
+                "cx": 0,
+                "cy": 6,
+                "rx": 15,
+                "ry": 9
+              }
+            ]
+          },
+          {
+            "id": "upperLegR",
+            "name": "Upper Leg R",
+            "parentId": "root",
+            "x": 14,
+            "y": 0,
+            "rotation": 0,
+            "length": 70,
+            "zIndex": 2,
+            "colorToken": "pants",
+            "visuals": [
+              {
+                "type": "rect",
+                "fill": "#1e293b",
+                "offsetX": -7.5,
+                "offsetY": 0,
+                "width": 15,
+                "height": 70,
+                "borderRadius": 6
+              }
+            ]
+          },
+          {
+            "id": "lowerLegR",
+            "name": "Lower Leg R",
+            "parentId": "upperLegR",
+            "x": 0,
+            "y": 70,
+            "rotation": 0,
+            "length": 72,
+            "zIndex": 2,
+            "colorToken": "pants",
+            "visuals": [
+              {
+                "type": "rect",
+                "fill": "#1e293b",
+                "offsetX": -7,
+                "offsetY": 0,
+                "width": 14,
+                "height": 72,
+                "borderRadius": 5
+              }
+            ]
+          },
+          {
+            "id": "footR",
+            "name": "Foot R",
+            "parentId": "lowerLegR",
+            "x": 0,
+            "y": 72,
+            "rotation": 0,
+            "length": 18,
+            "zIndex": 2,
+            "colorToken": "shoe",
+            "visuals": [
+              {
+                "type": "ellipse",
+                "fill": "#334155",
+                "cx": 0,
+                "cy": 6,
+                "rx": 15,
+                "ry": 9
+              }
+            ]
+          }
+        ],
+        "defaultPoseId": "idle"
+      },
+      "appearance": {
+        "skinColor": "#8d5524",
+        "hairColor": "#1a1a1a",
+        "eyeColor": "#5a3825",
+        "shirtColor": "#f59e0b",
+        "pantsColor": "#1e293b",
+        "shoeColor": "#44403c",
+        "hairStyle": "curly"
+      },
+      "poses": [
+        {
+          "id": "idle",
+          "name": "Idle",
+          "category": "idle",
+          "icon": "user",
+          "boneTransforms": {}
+        },
+        {
+          "id": "wave",
+          "name": "Wave",
+          "category": "action",
+          "icon": "hand",
+          "boneTransforms": {
+            "upperArmR": {
+              "rotation": -130
+            },
+            "lowerArmR": {
+              "rotation": -40
+            },
+            "handR": {
+              "rotation": 10
+            },
+            "torso": {
+              "rotation": -2
+            },
+            "head": {
+              "rotation": 3
+            }
+          }
+        },
+        {
+          "id": "point",
+          "name": "Point",
+          "category": "action",
+          "icon": "pointer",
+          "boneTransforms": {
+            "upperArmR": {
+              "rotation": -100
+            },
+            "lowerArmR": {
+              "rotation": 0
+            },
+            "handR": {
+              "rotation": -5
+            },
+            "torso": {
+              "rotation": -3
+            },
+            "head": {
+              "rotation": 2
+            }
+          }
+        },
+        {
+          "id": "talk",
+          "name": "Talk",
+          "category": "action",
+          "icon": "message-square",
+          "boneTransforms": {
+            "upperArmR": {
+              "rotation": -40
+            },
+            "lowerArmR": {
+              "rotation": -30
+            },
+            "upperArmL": {
+              "rotation": 40
+            },
+            "lowerArmL": {
+              "rotation": 30
+            },
+            "torso": {
+              "rotation": -2
+            },
+            "head": {
+              "rotation": 1
+            }
+          }
+        },
+        {
+          "id": "think",
+          "name": "Think",
+          "category": "action",
+          "icon": "brain",
+          "boneTransforms": {
+            "upperArmR": {
+              "rotation": -80
+            },
+            "lowerArmR": {
+              "rotation": -90
+            },
+            "handR": {
+              "rotation": 15
+            },
+            "head": {
+              "rotation": 8,
+              "y": -2
+            },
+            "torso": {
+              "rotation": 2
+            }
+          }
+        },
+        {
+          "id": "celebrate",
+          "name": "Celebrate",
+          "category": "action",
+          "icon": "party-popper",
+          "boneTransforms": {
+            "upperArmR": {
+              "rotation": -150
+            },
+            "lowerArmR": {
+              "rotation": -20
+            },
+            "upperArmL": {
+              "rotation": 150
+            },
+            "lowerArmL": {
+              "rotation": 20
+            },
+            "head": {
+              "y": -3
+            },
+            "torso": {
+              "rotation": 0
+            }
+          }
+        },
+        {
+          "id": "sit",
+          "name": "Sit",
+          "category": "seated",
+          "icon": "armchair",
+          "boneTransforms": {
+            "upperLegL": {
+              "rotation": -85
+            },
+            "lowerLegL": {
+              "rotation": 85
+            },
+            "footL": {
+              "rotation": 5
+            },
+            "upperLegR": {
+              "rotation": -85
+            },
+            "lowerLegR": {
+              "rotation": 85
+            },
+            "footR": {
+              "rotation": 5
+            },
+            "root": {
+              "y": -20
+            }
+          }
+        },
+        {
+          "id": "walkA",
+          "name": "Walk A",
+          "category": "action",
+          "icon": "footprints",
+          "boneTransforms": {
+            "upperLegL": {
+              "rotation": -20
+            },
+            "lowerLegL": {
+              "rotation": 10
+            },
+            "upperLegR": {
+              "rotation": 15
+            },
+            "lowerLegR": {
+              "rotation": -25
+            },
+            "upperArmL": {
+              "rotation": 20
+            },
+            "upperArmR": {
+              "rotation": -20
+            },
+            "torso": {
+              "rotation": -1
+            }
+          }
+        },
+        {
+          "id": "walkB",
+          "name": "Walk B",
+          "category": "action",
+          "icon": "footprints",
+          "boneTransforms": {
+            "upperLegL": {
+              "rotation": 15
+            },
+            "lowerLegL": {
+              "rotation": -25
+            },
+            "upperLegR": {
+              "rotation": -20
+            },
+            "lowerLegR": {
+              "rotation": 10
+            },
+            "upperArmL": {
+              "rotation": -20
+            },
+            "upperArmR": {
+              "rotation": 20
+            },
+            "torso": {
+              "rotation": 1
+            }
+          }
+        },
+        {
+          "id": "present",
+          "name": "Present",
+          "category": "action",
+          "icon": "presentation",
+          "boneTransforms": {
+            "upperArmR": {
+              "rotation": -70
+            },
+            "lowerArmR": {
+              "rotation": -40
+            },
+            "upperArmL": {
+              "rotation": 70
+            },
+            "lowerArmL": {
+              "rotation": 40
+            },
+            "torso": {
+              "rotation": 0
+            },
+            "head": {
+              "rotation": 0,
+              "y": -1
+            }
+          }
+        },
+        {
+          "id": "standing",
+          "name": "Standing",
+          "category": "action",
+          "boneTransforms": {}
+        },
+        {
+          "id": "running",
+          "name": "Running",
+          "category": "action",
+          "boneTransforms": {
+            "upperLegL": {
+              "rotation": 45
+            },
+            "lowerLegR": {
+              "rotation": 70
+            },
+            "upperArmR": {
+              "rotation": -45
+            }
+          }
+        },
+        {
+          "id": "listening",
+          "name": "Listening",
+          "category": "action",
+          "boneTransforms": {
+            "head": {
+              "rotation": 8
+            }
+          }
+        },
+        {
+          "id": "surprised",
+          "name": "Surprised",
+          "category": "action",
+          "boneTransforms": {
+            "mouth": {
+              "scaleY": 3
+            },
+            "browL": {
+              "y": -4
+            },
+            "browR": {
+              "y": -4
+            }
+          }
+        },
+        {
+          "id": "happy",
+          "name": "Happy",
+          "category": "action",
+          "boneTransforms": {
+            "head": {
+              "rotation": 4
+            },
+            "mouth": {
+              "scaleX": 1.4
+            }
+          }
+        },
+        {
+          "id": "sad",
+          "name": "Sad",
+          "category": "action",
+          "boneTransforms": {
+            "head": {
+              "rotation": 12,
+              "y": 4
+            }
+          }
+        },
+        {
+          "id": "confused",
+          "name": "Confused",
+          "category": "action",
+          "boneTransforms": {
+            "head": {
+              "rotation": -12
+            }
+          }
+        },
+        {
+          "id": "working",
+          "name": "Working",
+          "category": "action",
+          "boneTransforms": {
+            "upperArmL": {
+              "rotation": -40
+            },
+            "upperArmR": {
+              "rotation": 40
+            },
+            "lowerArmL": {
+              "rotation": -60
+            },
+            "lowerArmR": {
+              "rotation": 60
+            }
+          }
+        },
+        {
+          "id": "typing",
+          "name": "Typing",
+          "category": "action",
+          "boneTransforms": {
+            "upperArmL": {
+              "rotation": -25
+            },
+            "upperArmR": {
+              "rotation": 25
+            },
+            "lowerArmL": {
+              "rotation": -70
+            },
+            "lowerArmR": {
+              "rotation": 70
+            }
+          }
+        },
+        {
+          "id": "pointLeft",
+          "name": "Point left",
+          "category": "action",
+          "boneTransforms": {
+            "upperArmL": {
+              "rotation": 85
+            },
+            "lowerArmL": {
+              "rotation": 0
+            }
+          }
+        },
+        {
+          "id": "jump",
+          "name": "Jump",
+          "category": "action",
+          "boneTransforms": {
+            "root": {
+              "y": -40
+            },
+            "upperArmL": {
+              "rotation": 140
+            },
+            "upperArmR": {
+              "rotation": -140
+            }
+          }
+        },
+        {
+          "id": "nod",
+          "name": "Nod",
+          "category": "action",
+          "boneTransforms": {
+            "head": {
+              "rotation": 10,
+              "y": 3
+            }
+          }
+        },
+        {
+          "id": "shakeHead",
+          "name": "Shake head",
+          "category": "action",
+          "boneTransforms": {
+            "head": {
+              "rotation": -12
+            }
+          }
+        },
+        {
+          "id": "standing",
+          "name": "Standing",
+          "category": "action",
+          "boneTransforms": {}
+        },
+        {
+          "id": "running",
+          "name": "Running",
+          "category": "action",
+          "boneTransforms": {
+            "upperLegL": {
+              "rotation": 45
+            },
+            "lowerLegR": {
+              "rotation": 70
+            },
+            "upperArmR": {
+              "rotation": -45
+            }
+          }
+        },
+        {
+          "id": "listening",
+          "name": "Listening",
+          "category": "action",
+          "boneTransforms": {
+            "head": {
+              "rotation": 8
+            }
+          }
+        },
+        {
+          "id": "surprised",
+          "name": "Surprised",
+          "category": "action",
+          "boneTransforms": {
+            "mouth": {
+              "scaleY": 3
+            },
+            "browL": {
+              "y": -4
+            },
+            "browR": {
+              "y": -4
+            }
+          }
+        },
+        {
+          "id": "happy",
+          "name": "Happy",
+          "category": "action",
+          "boneTransforms": {
+            "head": {
+              "rotation": 4
+            },
+            "mouth": {
+              "scaleX": 1.4
+            }
+          }
+        },
+        {
+          "id": "sad",
+          "name": "Sad",
+          "category": "action",
+          "boneTransforms": {
+            "head": {
+              "rotation": 12,
+              "y": 4
+            }
+          }
+        },
+        {
+          "id": "confused",
+          "name": "Confused",
+          "category": "action",
+          "boneTransforms": {
+            "head": {
+              "rotation": -12
+            }
+          }
+        },
+        {
+          "id": "working",
+          "name": "Working",
+          "category": "action",
+          "boneTransforms": {
+            "upperArmL": {
+              "rotation": -40
+            },
+            "upperArmR": {
+              "rotation": 40
+            },
+            "lowerArmL": {
+              "rotation": -60
+            },
+            "lowerArmR": {
+              "rotation": 60
+            }
+          }
+        },
+        {
+          "id": "typing",
+          "name": "Typing",
+          "category": "action",
+          "boneTransforms": {
+            "upperArmL": {
+              "rotation": -25
+            },
+            "upperArmR": {
+              "rotation": 25
+            },
+            "lowerArmL": {
+              "rotation": -70
+            },
+            "lowerArmR": {
+              "rotation": 70
+            }
+          }
+        },
+        {
+          "id": "pointLeft",
+          "name": "Point left",
+          "category": "action",
+          "boneTransforms": {
+            "upperArmL": {
+              "rotation": 85
+            },
+            "lowerArmL": {
+              "rotation": 0
+            }
+          }
+        },
+        {
+          "id": "jump",
+          "name": "Jump",
+          "category": "action",
+          "boneTransforms": {
+            "root": {
+              "y": -40
+            },
+            "upperArmL": {
+              "rotation": 140
+            },
+            "upperArmR": {
+              "rotation": -140
+            }
+          }
+        },
+        {
+          "id": "nod",
+          "name": "Nod",
+          "category": "action",
+          "boneTransforms": {
+            "head": {
+              "rotation": 10,
+              "y": 3
+            }
+          }
+        },
+        {
+          "id": "shakeHead",
+          "name": "Shake head",
+          "category": "action",
+          "boneTransforms": {
+            "head": {
+              "rotation": -12
+            }
+          }
+        },
+        {
+          "id": "standing",
+          "name": "Standing",
+          "category": "action",
+          "boneTransforms": {}
+        },
+        {
+          "id": "running",
+          "name": "Running",
+          "category": "action",
+          "boneTransforms": {
+            "upperLegL": {
+              "rotation": 45
+            },
+            "lowerLegR": {
+              "rotation": 70
+            },
+            "upperArmR": {
+              "rotation": -45
+            }
+          }
+        },
+        {
+          "id": "listening",
+          "name": "Listening",
+          "category": "action",
+          "boneTransforms": {
+            "head": {
+              "rotation": 8
+            }
+          }
+        },
+        {
+          "id": "surprised",
+          "name": "Surprised",
+          "category": "action",
+          "boneTransforms": {
+            "mouth": {
+              "scaleY": 3
+            },
+            "browL": {
+              "y": -4
+            },
+            "browR": {
+              "y": -4
+            }
+          }
+        },
+        {
+          "id": "happy",
+          "name": "Happy",
+          "category": "action",
+          "boneTransforms": {
+            "head": {
+              "rotation": 4
+            },
+            "mouth": {
+              "scaleX": 1.4
+            }
+          }
+        },
+        {
+          "id": "sad",
+          "name": "Sad",
+          "category": "action",
+          "boneTransforms": {
+            "head": {
+              "rotation": 12,
+              "y": 4
+            }
+          }
+        },
+        {
+          "id": "confused",
+          "name": "Confused",
+          "category": "action",
+          "boneTransforms": {
+            "head": {
+              "rotation": -12
+            }
+          }
+        },
+        {
+          "id": "working",
+          "name": "Working",
+          "category": "action",
+          "boneTransforms": {
+            "upperArmL": {
+              "rotation": -40
+            },
+            "upperArmR": {
+              "rotation": 40
+            },
+            "lowerArmL": {
+              "rotation": -60
+            },
+            "lowerArmR": {
+              "rotation": 60
+            }
+          }
+        },
+        {
+          "id": "typing",
+          "name": "Typing",
+          "category": "action",
+          "boneTransforms": {
+            "upperArmL": {
+              "rotation": -25
+            },
+            "upperArmR": {
+              "rotation": 25
+            },
+            "lowerArmL": {
+              "rotation": -70
+            },
+            "lowerArmR": {
+              "rotation": 70
+            }
+          }
+        },
+        {
+          "id": "pointLeft",
+          "name": "Point left",
+          "category": "action",
+          "boneTransforms": {
+            "upperArmL": {
+              "rotation": 85
+            },
+            "lowerArmL": {
+              "rotation": 0
+            }
+          }
+        },
+        {
+          "id": "jump",
+          "name": "Jump",
+          "category": "action",
+          "boneTransforms": {
+            "root": {
+              "y": -40
+            },
+            "upperArmL": {
+              "rotation": 140
+            },
+            "upperArmR": {
+              "rotation": -140
+            }
+          }
+        },
+        {
+          "id": "nod",
+          "name": "Nod",
+          "category": "action",
+          "boneTransforms": {
+            "head": {
+              "rotation": 10,
+              "y": 3
+            }
+          }
+        },
+        {
+          "id": "shakeHead",
+          "name": "Shake head",
+          "category": "action",
+          "boneTransforms": {
+            "head": {
+              "rotation": -12
+            }
+          }
+        },
+        {
+          "id": "standing",
+          "name": "Standing",
+          "category": "action",
+          "boneTransforms": {}
+        },
+        {
+          "id": "running",
+          "name": "Running",
+          "category": "action",
+          "boneTransforms": {
+            "upperLegL": {
+              "rotation": 45
+            },
+            "lowerLegR": {
+              "rotation": 70
+            },
+            "upperArmR": {
+              "rotation": -45
+            }
+          }
+        },
+        {
+          "id": "listening",
+          "name": "Listening",
+          "category": "action",
+          "boneTransforms": {
+            "head": {
+              "rotation": 8
+            }
+          }
+        },
+        {
+          "id": "surprised",
+          "name": "Surprised",
+          "category": "action",
+          "boneTransforms": {
+            "mouth": {
+              "scaleY": 3
+            },
+            "browL": {
+              "y": -4
+            },
+            "browR": {
+              "y": -4
+            }
+          }
+        },
+        {
+          "id": "happy",
+          "name": "Happy",
+          "category": "action",
+          "boneTransforms": {
+            "head": {
+              "rotation": 4
+            },
+            "mouth": {
+              "scaleX": 1.4
+            }
+          }
+        },
+        {
+          "id": "sad",
+          "name": "Sad",
+          "category": "action",
+          "boneTransforms": {
+            "head": {
+              "rotation": 12,
+              "y": 4
+            }
+          }
+        },
+        {
+          "id": "confused",
+          "name": "Confused",
+          "category": "action",
+          "boneTransforms": {
+            "head": {
+              "rotation": -12
+            }
+          }
+        },
+        {
+          "id": "working",
+          "name": "Working",
+          "category": "action",
+          "boneTransforms": {
+            "upperArmL": {
+              "rotation": -40
+            },
+            "upperArmR": {
+              "rotation": 40
+            },
+            "lowerArmL": {
+              "rotation": -60
+            },
+            "lowerArmR": {
+              "rotation": 60
+            }
+          }
+        },
+        {
+          "id": "typing",
+          "name": "Typing",
+          "category": "action",
+          "boneTransforms": {
+            "upperArmL": {
+              "rotation": -25
+            },
+            "upperArmR": {
+              "rotation": 25
+            },
+            "lowerArmL": {
+              "rotation": -70
+            },
+            "lowerArmR": {
+              "rotation": 70
+            }
+          }
+        },
+        {
+          "id": "pointLeft",
+          "name": "Point left",
+          "category": "action",
+          "boneTransforms": {
+            "upperArmL": {
+              "rotation": 85
+            },
+            "lowerArmL": {
+              "rotation": 0
+            }
+          }
+        },
+        {
+          "id": "jump",
+          "name": "Jump",
+          "category": "action",
+          "boneTransforms": {
+            "root": {
+              "y": -40
+            },
+            "upperArmL": {
+              "rotation": 140
+            },
+            "upperArmR": {
+              "rotation": -140
+            }
+          }
+        },
+        {
+          "id": "nod",
+          "name": "Nod",
+          "category": "action",
+          "boneTransforms": {
+            "head": {
+              "rotation": 10,
+              "y": 3
+            }
+          }
+        },
+        {
+          "id": "shakeHead",
+          "name": "Shake head",
+          "category": "action",
+          "boneTransforms": {
+            "head": {
+              "rotation": -12
+            }
+          }
+        }
+      ],
+      "voicePitch": 1.15,
+      "voiceRate": 0.9,
+      "representation": {
+        "type": "rigged"
+      },
+      "expressions": [
+        {
+          "id": "neutral",
+          "name": "Neutral",
+          "boneTransforms": {}
+        },
+        {
+          "id": "surprised",
+          "name": "Surprised",
+          "boneTransforms": {
+            "mouth": {
+              "scaleY": 3
+            },
+            "browL": {
+              "y": -4
+            },
+            "browR": {
+              "y": -4
+            }
+          }
+        },
+        {
+          "id": "happy",
+          "name": "Happy",
+          "boneTransforms": {
+            "head": {
+              "rotation": 4
+            },
+            "mouth": {
+              "scaleX": 1.4
+            }
+          }
+        },
+        {
+          "id": "sad",
+          "name": "Sad",
+          "boneTransforms": {
+            "head": {
+              "rotation": 12,
+              "y": 4
+            }
+          }
+        },
+        {
+          "id": "confused",
+          "name": "Confused",
+          "boneTransforms": {
+            "head": {
+              "rotation": -12
+            }
+          }
+        },
+        {
+          "id": "thinking",
+          "name": "Thinking",
+          "boneTransforms": {
+            "head": {
+              "rotation": -10
+            },
+            "browL": {
+              "rotation": 8
+            }
+          }
+        },
+        {
+          "id": "angry",
+          "name": "Angry",
+          "boneTransforms": {
+            "browL": {
+              "rotation": 20
+            },
+            "browR": {
+              "rotation": -20
+            }
+          }
+        },
+        {
+          "id": "speaking",
+          "name": "Speaking",
+          "boneTransforms": {
+            "mouth": {
+              "scaleY": 1.7
+            }
+          }
+        }
+      ],
+      "animations": [
+        {
+          "id": "mia-rigged-animation-idle",
+          "characterId": "mia-rigged",
+          "elementId": "",
+          "name": "Idle",
+          "duration": 2,
+          "loop": true,
+          "keyframes": [
+            {
+              "id": "a0",
+              "time": 0,
+              "poseId": "idle",
+              "easing": "easeInOut"
+            },
+            {
+              "id": "b0",
+              "time": 0.6,
+              "poseId": "idle",
+              "easing": "easeInOut"
+            },
+            {
+              "id": "c0",
+              "time": 1.7,
+              "poseId": "idle",
+              "easing": "easeInOut"
+            }
+          ]
+        },
+        {
+          "id": "mia-rigged-animation-walkA",
+          "characterId": "mia-rigged",
+          "elementId": "",
+          "name": "Walk",
+          "duration": 2,
+          "loop": true,
+          "keyframes": [
+            {
+              "id": "a1",
+              "time": 0,
+              "poseId": "walkA",
+              "easing": "easeInOut"
+            },
+            {
+              "id": "b1",
+              "time": 0.6,
+              "poseId": "walkB",
+              "easing": "easeInOut"
+            },
+            {
+              "id": "c1",
+              "time": 1.7,
+              "poseId": "walkA",
+              "easing": "easeInOut"
+            }
+          ]
+        },
+        {
+          "id": "mia-rigged-animation-running",
+          "characterId": "mia-rigged",
+          "elementId": "",
+          "name": "Running",
+          "duration": 2,
+          "loop": true,
+          "keyframes": [
+            {
+              "id": "a2",
+              "time": 0,
+              "poseId": "idle",
+              "easing": "easeInOut"
+            },
+            {
+              "id": "b2",
+              "time": 0.6,
+              "poseId": "running",
+              "easing": "easeInOut"
+            },
+            {
+              "id": "c2",
+              "time": 1.7,
+              "poseId": "idle",
+              "easing": "easeInOut"
+            }
+          ]
+        },
+        {
+          "id": "mia-rigged-animation-jump",
+          "characterId": "mia-rigged",
+          "elementId": "",
+          "name": "Jump",
+          "duration": 2,
+          "loop": false,
+          "keyframes": [
+            {
+              "id": "a3",
+              "time": 0,
+              "poseId": "idle",
+              "easing": "easeInOut"
+            },
+            {
+              "id": "b3",
+              "time": 0.6,
+              "poseId": "jump",
+              "easing": "easeInOut"
+            },
+            {
+              "id": "c3",
+              "time": 1.7,
+              "poseId": "idle",
+              "easing": "easeInOut"
+            }
+          ]
+        },
+        {
+          "id": "mia-rigged-animation-wave",
+          "characterId": "mia-rigged",
+          "elementId": "",
+          "name": "Wave",
+          "duration": 2,
+          "loop": false,
+          "keyframes": [
+            {
+              "id": "a4",
+              "time": 0,
+              "poseId": "idle",
+              "easing": "easeInOut"
+            },
+            {
+              "id": "b4",
+              "time": 0.6,
+              "poseId": "wave",
+              "easing": "easeInOut"
+            },
+            {
+              "id": "c4",
+              "time": 1.7,
+              "poseId": "idle",
+              "easing": "easeInOut"
+            }
+          ]
+        },
+        {
+          "id": "mia-rigged-animation-talk",
+          "characterId": "mia-rigged",
+          "elementId": "",
+          "name": "Talk",
+          "duration": 2,
+          "loop": true,
+          "keyframes": [
+            {
+              "id": "a5",
+              "time": 0,
+              "poseId": "idle",
+              "easing": "easeInOut"
+            },
+            {
+              "id": "b5",
+              "time": 0.6,
+              "poseId": "talk",
+              "easing": "easeInOut"
+            },
+            {
+              "id": "c5",
+              "time": 1.7,
+              "poseId": "idle",
+              "easing": "easeInOut"
+            }
+          ]
+        },
+        {
+          "id": "mia-rigged-animation-point",
+          "characterId": "mia-rigged",
+          "elementId": "",
+          "name": "Point",
+          "duration": 2,
+          "loop": false,
+          "keyframes": [
+            {
+              "id": "a6",
+              "time": 0,
+              "poseId": "idle",
+              "easing": "easeInOut"
+            },
+            {
+              "id": "b6",
+              "time": 0.6,
+              "poseId": "point",
+              "easing": "easeInOut"
+            },
+            {
+              "id": "c6",
+              "time": 1.7,
+              "poseId": "idle",
+              "easing": "easeInOut"
+            }
+          ]
+        },
+        {
+          "id": "mia-rigged-animation-think",
+          "characterId": "mia-rigged",
+          "elementId": "",
+          "name": "Think",
+          "duration": 2,
+          "loop": false,
+          "keyframes": [
+            {
+              "id": "a7",
+              "time": 0,
+              "poseId": "idle",
+              "easing": "easeInOut"
+            },
+            {
+              "id": "b7",
+              "time": 0.6,
+              "poseId": "think",
+              "easing": "easeInOut"
+            },
+            {
+              "id": "c7",
+              "time": 1.7,
+              "poseId": "idle",
+              "easing": "easeInOut"
+            }
+          ]
+        },
+        {
+          "id": "mia-rigged-animation-sit",
+          "characterId": "mia-rigged",
+          "elementId": "",
+          "name": "Sit",
+          "duration": 2,
+          "loop": false,
+          "keyframes": [
+            {
+              "id": "a8",
+              "time": 0,
+              "poseId": "idle",
+              "easing": "easeInOut"
+            },
+            {
+              "id": "b8",
+              "time": 0.6,
+              "poseId": "sit",
+              "easing": "easeInOut"
+            },
+            {
+              "id": "c8",
+              "time": 1.7,
+              "poseId": "idle",
+              "easing": "easeInOut"
+            }
+          ]
+        },
+        {
+          "id": "mia-rigged-animation-standing",
+          "characterId": "mia-rigged",
+          "elementId": "",
+          "name": "Standing",
+          "duration": 2,
+          "loop": false,
+          "keyframes": [
+            {
+              "id": "a9",
+              "time": 0,
+              "poseId": "idle",
+              "easing": "easeInOut"
+            },
+            {
+              "id": "b9",
+              "time": 0.6,
+              "poseId": "standing",
+              "easing": "easeInOut"
+            },
+            {
+              "id": "c9",
+              "time": 1.7,
+              "poseId": "idle",
+              "easing": "easeInOut"
+            }
+          ]
+        },
+        {
+          "id": "mia-rigged-animation-celebrate",
+          "characterId": "mia-rigged",
+          "elementId": "",
+          "name": "Celebrate",
+          "duration": 2,
+          "loop": false,
+          "keyframes": [
+            {
+              "id": "a10",
+              "time": 0,
+              "poseId": "idle",
+              "easing": "easeInOut"
+            },
+            {
+              "id": "b10",
+              "time": 0.6,
+              "poseId": "celebrate",
+              "easing": "easeInOut"
+            },
+            {
+              "id": "c10",
+              "time": 1.7,
+              "poseId": "idle",
+              "easing": "easeInOut"
+            }
+          ]
+        },
+        {
+          "id": "mia-rigged-animation-shakeHead",
+          "characterId": "mia-rigged",
+          "elementId": "",
+          "name": "ShakeHead",
+          "duration": 2,
+          "loop": false,
+          "keyframes": [
+            {
+              "id": "a11",
+              "time": 0,
+              "poseId": "idle",
+              "easing": "easeInOut"
+            },
+            {
+              "id": "b11",
+              "time": 0.6,
+              "poseId": "shakeHead",
+              "easing": "easeInOut"
+            },
+            {
+              "id": "c11",
+              "time": 1.7,
+              "poseId": "idle",
+              "easing": "easeInOut"
+            }
+          ]
+        },
+        {
+          "id": "mia-rigged-animation-nod",
+          "characterId": "mia-rigged",
+          "elementId": "",
+          "name": "Nod",
+          "duration": 2,
+          "loop": false,
+          "keyframes": [
+            {
+              "id": "a12",
+              "time": 0,
+              "poseId": "idle",
+              "easing": "easeInOut"
+            },
+            {
+              "id": "b12",
+              "time": 0.6,
+              "poseId": "nod",
+              "easing": "easeInOut"
+            },
+            {
+              "id": "c12",
+              "time": 1.7,
+              "poseId": "idle",
+              "easing": "easeInOut"
+            }
+          ]
+        }
+      ],
+      "variants": []
+    }
+  ],
+  "templates": []
+}

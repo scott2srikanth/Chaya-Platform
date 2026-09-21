@@ -1,0 +1,16 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "chaya-studio",
+  "main": ".open-next/worker.js",
+  "compatibility_date": "2025-11-21",
+  "compatibility_flags": ["nodejs_compat", "global_fetch_strictly_public"],
+  "assets": {"directory": ".open-next/assets", "binding": "ASSETS"},
+  "services": [{"binding": "WORKER_SELF_REFERENCE", "service": "chaya-studio"}],
+  "d1_databases": [{
+    "binding": "STUDIO_DB",
+    "database_name": "chaya-studio",
+    "database_id": "00000000-0000-0000-0000-000000000000",
+    "migrations_dir": "migrations"
+  }],
+  "observability": {"enabled": true}
+}

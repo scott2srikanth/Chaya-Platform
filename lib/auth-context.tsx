@@ -1,19 +1,15 @@
-'use client';
-
-import { createContext, useContext, useEffect, useState } from 'react';
-import { User } from '@supabase/supabase-js';
-import { supabase } from './supabase';
-import type { Profile, Subscription } from './supabase';
-
+"use client";
+import { createContext, useContext, useEffect, useState } from "react";
+import { getCurrentUser, signOut as logout, type LocalUser } from "./auth";
+import type { Profile, Subscription } from "./supabase";
 interface AuthContextType {
-  user: User | null;
+  user: LocalUser | null;
   profile: Profile | null;
   subscription: Subscription | null;
   loading: boolean;
   signOut: () => Promise<void>;
   refreshSubscription: () => Promise<void>;
 }
-
 const AuthContext = createContext<AuthContextType>({
   user: null,
   profile: null,
@@ -22,92 +18,53 @@ const AuthContext = createContext<AuthContextType>({
   signOut: async () => {},
   refreshSubscription: async () => {},
 });
-
 export function AuthProvider({ children }: { children: React.ReactNode }) {
-  const [user, setUser] = useState<User | null>(null);
-  const [profile, setProfile] = useState<Profile | null>(null);
-  const [subscription, setSubscription] = useState<Subscription | null>(null);
-  const [loading, setLoading] = useState(true);
-
-  const fetchUserData = async (userId: string) => {
-    const { data: profileData } = await supabase
-      .from('profiles')
-      .select('*')
-      .eq('id', userId)
-      .maybeSingle();
-
-    const { data: subscriptionData } = await supabase
-      .from('subscriptions')
-      .select('*')
-      .eq('user_id', userId)
-      .maybeSingle();
-
-    setProfile(profileData);
-    setSubscription(subscriptionData);
-  };
-
+  const [user, setUser] = useState<LocalUser | null>(null),
+    [loading, setLoading] = useState(true);
   useEffect(() => {
-    const getInitialSession = async () => {
-      const { data: { session } } = await supabase.auth.getSession();
-      setUser(session?.user ?? null);
-
-      if (session?.user) {
-        await fetchUserData(session.user.id);
+    let active = true;
+    const refresh = async () => {
+      try {
+        const next = await getCurrentUser();
+        if (active) setUser(next);
+      } catch {
+        if (active) setUser(null);
+      } finally {
+        if (active) setLoading(false);
       }
-
-      setLoading(false);
     };
-
-    getInitialSession();
-
-    const { data: { subscription: authSubscription } } = supabase.auth.onAuthStateChange((_event, session) => {
-      (async () => {
-        setUser(session?.user ?? null);
-
-        if (session?.user) {
-          await fetchUserData(session.user.id);
-        } else {
-          setProfile(null);
-          setSubscription(null);
-        }
-      })();
-    });
-
+    void refresh();
+    const listener = () => {
+      void refresh();
+    };
+    window.addEventListener("chaya-auth-change", listener);
+    window.addEventListener("focus", listener);
+    const interval = setInterval(listener, 60000);
     return () => {
-      authSubscription.unsubscribe();
+      active = false;
+      clearInterval(interval);
+      window.removeEventListener("chaya-auth-change", listener);
+      window.removeEventListener("focus", listener);
     };
   }, []);
-
-  const handleSignOut = async () => {
-    await supabase.auth.signOut();
-    setUser(null);
-    setProfile(null);
-    setSubscription(null);
-  };
-
-  const refreshSubscription = async () => {
-    if (user) {
-      const { data: subscriptionData } = await supabase
-        .from('subscriptions')
-        .select('*')
-        .eq('user_id', user.id)
-        .maybeSingle();
-
-      setSubscription(subscriptionData);
-    }
-  };
-
   return (
-    <AuthContext.Provider value={{ user, profile, subscription, loading, signOut: handleSignOut, refreshSubscription }}>
+    <AuthContext.Provider
+      value={{
+        user,
+        profile: user ? { ...user, role: "USER" } : null,
+        subscription: null,
+        loading,
+        signOut: async () => {
+          await logout();
+          setUser(null);
+        },
+        refreshSubscription: async () => {},
+      }}
+    >
       {children}
     </AuthContext.Provider>
   );
 }
-
 export function useAuth() {
-  const context = useContext(AuthContext);
-  if (context === undefined) {
-    throw new Error('useAuth must be used within an AuthProvider');
-  }
-  return context;
+  return useContext(AuthContext);
 }

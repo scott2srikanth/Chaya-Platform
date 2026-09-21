@@ -1,34 +1,29 @@
-'use client';
+"use client";
 
-import { useState } from 'react';
-import { useRouter } from 'next/navigation';
-import { signUp } from '@/lib/auth';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
-import { Alert, AlertDescription } from '@/components/ui/alert';
-import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
-import { AlertCircle } from 'lucide-react';
+import { useState } from "react";
+import { signUp } from "@/lib/auth";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Alert, AlertDescription } from "@/components/ui/alert";
+import { AlertCircle } from "lucide-react";
 
 export function SignupForm() {
-  const router = useRouter();
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [role, setRole] = useState<'ADMIN' | 'USER'>('USER');
-  const [error, setError] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setError('');
+    setError("");
     setLoading(true);
 
     try {
-      await signUp(email, password, role);
-      router.push(role === 'ADMIN' ? '/admin/dashboard' : '/client/videos');
-      router.refresh();
+      await signUp(email, password);
+      window.location.assign("/studio");
     } catch (err: any) {
-      setError(err.message || 'Failed to sign up');
+      setError(err.message || "Failed to sign up");
     } finally {
       setLoading(false);
     }
@@ -65,31 +60,17 @@ export function SignupForm() {
           onChange={(e) => setPassword(e.target.value)}
           placeholder="••••••••"
           required
-          minLength={6}
+          minLength={10}
           disabled={loading}
         />
       </div>
 
-      <div className="space-y-2">
-        <Label>Account Type</Label>
-        <RadioGroup value={role} onValueChange={(value) => setRole(value as 'ADMIN' | 'USER')}>
-          <div className="flex items-center space-x-2">
-            <RadioGroupItem value="USER" id="user" />
-            <Label htmlFor="user" className="font-normal cursor-pointer">
-              User (View videos)
-            </Label>
-          </div>
-          <div className="flex items-center space-x-2">
-            <RadioGroupItem value="ADMIN" id="admin" />
-            <Label htmlFor="admin" className="font-normal cursor-pointer">
-              Admin (Create and manage videos)
-            </Label>
-          </div>
-        </RadioGroup>
-      </div>
+      <p className="text-sm text-muted-foreground">
+        Studio account · use at least 10 characters for your password.
+      </p>
 
       <Button type="submit" className="w-full" disabled={loading}>
-        {loading ? 'Creating account...' : 'Create Account'}
+        {loading ? "Creating account..." : "Create Account"}
       </Button>
     </form>
   );

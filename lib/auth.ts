@@ -1,61 +1,45 @@
-import { supabase } from './supabase';
-import type { Profile } from './supabase';
-
-export async function signUp(email: string, password: string, role: 'ADMIN' | 'USER' = 'USER') {
-  const { data, error } = await supabase.auth.signUp({
-    email,
-    password,
+import type { Profile } from "./supabase";
+export type LocalUser = { id: string; email: string; created_at: string };
+async function account(action: string, email: string, password: string) {
+  const response = await fetch("/api/auth/studio-session", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ action, email, password }),
   });
-
-  if (error) throw error;
-  if (!data.user) throw new Error('No user returned');
-
-  const { error: profileError } = await supabase
-    .from('profiles')
-    .insert({
-      id: data.user.id,
-      email: data.user.email!,
-      role,
-    });
-
-  if (profileError) throw profileError;
-
+  const data = await response.json();
+  if (!response.ok) throw new Error(data.error || "Unable to sign in");
+  window.dispatchEvent(new Event("chaya-auth-change"));
   return data;
 }
-
+export async function signUp(
+  email: string,
+  password: string,
+  _role?: "ADMIN" | "USER",
+) {
+  return account("signup", email, password);
+}
 export async function signIn(email: string, password: string) {
-  const { data, error } = await supabase.auth.signInWithPassword({
-    email,
-    password,
-  });
-
-  if (error) throw error;
-  return data;
+  return account("login", email, password);
 }
-
 export async function signOut() {
-  const { error } = await supabase.auth.signOut();
-  if (error) throw error;
+  const response = await fetch("/api/auth/studio-session", {
+    method: "DELETE",
+  });
+  if (!response.ok) throw new Error("Unable to sign out");
+  window.dispatchEvent(new Event("chaya-auth-change"));
 }
-
-export async function getCurrentUser() {
-  const { data: { user }, error } = await supabase.auth.getUser();
-  if (error) throw error;
-  return user;
+export async function getCurrentUser(): Promise<LocalUser | null> {
+  const response = await fetch("/api/auth/studio-session", {
+    cache: "no-store",
+  });
+  if (response.status === 401) return null;
+  if (!response.ok) throw new Error("Unable to load account");
+  return (await response.json()).user;
 }
-
 export async function getUserProfile(userId: string): Promise<Profile | null> {
-  const { data, error } = await supabase
-    .from('profiles')
-    .select('*')
-    .eq('id', userId)
-    .maybeSingle();
-
-  if (error) throw error;
-  return data;
+  const user = await getCurrentUser();
+  return user?.id === userId ? { ...user, role: "USER" } : null;
 }
-
-export async function isAdmin(userId: string): Promise<boolean> {
-  const profile = await getUserProfile(userId);
-  return profile?.role === 'ADMIN';
+export async function isAdmin(_userId: string) {
+  return false;
 }

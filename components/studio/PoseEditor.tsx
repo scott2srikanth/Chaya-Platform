@@ -1,16 +1,36 @@
-'use client';
+"use client";
+import { useStudioStore } from "@/lib/studio/store";
 
-import { useState, useCallback, useRef, useMemo, useEffect } from 'react';
-import type { RiggedCharacter, Pose, BoneTransform, Bone } from '@/lib/studio/rig';
-import { computeWorldTransforms } from '@/lib/studio/rig';
-import { getRiggedCharacter, getCharacterPose } from '@/lib/studio/built-in-rigs';
-import RigRenderer, { RigPreview } from './RigRenderer';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
+import { useState, useCallback, useRef, useMemo, useEffect } from "react";
+import type {
+  RiggedCharacter,
+  Pose,
+  BoneTransform,
+  Bone,
+} from "@/lib/studio/rig";
 import {
-  RotateCcw, Save, ArrowLeft, ChevronDown, ChevronUp,
-  Copy, Trash2, Plus, Play, Pause
-} from 'lucide-react';
+  interpolatePoseTransforms,
+  computeWorldTransforms,
+} from "@/lib/studio/rig";
+import {
+  getRiggedCharacter,
+  getCharacterPose,
+} from "@/lib/studio/built-in-rigs";
+import RigRenderer, { RigPreview } from "./RigRenderer";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import {
+  RotateCcw,
+  Save,
+  ArrowLeft,
+  ChevronDown,
+  ChevronUp,
+  Copy,
+  Trash2,
+  Plus,
+  Play,
+  Pause,
+} from "lucide-react";
 
 const BASE_W = 240;
 const BASE_H = 400;
@@ -22,13 +42,24 @@ interface Props {
   onSavePose?: (charId: string, pose: Pose) => void;
 }
 
-export default function PoseEditor({ characterId, onBack, onSavePose }: Props) {
-  const character = getRiggedCharacter(characterId);
+export default function PoseEditor(props: Props) {
+  const character = useStudioStore((s) => s.character(props.characterId));
+  if (!character) return <p>Character not found</p>;
+  return <PoseEditorBody {...props} character={character} />;
+}
+function PoseEditorBody({
+  characterId,
+  onBack,
+  onSavePose,
+  character,
+}: Props & { character: RiggedCharacter }) {
   const [selectedBoneId, setSelectedBoneId] = useState<string | null>(null);
-  const [activePoseId, setActivePoseId] = useState<string>('idle');
-  const [customTransforms, setCustomTransforms] = useState<Record<string, Partial<BoneTransform>>>({});
+  const [activePoseId, setActivePoseId] = useState<string>("idle");
+  const [customTransforms, setCustomTransforms] = useState<
+    Record<string, Partial<BoneTransform>>
+  >({});
   const [isNewPose, setIsNewPose] = useState(false);
-  const [newPoseName, setNewPoseName] = useState('');
+  const [newPoseName, setNewPoseName] = useState("");
   const [expandedBones, setExpandedBones] = useState(true);
   const [previewPlaying, setPreviewPlaying] = useState(false);
   const [previewT, setPreviewT] = useState(0);
@@ -36,27 +67,26 @@ export default function PoseEditor({ characterId, onBack, onSavePose }: Props) {
   const svgRef = useRef<SVGSVGElement>(null);
   const dragRef = useRef<{ startY: number; startRot: number } | null>(null);
 
-  if (!character) {
-    return (
-      <div className="flex-1 flex items-center justify-center bg-slate-900">
-        <p className="text-sm text-slate-500">Character not found</p>
-      </div>
-    );
-  }
-
   const activePose = getCharacterPose(character, activePoseId);
-  const currentTransforms = isNewPose ? customTransforms : (activePose?.boneTransforms ?? {});
+  const currentTransforms = isNewPose
+    ? customTransforms
+    : (activePose?.boneTransforms ?? {});
 
   const selectedBone = character.rig.bones.find((b) => b.id === selectedBoneId);
-  const selectedTransform = selectedBoneId ? (currentTransforms[selectedBoneId] ?? {}) : {};
+  const selectedTransform = selectedBoneId
+    ? (currentTransforms[selectedBoneId] ?? {})
+    : {};
 
-  const updateBoneTransform = useCallback((boneId: string, update: Partial<BoneTransform>) => {
-    setCustomTransforms((prev) => ({
-      ...prev,
-      [boneId]: { ...(prev[boneId] ?? {}), ...update },
-    }));
-    if (!isNewPose) setIsNewPose(true);
-  }, [isNewPose]);
+  const updateBoneTransform = useCallback(
+    (boneId: string, update: Partial<BoneTransform>) => {
+      setCustomTransforms((prev) => ({
+        ...prev,
+        [boneId]: { ...(prev[boneId] ?? {}), ...update },
+      }));
+      if (!isNewPose) setIsNewPose(true);
+    },
+    [isNewPose],
+  );
 
   const resetBoneTransform = useCallback((boneId: string) => {
     setCustomTransforms((prev) => {
@@ -66,55 +96,64 @@ export default function PoseEditor({ characterId, onBack, onSavePose }: Props) {
     });
   }, []);
 
-  const loadPose = useCallback((poseId: string) => {
-    const pose = getCharacterPose(character!, poseId);
-    if (pose) {
-      setActivePoseId(poseId);
-      setCustomTransforms(JSON.parse(JSON.stringify(pose.boneTransforms)));
-      setIsNewPose(false);
-    }
-  }, [character]);
+  const loadPose = useCallback(
+    (poseId: string) => {
+      const pose = getCharacterPose(character!, poseId);
+      if (pose) {
+        setActivePoseId(poseId);
+        setCustomTransforms(JSON.parse(JSON.stringify(pose.boneTransforms)));
+        setIsNewPose(false);
+      }
+    },
+    [character],
+  );
 
   const handleSavePose = useCallback(() => {
     const name = newPoseName.trim() || `Custom Pose ${Date.now()}`;
     const pose: Pose = {
       id: `custom-${Date.now()}`,
       name,
-      category: 'custom',
+      category: "custom",
       boneTransforms: { ...customTransforms },
     };
     onSavePose?.(characterId, pose);
-    setNewPoseName('');
+    setNewPoseName("");
     setIsNewPose(false);
   }, [customTransforms, newPoseName, characterId, onSavePose]);
 
   // Drag to rotate bone
-  const handleBoneDrag = useCallback((e: React.PointerEvent) => {
-    if (!selectedBoneId) return;
-    const startY = e.clientY;
-    const startRot = (customTransforms[selectedBoneId]?.rotation ?? 0);
-    dragRef.current = { startY, startRot };
+  const handleBoneDrag = useCallback(
+    (e: React.PointerEvent) => {
+      if (!selectedBoneId) return;
+      const startY = e.clientY;
+      const startRot = customTransforms[selectedBoneId]?.rotation ?? 0;
+      dragRef.current = { startY, startRot };
 
-    const onMove = (ev: PointerEvent) => {
-      if (!dragRef.current) return;
-      const dy = ev.clientY - dragRef.current.startY;
-      const newRot = dragRef.current.startRot + dy * 0.8;
-      setCustomTransforms((prev) => ({
-        ...prev,
-        [selectedBoneId]: { ...(prev[selectedBoneId] ?? {}), rotation: Math.round(newRot * 10) / 10 },
-      }));
-      if (!isNewPose) setIsNewPose(true);
-    };
+      const onMove = (ev: PointerEvent) => {
+        if (!dragRef.current) return;
+        const dy = ev.clientY - dragRef.current.startY;
+        const newRot = dragRef.current.startRot + dy * 0.8;
+        setCustomTransforms((prev) => ({
+          ...prev,
+          [selectedBoneId]: {
+            ...(prev[selectedBoneId] ?? {}),
+            rotation: Math.round(newRot * 10) / 10,
+          },
+        }));
+        if (!isNewPose) setIsNewPose(true);
+      };
 
-    const onUp = () => {
-      dragRef.current = null;
-      window.removeEventListener('pointermove', onMove);
-      window.removeEventListener('pointerup', onUp);
-    };
+      const onUp = () => {
+        dragRef.current = null;
+        window.removeEventListener("pointermove", onMove);
+        window.removeEventListener("pointerup", onUp);
+      };
 
-    window.addEventListener('pointermove', onMove);
-    window.addEventListener('pointerup', onUp);
-  }, [selectedBoneId, customTransforms, isNewPose]);
+      window.addEventListener("pointermove", onMove);
+      window.addEventListener("pointerup", onUp);
+    },
+    [selectedBoneId, customTransforms, isNewPose],
+  );
 
   // Pose preview animation
   useEffect(() => {
@@ -134,18 +173,23 @@ export default function PoseEditor({ characterId, onBack, onSavePose }: Props) {
   const viewH = BASE_H + CANVAS_PAD * 2;
 
   const editableBones = character.rig.bones.filter(
-    (b) => b.id !== 'root' && b.id !== 'nose' && b.id !== 'hair'
+    (b) => b.id !== "root" && b.id !== "nose" && b.id !== "hair",
   );
 
   return (
     <div className="flex flex-col h-full bg-slate-900">
       {/* Header */}
       <div className="flex items-center gap-2 px-3 py-2 border-b border-slate-700">
-        <button onClick={onBack} className="text-slate-400 hover:text-white transition-colors">
+        <button
+          onClick={onBack}
+          className="text-slate-400 hover:text-white transition-colors"
+        >
           <ArrowLeft className="w-4 h-4" />
         </button>
         <div className="flex-1 min-w-0">
-          <p className="text-sm font-semibold text-white truncate">Pose Editor -- {character.name}</p>
+          <p className="text-sm font-semibold text-white truncate">
+            Pose Editor -- {character.name}
+          </p>
         </div>
       </div>
 
@@ -164,16 +208,28 @@ export default function PoseEditor({ characterId, onBack, onSavePose }: Props) {
           >
             {/* Grid */}
             <defs>
-              <pattern id="pose-grid" width={20} height={20} patternUnits="userSpaceOnUse">
-                <path d="M 20 0 L 0 0 0 20" fill="none" stroke="rgba(255,255,255,0.03)" strokeWidth={0.5} />
+              <pattern
+                id="pose-grid"
+                width={20}
+                height={20}
+                patternUnits="userSpaceOnUse"
+              >
+                <path
+                  d="M 20 0 L 0 0 0 20"
+                  fill="none"
+                  stroke="rgba(255,255,255,0.03)"
+                  strokeWidth={0.5}
+                />
               </pattern>
             </defs>
             <rect width={viewW} height={viewH} fill="url(#pose-grid)" />
 
             {/* Center line */}
             <line
-              x1={viewW / 2} y1={0}
-              x2={viewW / 2} y2={viewH}
+              x1={viewW / 2}
+              y1={0}
+              x2={viewW / 2}
+              y2={viewH}
               stroke="rgba(59,130,246,0.1)"
               strokeWidth={1}
               strokeDasharray="4 4"
@@ -182,7 +238,15 @@ export default function PoseEditor({ characterId, onBack, onSavePose }: Props) {
             <g transform={`translate(${CANVAS_PAD}, ${CANVAS_PAD})`}>
               <RigRenderer
                 character={character}
-                poseTransforms={currentTransforms}
+                poseTransforms={
+                  previewPlaying
+                    ? interpolatePoseTransforms(
+                        character.poses[0]?.boneTransforms ?? {},
+                        currentTransforms,
+                        (Math.sin(previewT * Math.PI * 2) + 1) / 2,
+                      )
+                    : currentTransforms
+                }
                 width={BASE_W}
                 height={BASE_H}
                 facingRight={true}
@@ -195,7 +259,9 @@ export default function PoseEditor({ characterId, onBack, onSavePose }: Props) {
 
           {selectedBoneId && (
             <div className="absolute bottom-3 left-3 bg-slate-900/90 border border-slate-700 rounded-lg px-3 py-2 text-xs text-slate-300">
-              <span className="text-blue-400 font-medium">{selectedBone?.name}</span>
+              <span className="text-blue-400 font-medium">
+                {selectedBone?.name}
+              </span>
               <span className="text-slate-500 mx-2">|</span>
               Drag up/down to rotate
             </div>
@@ -206,15 +272,17 @@ export default function PoseEditor({ characterId, onBack, onSavePose }: Props) {
         <div className="w-56 bg-slate-900 border-l border-slate-700 flex flex-col overflow-hidden">
           {/* Pose selector */}
           <div className="p-2 border-b border-slate-700/50">
-            <p className="text-[10px] font-semibold text-slate-400 uppercase tracking-wider mb-1.5">Poses</p>
+            <p className="text-[10px] font-semibold text-slate-400 uppercase tracking-wider mb-1.5">
+              Poses
+            </p>
             <div className="flex flex-wrap gap-1">
               {character.poses.map((pose) => (
                 <button
                   key={pose.id}
                   className={`px-2 py-1 rounded text-[10px] font-medium transition-all ${
                     activePoseId === pose.id && !isNewPose
-                      ? 'bg-blue-600 text-white'
-                      : 'bg-slate-800 text-slate-400 hover:text-white hover:bg-slate-700'
+                      ? "bg-blue-600 text-white"
+                      : "bg-slate-800 text-slate-400 hover:text-white hover:bg-slate-700"
                   }`}
                   onClick={() => loadPose(pose.id)}
                 >
@@ -231,7 +299,11 @@ export default function PoseEditor({ characterId, onBack, onSavePose }: Props) {
               onClick={() => setExpandedBones(!expandedBones)}
             >
               Bone Controls
-              {expandedBones ? <ChevronUp className="w-3 h-3" /> : <ChevronDown className="w-3 h-3" />}
+              {expandedBones ? (
+                <ChevronUp className="w-3 h-3" />
+              ) : (
+                <ChevronDown className="w-3 h-3" />
+              )}
             </button>
 
             {expandedBones && (
@@ -245,21 +317,28 @@ export default function PoseEditor({ characterId, onBack, onSavePose }: Props) {
                       key={bone.id}
                       className={`rounded-md border px-2 py-1.5 transition-all cursor-pointer ${
                         isActive
-                          ? 'border-blue-500/50 bg-blue-950/30'
+                          ? "border-blue-500/50 bg-blue-950/30"
                           : hasOverride
-                            ? 'border-amber-500/30 bg-amber-950/10'
-                            : 'border-slate-700/30 hover:border-slate-600/50'
+                            ? "border-amber-500/30 bg-amber-950/10"
+                            : "border-slate-700/30 hover:border-slate-600/50"
                       }`}
-                      onClick={() => setSelectedBoneId(isActive ? null : bone.id)}
+                      onClick={() =>
+                        setSelectedBoneId(isActive ? null : bone.id)
+                      }
                     >
                       <div className="flex items-center justify-between">
-                        <span className={`text-[10px] font-medium ${isActive ? 'text-blue-300' : hasOverride ? 'text-amber-300' : 'text-slate-400'}`}>
+                        <span
+                          className={`text-[10px] font-medium ${isActive ? "text-blue-300" : hasOverride ? "text-amber-300" : "text-slate-400"}`}
+                        >
                           {bone.name}
                         </span>
                         {hasOverride && (
                           <button
                             className="text-slate-600 hover:text-red-400 transition-colors"
-                            onClick={(e) => { e.stopPropagation(); resetBoneTransform(bone.id); }}
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              resetBoneTransform(bone.id);
+                            }}
                           >
                             <RotateCcw className="w-2.5 h-2.5" />
                           </button>
@@ -269,14 +348,20 @@ export default function PoseEditor({ characterId, onBack, onSavePose }: Props) {
                       {isActive && (
                         <div className="mt-1.5 space-y-1">
                           <div className="flex items-center gap-1.5">
-                            <span className="text-[8px] text-slate-500 w-6">Rot</span>
+                            <span className="text-[8px] text-slate-500 w-6">
+                              Rot
+                            </span>
                             <input
                               type="range"
                               min={-180}
                               max={180}
                               step={1}
                               value={bt?.rotation ?? 0}
-                              onChange={(e) => updateBoneTransform(bone.id, { rotation: Number(e.target.value) })}
+                              onChange={(e) =>
+                                updateBoneTransform(bone.id, {
+                                  rotation: Number(e.target.value),
+                                })
+                              }
                               className="flex-1 h-1 accent-blue-500"
                             />
                             <span className="text-[9px] text-slate-400 w-8 text-right font-mono">
@@ -284,14 +369,20 @@ export default function PoseEditor({ characterId, onBack, onSavePose }: Props) {
                             </span>
                           </div>
                           <div className="flex items-center gap-1.5">
-                            <span className="text-[8px] text-slate-500 w-6">X</span>
+                            <span className="text-[8px] text-slate-500 w-6">
+                              X
+                            </span>
                             <input
                               type="range"
                               min={-50}
                               max={50}
                               step={1}
                               value={bt?.x ?? 0}
-                              onChange={(e) => updateBoneTransform(bone.id, { x: Number(e.target.value) })}
+                              onChange={(e) =>
+                                updateBoneTransform(bone.id, {
+                                  x: Number(e.target.value),
+                                })
+                              }
                               className="flex-1 h-1 accent-blue-500"
                             />
                             <span className="text-[9px] text-slate-400 w-8 text-right font-mono">
@@ -299,14 +390,20 @@ export default function PoseEditor({ characterId, onBack, onSavePose }: Props) {
                             </span>
                           </div>
                           <div className="flex items-center gap-1.5">
-                            <span className="text-[8px] text-slate-500 w-6">Y</span>
+                            <span className="text-[8px] text-slate-500 w-6">
+                              Y
+                            </span>
                             <input
                               type="range"
                               min={-50}
                               max={50}
                               step={1}
                               value={bt?.y ?? 0}
-                              onChange={(e) => updateBoneTransform(bone.id, { y: Number(e.target.value) })}
+                              onChange={(e) =>
+                                updateBoneTransform(bone.id, {
+                                  y: Number(e.target.value),
+                                })
+                              }
                               className="flex-1 h-1 accent-blue-500"
                             />
                             <span className="text-[9px] text-slate-400 w-8 text-right font-mono">

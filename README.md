@@ -1,3 +1,11 @@
+# Motion Explainer Studio
+
+Next.js **14.2.35**. Local Studio accounts use embedded SQLite; Cloudflare Workers uses D1 for accounts and shared live presenter rooms.
+
+See [Cloudflare deployment instructions and version limitations](docs/CLOUDFLARE_DEPLOYMENT.md) before deploying. Local start: `npm ci`, `npm run studio`, then open `/signup` to create an account. Use Node 22.13+.
+
+---
+
 # Onboard Doc - Interactive Video Platform
 
 A production-ready SaaS web application for creating and experiencing interactive video content with AI-powered hotspots, subscription-based monetization, and comprehensive platform management.

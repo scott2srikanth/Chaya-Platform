@@ -191,7 +191,7 @@ export function HotspotEditor({
             <div className="space-y-2 p-4">
               {hotspots.length === 0 ? (
                 <p className="text-sm text-slate-500 text-center py-4">
-                  No hotspots yet. Click "Add" to create one.
+                  No hotspots yet. Click &quot;Add&quot; to create one.
                 </p>
               ) : (
                 hotspots.map((hotspot) => (

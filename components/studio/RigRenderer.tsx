@@ -1,21 +1,44 @@
-'use client';
+"use client";
 
-import { useMemo } from 'react';
-import type { RiggedCharacter, BoneVisual, CharacterAppearance, BoneTransform, Bone } from '@/lib/studio/rig';
-import { computeWorldTransforms, resolveVisualColor } from '@/lib/studio/rig';
+import { useMemo } from "react";
+import type {
+  RiggedCharacter,
+  BoneVisual,
+  CharacterAppearance,
+  BoneTransform,
+  Bone,
+} from "@/lib/studio/rig";
+import { computeWorldTransforms, resolveVisualColor } from "@/lib/studio/rig";
 
 const BASE_W = 240;
 const BASE_H = 400;
 
-function renderVisual(visual: BoneVisual, idx: number, token: string | undefined, appearance: CharacterAppearance) {
+function renderVisual(
+  visual: BoneVisual,
+  idx: number,
+  token: string | undefined,
+  appearance: CharacterAppearance,
+) {
   const fill = resolveVisualColor(visual, token, appearance);
-  const stroke = visual.stroke ?? 'none';
+  const stroke = visual.stroke ?? "none";
   const sw = visual.strokeWidth ?? 0;
   const opacity = visual.opacity ?? 1;
   const key = idx;
 
   switch (visual.type) {
-    case 'ellipse':
+    case "image":
+      return (
+        <image
+          key={key}
+          href={visual.src}
+          x={visual.offsetX ?? 0}
+          y={visual.offsetY ?? 0}
+          width={visual.width ?? 50}
+          height={visual.height ?? 50}
+          opacity={opacity}
+        />
+      );
+    case "ellipse":
       return (
         <ellipse
           key={key}
@@ -29,7 +52,7 @@ function renderVisual(visual: BoneVisual, idx: number, token: string | undefined
           opacity={opacity}
         />
       );
-    case 'circle':
+    case "circle":
       return (
         <circle
           key={key}
@@ -42,7 +65,7 @@ function renderVisual(visual: BoneVisual, idx: number, token: string | undefined
           opacity={opacity}
         />
       );
-    case 'rect':
+    case "rect":
       return (
         <rect
           key={key}
@@ -57,11 +80,11 @@ function renderVisual(visual: BoneVisual, idx: number, token: string | undefined
           opacity={opacity}
         />
       );
-    case 'path':
+    case "path":
       return (
         <path
           key={key}
-          d={visual.d ?? ''}
+          d={visual.d ?? ""}
           fill={fill}
           stroke={stroke}
           strokeWidth={sw}
@@ -109,7 +132,9 @@ export default function RigRenderer({
   }, [character.rig.bones]);
 
   return (
-    <g transform={`scale(${sx * flip}, ${sy})`}>
+    <g
+      transform={`translate(${facingRight ? 0 : width},0) scale(${sx * flip}, ${sy})`}
+    >
       {sortedBones.map((bone) => {
         const wt = worldTransforms.get(bone.id);
         if (!wt || bone.visuals.length === 0) {
@@ -122,18 +147,47 @@ export default function RigRenderer({
         return (
           <g
             key={bone.id}
-            transform={`translate(${wt!.x}, ${wt!.y}) rotate(${wt!.rotation})`}
+            transform={`translate(${wt!.x}, ${wt!.y}) rotate(${wt!.rotation}) scale(${wt!.scaleX},${wt!.scaleY}) translate(${-(bone.pivotX ?? 0)},${-(bone.pivotY ?? 0)})`}
+            opacity={poseTransforms[bone.id]?.opacity ?? 1}
             data-bone-id={bone.id}
-            onClick={onBoneClick ? (e) => { e.stopPropagation(); onBoneClick(bone.id); } : undefined}
-            style={onBoneClick ? { cursor: 'pointer' } : undefined}
+            onClick={
+              onBoneClick
+                ? (e) => {
+                    e.stopPropagation();
+                    onBoneClick(bone.id);
+                  }
+                : undefined
+            }
+            style={onBoneClick ? { cursor: "pointer" } : undefined}
           >
-            {bone.visuals.map((vis, i) => renderVisual(vis, i, bone.colorToken, character.appearance))}
+            {(bone.id === "hair" &&
+            !bone.visuals.some((v) => v.type === "image")
+              ? [
+                  {
+                    type: "path" as const,
+                    fill: character.appearance.hairColor,
+                    d:
+                      character.appearance.hairStyle === "long"
+                        ? "M-32 -20 L-35 -56 Q-30 -85 0 -78 Q35 -83 35 -48 L32 -15 L25 -53 Q0 -67 -25 -48 Z"
+                        : character.appearance.hairStyle === "spiky"
+                          ? "M-32 -48 L-38 -76 L-17 -68 L-4 -90 L10 -70 L34 -80 L32 -47 Q0 -64 -32 -48"
+                          : character.appearance.hairStyle === "curly"
+                            ? "M-32 -48 Q-42 -65 -25 -72 Q-20 -90 -3 -78 Q13 -90 22 -73 Q42 -71 32 -46 Q0 -65 -32 -48"
+                            : "M-32 -48 Q-35 -83 0 -78 Q34 -82 32 -48 Q10 -64 -10 -56 Z",
+                  },
+                ]
+              : bone.visuals
+            ).map((vis, i) =>
+              renderVisual(vis, i, bone.colorToken, character.appearance),
+            )}
 
             {showBones && bone.length > 0 && (
               <line
-                x1={0} y1={0}
-                x2={0} y2={bone.length}
-                stroke={selectedBoneId === bone.id ? '#f59e0b' : '#3b82f6'}
+                x1={0}
+                y1={0}
+                x2={0}
+                y2={bone.length}
+                stroke={selectedBoneId === bone.id ? "#f59e0b" : "#3b82f6"}
                 strokeWidth={selectedBoneId === bone.id ? 2.5 : 1.5}
                 opacity={0.6}
                 strokeDasharray="4 2"
@@ -143,8 +197,10 @@ export default function RigRenderer({
 
             {showBones && (
               <circle
-                cx={0} cy={0} r={selectedBoneId === bone.id ? 4 : 3}
-                fill={selectedBoneId === bone.id ? '#f59e0b' : '#3b82f6'}
+                cx={0}
+                cy={0}
+                r={selectedBoneId === bone.id ? 4 : 3}
+                fill={selectedBoneId === bone.id ? "#f59e0b" : "#3b82f6"}
                 stroke="white"
                 strokeWidth={1}
                 opacity={0.8}
