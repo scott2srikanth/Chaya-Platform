@@ -1,6 +1,6 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
-  "name": "chaya-studio",
+  "name": "chaya-platform",
   "main": ".open-next/worker.js",
   "compatibility_date": "2025-11-21",
   "compatibility_flags": ["nodejs_compat", "global_fetch_strictly_public"],
