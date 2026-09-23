@@ -1,5 +1,5 @@
 import { z } from "zod";
-import type { BoardCommand } from "./live-whiteboard";
+import { boardWritingDuration, type BoardCommand } from "./live-whiteboard";
 const point = z
   .object({
     x: z.number().finite().min(0).max(1),
@@ -82,6 +82,6 @@ export function generatedBoardCommand(
     ...(parsed.data.penWidth ? { penWidth: parsed.data.penWidth } : {}),
     strokes,
     start,
-    duration: Math.max(0.75, Math.min(10, length / 195)),
+    duration: boardWritingDuration(strokes),
   };
 }

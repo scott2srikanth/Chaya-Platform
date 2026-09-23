@@ -15,6 +15,22 @@ export type BoardCommand = {
   duration: number;
   strokes: Point[][];
 };
+/** Give the marker time to traverse the actual path, including pen-up travel. */
+export function boardWritingDuration(strokes: Point[][]) {
+  const { total } = whiteboardStrokes("", { mode: "drawing", strokes });
+  return Math.max(1.2, Math.min(60, total / 180 + strokes.length * 0.025));
+}
+export function presenterActionStart(
+  current: number,
+  start: number,
+  playing: boolean,
+  hasPrevious: boolean,
+  freshBoard: boolean,
+) {
+  return playing && hasPrevious && !freshBoard
+    ? current
+    : Math.max(0, start - 0.15);
+}
 const rect = (x: number, y: number, w: number, h: number): Point[] => [
   [x, y],
   [x + w, y],
@@ -283,7 +299,7 @@ export function createBoardCommand(
   return {
     command: canonical,
     start,
-    duration: Math.max(0.65, Math.min(3.4, strokes.length * 0.04)),
+    duration: boardWritingDuration(strokes),
     strokes,
   };
 }

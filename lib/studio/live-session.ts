@@ -1,3 +1,9 @@
+import { pastedTextCommand } from "./whiteboard-text";
+import {
+  parseLesson,
+  compileLessonScene,
+  type PresenterLesson,
+} from "./presenter-lesson";
 import { generatedBoardCommand } from "./whiteboard-ai";
 import { randomBytes } from "node:crypto";
 import {
@@ -8,6 +14,9 @@ import {
 export type LiveSessionState = {
   id: string;
   revision: number;
+  lesson?: PresenterLesson;
+  activeSceneId?: string;
+  playbackEpoch?: number;
   events: BoardCommand[];
   anchorTime: number;
   anchorMs: number;
@@ -101,6 +110,9 @@ export function commandLiveSession(
     command?: string;
     requestId: string;
     drawing?: unknown;
+    text?: unknown;
+    lesson?: unknown;
+    sceneId?: string;
   },
 ) {
   const s = getLiveSession(id);
@@ -114,6 +126,9 @@ export function applyLiveCommand(
     command?: string;
     requestId: string;
     drawing?: unknown;
+    text?: unknown;
+    lesson?: unknown;
+    sceneId?: string;
   },
 ) {
   if (s.token !== token)
@@ -125,7 +140,35 @@ export function applyLiveCommand(
     anchor = current,
     end = s.state.end,
     playing = s.state.playing && current < end;
-  if (input.action === "command" || input.action === "drawing") {
+  let lesson = s.state.lesson,
+    activeSceneId = s.state.activeSceneId;
+  let epoch = s.state.playbackEpoch ?? 0;
+  if (input.action === "write-text") {
+    events = [pastedTextCommand(input.text)];
+    anchor = 0;
+    end = events[0].start + events[0].duration + 2;
+    playing = true;
+    activeSceneId = undefined;
+    epoch++;
+  } else if (input.action === "lesson") {
+    lesson = parseLesson(input.lesson);
+    events = [];
+    anchor = 0;
+    end = 0;
+    playing = false;
+    activeSceneId = undefined;
+    epoch++;
+  } else if (input.action === "scene") {
+    const scene = lesson?.scenes.find((scene) => scene.id === input.sceneId);
+    if (!scene) throw new Error("Select a scene from the prepared lesson.");
+    events = compileLessonScene(scene);
+    anchor = 0;
+    end =
+      events[events.length - 1].start + events[events.length - 1].duration + 2;
+    playing = true;
+    activeSceneId = scene.id;
+    epoch++;
+  } else if (input.action === "command" || input.action === "drawing") {
     if (
       input.action === "command" &&
       (!input.command?.trim() || input.command.length > 500)
@@ -145,9 +188,11 @@ export function applyLiveCommand(
         : createBoardCommand(input.command!, events, start);
     events = [...events, event];
     end = start + event.duration + 3;
-    anchor = playing ? current : start;
+    anchor = playing ? current : Math.max(0, start - 0.15);
     playing = true;
   } else if (input.action === "reset") {
+    activeSceneId = undefined;
+    epoch++;
     events = [];
     anchor = 0;
     end = 0;
@@ -155,6 +200,7 @@ export function applyLiveCommand(
   } else if (input.action === "pause") {
     playing = false;
   } else if (input.action === "replay") {
+    epoch++;
     anchor = 0;
     playing = events.length > 0;
   } else if (input.action === "resume") {
@@ -163,6 +209,9 @@ export function applyLiveCommand(
   s.state = {
     ...s.state,
     revision: s.state.revision + 1,
+    lesson,
+    activeSceneId,
+    playbackEpoch: epoch,
     events,
     anchorTime: anchor,
     anchorMs: now,

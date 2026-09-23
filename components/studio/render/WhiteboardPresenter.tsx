@@ -1,4 +1,5 @@
 import React from "react";
+import { presenterGaze } from "../../../lib/studio/whiteboard-text";
 import {
   whiteboardFrame,
   whiteboardPresenterPose,
@@ -25,6 +26,24 @@ export default function WhiteboardPresenter({
   const lastCommand = content?.liveCommands?.slice(-1)[0];
   if (lastCommand) duration = lastCommand.start + lastCommand.duration - 0.5;
   const f = whiteboardFrame(text, time, duration, content);
+  // Average a short stretch of the ink path for the body; the hand still tracks
+  // the exact current point. This is deterministic for projector and exports.
+  const bodySamples = [-18, -9, 0, 9, 18].map((offset) => {
+    const d = Math.max(0, f.distance + offset);
+    const segment =
+      f.segments.find((s) => d <= s.start + s.length) ??
+      f.segments[f.segments.length - 1];
+    if (!segment) return f.tip[0];
+    const p = Math.max(
+      0,
+      Math.min(1, (d - segment.start) / Math.max(0.001, segment.length)),
+    );
+    return segment.from[0] + (segment.to[0] - segment.from[0]) * p;
+  });
+  const bodyTarget =
+    98 +
+    (bodySamples.reduce((a, b) => a + b, 0) / bodySamples.length - 145) * 1.37 -
+    72;
   const {
     x,
     marker: [tx, ty],
@@ -35,6 +54,7 @@ export default function WhiteboardPresenter({
     [98 + (f.tip[0] - 145) * 1.37, 22 + (f.tip[1] - 42) * 1.48],
     content?.liveCommands?.length === 0 ? duration + 4 : time,
     duration,
+    bodyTarget,
   );
   const id = React.useId().replace(/:/g, "");
   return (
@@ -119,13 +139,18 @@ export default function WhiteboardPresenter({
         />
         <ellipse cx={x - 33} cy="189" rx="7" ry="10" fill="#ffc394" />
         <rect x={x - 8} y="104" width="16" height="21" rx="7" fill="#f6ae79" />
-        <ellipse cx={x} cy="82" rx="29" ry="33" fill={`url(#${id}skin)`} />
-        {/* One fixed rear three-quarter silhouette for writing and resting. */}
-        <path
-          d={`M${x - 29} 89Q${x - 40} 67 ${x - 28} 55Q${x - 29} 44 ${x - 18} 46Q${x - 12} 31 ${x + 1} 40Q${x + 17} 28 ${x + 23} 43Q${x + 39} 43 ${x + 31} 59L${x + 21} 68L${x + 20} 85Q${x + 10} 98 ${x - 1} 107Q${x - 19} 116 ${x - 30} 99Z`}
-          fill={`url(#${id}hair)`}
-        />
-        <ellipse cx={x + 18} cy="84" rx="7" ry="9" fill="#ffc394" />
+        <g
+          transform={`rotate(${presenterGaze([tx, ty], x)} ${x} 102)`}
+          data-presenter-gaze="marker"
+        >
+          <ellipse cx={x} cy="82" rx="29" ry="33" fill={`url(#${id}skin)`} />
+          {/* One fixed rear three-quarter silhouette for writing and resting. */}
+          <path
+            d={`M${x - 29} 89Q${x - 40} 67 ${x - 28} 55Q${x - 29} 44 ${x - 18} 46Q${x - 12} 31 ${x + 1} 40Q${x + 17} 28 ${x + 23} 43Q${x + 39} 43 ${x + 31} 59L${x + 21} 68L${x + 20} 85Q${x + 10} 98 ${x - 1} 107Q${x - 19} 116 ${x - 30} 99Z`}
+            fill={`url(#${id}hair)`}
+          />
+          <ellipse cx={x + 18} cy="84" rx="7" ry="9" fill="#ffc394" />
+        </g>
         <path
           d={`M${shoulder.join(",")} L${elbow.join(",")} L${hand.join(",")}`}
           fill="none"

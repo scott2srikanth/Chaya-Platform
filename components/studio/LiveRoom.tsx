@@ -1,4 +1,5 @@
 "use client";
+import PastePresenterText from "./PastePresenterText";
 import { useEffect, useRef, useState } from "react";
 import {
   Monitor,
@@ -38,6 +39,11 @@ function LibraryIcon({ name }: { name: string }) {
   const Icon = libraryIcons[name] ?? Shapes;
   return <Icon size={25} strokeWidth={1.5} aria-hidden="true" />;
 }
+import {
+  playbackTime,
+  receivePlayback,
+  type PlaybackSnapshot,
+} from "../../lib/studio/live-playback";
 import type { LiveSessionState } from "../../lib/studio/live-session";
 import {
   DRAWING_LIBRARY,
@@ -45,6 +51,8 @@ import {
   type DictationMode,
 } from "../../lib/studio/drawing-library";
 import { ARCHITECTURE_LAYERS } from "../../lib/studio/architecture-library";
+import PresenterLesson from "./PresenterLesson";
+import LiveConnection from "./LiveConnection";
 import LiveDrawingPad from "./LiveDrawingPad";
 import WhiteboardPresenter from "./render/WhiteboardPresenter";
 import "./live-room.css";
@@ -63,6 +71,7 @@ export default function LiveRoom({
 }: {
   view?: "join" | "display" | "control";
 }) {
+  const [tab, setTab] = useState("Scenes");
   const [libraryQuery, setLibraryQuery] = useState(""),
     [showLayers, setShowLayers] = useState(false),
     [transcript, setTranscript] = useState(""),
@@ -81,11 +90,7 @@ export default function LiveRoom({
     [listening, setListening] = useState(false),
     [voiceAvailable, setVoiceAvailable] = useState(false),
     [pending, setPending] = useState(0);
-  const stateRef = useRef<{
-      state: LiveSessionState;
-      time: number;
-      received: number;
-    } | null>(null),
+  const stateRef = useRef<PlaybackSnapshot | null>(null),
     mode = useRef<DictationMode>(null),
     queue = useRef(Promise.resolve()),
     recognition = useRef<any>(null);
@@ -113,16 +118,15 @@ export default function LiveRoom({
     stream.onmessage = (e) => {
       const data = JSON.parse(e.data),
         s = data.state as LiveSessionState;
-      stateRef.current = {
-        state: s,
-        time: s.playing
-          ? Math.min(
-              s.end,
-              s.anchorTime + Math.max(0, data.serverTime - s.anchorMs) / 1000,
-            )
-          : s.anchorTime,
-        received: performance.now(),
-      };
+      setConnected(true);
+      const previous = stateRef.current;
+      stateRef.current = receivePlayback(
+        previous,
+        s,
+        data.serverTime,
+        performance.now(),
+      );
+      if (previous === stateRef.current) return;
       setSession(s);
       setConnected(true);
     };
@@ -141,15 +145,7 @@ export default function LiveRoom({
     let frame = 0;
     const tick = () => {
       const snapshot = stateRef.current;
-      if (snapshot)
-        setTime(
-          snapshot.state.playing
-            ? Math.min(
-                snapshot.state.end,
-                snapshot.time + (performance.now() - snapshot.received) / 1000,
-              )
-            : snapshot.time,
-        );
+      if (snapshot) setTime(playbackTime(snapshot, performance.now()));
       frame = requestAnimationFrame(tick);
     };
     frame = requestAnimationFrame(tick);
@@ -189,7 +185,12 @@ export default function LiveRoom({
       setMessage((e as Error).message);
     }
   }
-  function send(action: string, command?: string, drawing?: unknown) {
+  function send(
+    action: string,
+    command?: string,
+    drawing?: unknown,
+    extra: object = {},
+  ) {
     if (!token) {
       setMessage("Join with the session code to control this presenter.");
       return;
@@ -203,27 +204,31 @@ export default function LiveRoom({
         let data;
         try {
           data = await post(
-            { id: room, action, command, requestId, drawing },
+            { id: room, action, command, requestId, drawing, ...extra },
             token,
           );
         } catch (e) {
           if (e instanceof TypeError)
             data = await post(
-              { id: room, action, command, requestId, drawing },
+              { id: room, action, command, requestId, drawing, ...extra },
               token,
             );
           else throw e;
         }
         setMessage(
-          action === "reset"
-            ? "Timeline deleted. The board is ready for a new presentation."
-            : action === "drawing"
-              ? "Drawing queued — the presenter will draw it next."
-              : action === "command"
-                ? `Sent: ${command}`
-                : action === "pause"
-                  ? "Presenter paused."
-                  : "Playback started.",
+          action === "lesson"
+            ? "Lesson loaded. Tap a scene when ready."
+            : action === "scene"
+              ? "Scene sent to the projector. Advance when you are ready."
+              : action === "reset"
+                ? "Timeline deleted. The board is ready for a new presentation."
+                : action === "drawing"
+                  ? "Drawing queued — the presenter will draw it next."
+                  : action === "command"
+                    ? `Sent: ${command}`
+                    : action === "pause"
+                      ? "Presenter paused."
+                      : "Playback started.",
         );
       } catch (e) {
         setMessage((e as Error).message);
@@ -439,6 +444,7 @@ export default function LiveRoom({
             </p>
           </section>
         )}
+        <LiveConnection />
         <p role="status">{message}</p>
       </main>
     );
@@ -458,7 +464,43 @@ export default function LiveRoom({
       </header>
       {!token && <p>Join this room using its pairing code to send commands.</p>}
       <div className="live-preview">{board}</div>
-      <section className="command-panel">
+      <nav className="presenter-tabs" aria-label="Presenter tools">
+        {[
+          "Scenes",
+          "Commands",
+          "Draw",
+          "Library",
+          "Timeline",
+          "Connection",
+        ].map((name) => (
+          <button
+            key={name}
+            aria-pressed={tab === name}
+            onClick={() => setTab(name)}
+          >
+            {name}
+          </button>
+        ))}
+      </nav>
+      <div className="presenter-tool" hidden={tab !== "Scenes"}>
+        <PresenterLesson
+          session={session}
+          time={time}
+          disabled={!token || !connected || pending > 0}
+          onSend={(action, extra) => send(action, undefined, undefined, extra)}
+        />
+      </div>
+      <div className="presenter-tool" hidden={tab !== "Connection"}>
+        <LiveConnection />
+      </div>
+      <p className="controller-status" role="status">
+        {message}
+      </p>
+      <section className="command-panel" hidden={tab !== "Commands"}>
+        <PastePresenterText
+          disabled={!token || !connected || pending > 0}
+          onWrite={(text) => send("write-text", undefined, undefined, { text })}
+        />
         <div className="section-heading">
           <div>
             <span className="live-eyebrow">DIRECT YOUR PRESENTER</span>
@@ -541,27 +583,29 @@ export default function LiveRoom({
           {message}
         </p>
       </section>
-      <LiveDrawingPad
-        events={session?.events ?? []}
-        disabled={!connected || !token}
-        onErase={(name) => run(`remove ${name}`)}
-        onClear={() => {
-          if (
-            window.confirm(
-              "Erase all visible board items? The erasing action will be kept in the timeline.",
+      <div className="presenter-tool" hidden={tab !== "Draw"}>
+        <LiveDrawingPad
+          events={session?.events ?? []}
+          disabled={!connected || !token}
+          onErase={(name) => run(`remove ${name}`)}
+          onClear={() => {
+            if (
+              window.confirm(
+                "Erase all visible board items? The erasing action will be kept in the timeline.",
+              )
             )
-          )
-            run("remove all");
-        }}
-        onDraw={(points, color, penWidth) =>
-          send("drawing", undefined, {
-            color,
-            penWidth,
-            strokes: [points.map(([x, y]) => ({ x, y }))],
-          })
-        }
-      />
-      <section>
+              run("remove all");
+          }}
+          onDraw={(points, color, penWidth) =>
+            send("drawing", undefined, {
+              color,
+              penWidth,
+              strokes: [points.map(([x, y]) => ({ x, y }))],
+            })
+          }
+        />
+      </div>
+      <section hidden={tab !== "Library"}>
         <div className="section-heading">
           <div>
             <span className="live-eyebrow">READY TO DRAW</span>
@@ -625,7 +669,7 @@ export default function LiveRoom({
           </button>
         </div>
       </section>
-      {showLayers && (
+      {showLayers && tab === "Library" && (
         <section className="architecture-panel">
           <div className="section-heading">
             <h2>ML architecture layers</h2>
@@ -650,7 +694,7 @@ export default function LiveRoom({
           </div>
         </section>
       )}
-      <section>
+      <section hidden={tab !== "Timeline"}>
         <div className="section-heading">
           <div>
             <span className="live-eyebrow">YOUR RECORDING</span>

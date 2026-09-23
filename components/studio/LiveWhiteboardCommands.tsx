@@ -1,4 +1,6 @@
 "use client";
+import PastePresenterText from "./PastePresenterText";
+import { pastedTextCommand } from "../../lib/studio/whiteboard-text";
 import { ARCHITECTURE_LAYERS } from "../../lib/studio/architecture-library";
 import { useEffect, useRef, useState } from "react";
 import {
@@ -13,6 +15,7 @@ import {
 } from "../../lib/studio/whiteboard-ai";
 import {
   createBoardCommand,
+  presenterActionStart,
   UnsupportedDrawingError,
 } from "../../lib/studio/live-whiteboard";
 type Recognition = {
@@ -78,8 +81,8 @@ export default function LiveWhiteboardCommands({
       }
     };
   }, []);
-  async function run(value: string, imported?: unknown) {
-    if (imported === undefined) {
+  async function run(value: string, imported?: unknown, fullPage = false) {
+    if (imported === undefined && !fullPage) {
       const interpreted = interpretPresenterSpeech(value, dictation.current);
       dictation.current = interpreted.mode;
       if (!interpreted.command) {
@@ -104,10 +107,11 @@ export default function LiveWhiteboardCommands({
         throw new Error("Select the presenter before sending a command.");
       const snapshot = JSON.stringify(element.whiteboard?.liveCommands ?? []);
       let previous = element.whiteboard?.liveCommands ?? [];
-      if (previous.length >= 120)
+      if (!fullPage && previous.length >= 120)
         throw new Error("This board is full. Start a fresh board.");
       let event: ReturnType<typeof generatedBoardCommand>;
-      if (imported !== undefined)
+      if (fullPage) event = pastedTextCommand(value, 0);
+      else if (imported !== undefined)
         event = generatedBoardCommand(value, imported, 0);
       else
         try {
@@ -128,7 +132,7 @@ export default function LiveWhiteboardCommands({
         JSON.stringify(element.whiteboard?.liveCommands ?? []) !== snapshot
       )
         throw new Error("The board changed. Send your drawing request again.");
-      previous = element.whiteboard?.liveCommands ?? [];
+      previous = fullPage ? [] : (element.whiteboard?.liveCommands ?? []);
       const last = previous[previous.length - 1],
         local = Math.max(0, s.currentTime - (element.startTime ?? 0));
       event.start =
@@ -157,7 +161,14 @@ export default function LiveWhiteboardCommands({
       if (element.whiteboard?.liveMode !== false) {
         // Continue a running command; otherwise start directly at the new action.
         s.playPresenterAction(
-          globalStart + (s.isPlaying ? local : event.start),
+          globalStart +
+            presenterActionStart(
+              local,
+              event.start,
+              s.isPlaying,
+              previous.length > 0,
+              fullPage,
+            ),
           offset + end,
         );
       } else {
@@ -229,7 +240,19 @@ export default function LiveWhiteboardCommands({
       }}
     >
       <strong>Live presenter</strong>
-      <button type="button" style={{display:"block",marginTop:8}} onClick={()=>{sessionStorage.setItem("presenter-room-seed",JSON.stringify(commands??[]));window.open("/studio/live","_blank");}}>Connect projector & tablet</button>
+      <button
+        type="button"
+        style={{ display: "block", marginTop: 8 }}
+        onClick={() => {
+          sessionStorage.setItem(
+            "presenter-room-seed",
+            JSON.stringify(commands ?? []),
+          );
+          window.open("/studio/live", "_blank");
+        }}
+      >
+        Prepare lesson & connect
+      </button>
       <label
         style={{ display: "flex", gap: 6, alignItems: "center", marginTop: 8 }}
       >
@@ -250,19 +273,18 @@ export default function LiveWhiteboardCommands({
         />
         Live mode · {playing ? "Performing command" : "Ready for commands"}
       </label>
-      <p>
-        Every command is recorded as a timeline track. Live mode plays the
-        action, then waits for your next command.
-      </p>
-      <p>
-        Describe what to draw, or say “write” followed by a sentence. New ink is
-        added to your live board. Your manual content is kept.
-      </p>
-      <p>
-        Say “write”, then dictate. Say “draw”, then a library name. “Remove”
-        erases the last item; “remove house” or “remove Hello” erases a named
-        item. Say “stop writing” to end dictation.
-      </p>
+      <PastePresenterText
+        disabled={busy}
+        onWrite={(text) => run(text, undefined, true)}
+      />
+      <details>
+        <summary>How to use live commands</summary>
+        <p>
+          Say “write” followed by a sentence, “draw” and a library name, or
+          “remove” and an item name. Each action draws once, then waits. Prepare
+          a lesson to present scenes from your phone.
+        </p>
+      </details>
       <button type="button" disabled={!supported} onClick={toggleMic}>
         {listening ? "Stop listening" : "Start microphone"}
       </button>
@@ -302,8 +324,8 @@ export default function LiveWhiteboardCommands({
       <details>
         <summary>Draw with ChatGPT JSON</summary>
         <p>
-          Enter a drawing request above. Copy its prompt into ChatGPT, then
-          paste the returned JSON here.
+          Paste drawing JSON below, then click Validate & draw. A drawing
+          request is optional; enter one above if you want to generate a prompt.
         </p>
         <button
           type="button"
@@ -341,7 +363,7 @@ export default function LiveWhiteboardCommands({
         />
         <button
           type="button"
-          disabled={busy || !json.trim() || !input.trim()}
+          disabled={busy || !json.trim()}
           onClick={() => {
             try {
               const data = JSON.parse(
@@ -350,7 +372,10 @@ export default function LiveWhiteboardCommands({
                   .replace(/^```(?:json)?\s*/i, "")
                   .replace(/\s*```$/, ""),
               );
-              void run(input, data);
+              const label =
+                input.trim() ||
+                `draw imported sketch ${(commands ?? []).filter((e) => e.command.startsWith("draw imported sketch ")).length + 1}`;
+              void run(label, data);
             } catch {
               setStatus(
                 "Invalid JSON. Paste the complete drawing object from ChatGPT.",
@@ -390,7 +415,7 @@ export default function LiveWhiteboardCommands({
           Draw all six layers
         </button>
       </details>
-      <details open>
+      <details>
         <summary>Drawing library & commands</summary>
         <div
           style={{ display: "flex", flexWrap: "wrap", gap: 4, marginTop: 8 }}

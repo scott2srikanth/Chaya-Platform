@@ -1,3 +1,4 @@
+import { compileLessonScene } from "../../../../lib/studio/presenter-lesson";
 import { currentLocalUser } from "../../../../lib/local-auth-db";
 import { STUDIO_COOKIE } from "../../../../lib/studio-auth";
 import { livePresenterProject } from "../../../../lib/studio/templates";
@@ -5,6 +6,21 @@ import { NextRequest, NextResponse } from "next/server";
 import { networkInterfaces } from "node:os";
 import { liveStore } from "../../../../lib/studio/shared-live-session";
 import { accountRateLimit } from "../../../../lib/local-auth-db";
+function localHosts(req: NextRequest, shared: boolean) {
+  return Object.values(shared ? {} : networkInterfaces())
+    .flat()
+    .filter(
+      (i) =>
+        i &&
+        !i.internal &&
+        i.family === "IPv4" &&
+        /^(10\.|192\.168\.|172\.(1[6-9]|2[0-9]|3[01])\.)/.test(i.address),
+    )
+    .map(
+      (i) =>
+        `${req.nextUrl.protocol}//${i!.address}:${req.nextUrl.port || "3000"}`,
+    );
+}
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
@@ -43,13 +59,7 @@ export async function POST(req: NextRequest) {
         60 * 60000,
       );
       const session = await store.create(body.events ?? []);
-      const interfaces = Object.values(store.shared ? {} : networkInterfaces())
-        .flat()
-        .filter((i) => i && !i.internal && i.family === "IPv4");
-      const hosts = interfaces.map(
-        (i) =>
-          `${req.nextUrl.protocol}//${i!.address}:${req.nextUrl.port || "3000"}`,
-      );
+      const hosts = localHosts(req, store.shared);
       return NextResponse.json({ ...session, hosts });
     }
     if (body.action === "join") {
@@ -82,6 +92,27 @@ export async function POST(req: NextRequest) {
         liveMode: true,
         liveCommands: session.state.events,
       };
+      if (session.state.lesson) {
+        const base = project.scenes[0];
+        project.metadata.name = session.state.lesson.title;
+        project.scenes = session.state.lesson.scenes.map((scene, index) => {
+          const events = compileLessonScene(scene),
+            last = events[events.length - 1];
+          const duration = last.start + last.duration + 2;
+          return {
+            ...structuredClone(base),
+            id: `lesson-${scene.id}`,
+            name: scene.title,
+            duration,
+            elements: base.elements.map((el, i) => ({
+              ...el,
+              id: `lesson-${index}-${i}`,
+              endTime: duration,
+              whiteboard: { liveMode: true, liveCommands: events },
+            })),
+          };
+        });
+      }
       return NextResponse.json({ project });
     }
     return NextResponse.json({
@@ -111,6 +142,13 @@ export async function GET(req: NextRequest) {
     );
   try {
     const store = await liveStore();
+    if (req.nextUrl.searchParams.get("connection") === "1") {
+      const hosts = localHosts(req, store.shared);
+      return NextResponse.json(
+        { shared: store.shared, hosts, serverTime: Date.now() },
+        { headers: { "Cache-Control": "no-store" } },
+      );
+    }
     const s = await store.get(req.nextUrl.searchParams.get("session") ?? "");
     if (req.nextUrl.searchParams.get("stream") !== "1")
       return NextResponse.json(

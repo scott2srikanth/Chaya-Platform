@@ -1568,3 +1568,13 @@
 .ms-director textarea { min-height: 85px; resize: vertical; width: 100%; line-height: 1.6; }
 .ms-dialogue-bar { position:absolute; top:4px; height:26px; background:#403953!important; color:#e0d7f9!important; border:1px solid #6a5686!important; border-radius:4px!important; overflow:hidden; white-space:nowrap; font-size:10px!important; padding:2px 8px!important; text-overflow:ellipsis; text-align:left; }
 .ms-dialogue-bar.recorded { background:#21483e!important; color:#c3ead8!important; border-color:#3c7964!important; }
+/* Compact live-presenter inspector: commands first, reference tools on demand. */
+section[aria-label="Live presenter commands"]{background:#f8fafc;border-color:#e2e8f0!important;border-radius:12px!important;padding:14px!important}
+section[aria-label="Live presenter commands"]>strong{font-size:14px;letter-spacing:-.2px}
+section[aria-label="Live presenter commands"]>button:first-of-type{width:100%;padding:10px 12px;background:#6551e8;color:white;border:0;border-radius:8px}
+section[aria-label="Live presenter commands"] details{border-top:1px solid #e4e8ef;padding:10px 0;margin-top:10px}
+section[aria-label="Live presenter commands"] summary{font-size:12px;font-weight:600;cursor:pointer;color:#526176}
+section[aria-label="Live presenter commands"] p{font-size:11px;line-height:1.6;color:#748095}
+section[aria-label="Live presenter commands"] form{display:flex;gap:6px;margin:10px 0}
+section[aria-label="Live presenter commands"] form input{min-width:0;flex:1;padding:8px;border:1px solid #dce2ec;border-radius:7px}
+section[aria-label="Live presenter commands"] form button{white-space:nowrap;font-size:11px;padding:8px}

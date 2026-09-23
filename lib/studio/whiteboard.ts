@@ -227,6 +227,29 @@ export function whiteboardFrame(
       distance += data.total * progress;
       total += data.total;
       if (time >= event.start) tip = frame.tip;
+      else {
+        // Pen-up travel is part of the timeline, rather than a teleport at each command.
+        const previous = content.liveCommands[index - 1];
+        const travelStart = Math.max(
+          previous ? previous.start + previous.duration : 0,
+          event.start - 0.35,
+        );
+        if (time >= travelStart) {
+          const p = Math.max(
+            0,
+            Math.min(
+              1,
+              (time - travelStart) / Math.max(0.001, event.start - travelStart),
+            ),
+          );
+          const eased = p * p * (3 - 2 * p);
+          tip = tip.map((v, i) => v + (frame.tip[i] - v) * eased) as [
+            number,
+            number,
+          ];
+        }
+        // Future events must not move the marker before their own travel window.
+      }
     }
     return {
       segments,
@@ -268,6 +291,7 @@ export function whiteboardPresenterPose(
   tip: [number, number],
   time: number,
   duration: number,
+  bodyTarget?: number,
 ) {
   const smooth = (v: number) => {
     const p = Math.max(0, Math.min(1, v));
@@ -276,7 +300,17 @@ export function whiteboardPresenterPose(
   const move = smooth((time - (duration + 0.5)) / 1.2),
     face = smooth((time - (duration + 1.1)) / 1.5);
   // Keep the pen to the right of the head, including the left edge of the board.
-  const initialX = tip[0] - 59;
+  const vertical = tip[1] + 18 - 128;
+  const horizontalReach = Math.sqrt(Math.max(0, 95.99 ** 2 - vertical ** 2));
+  // Let the wrist handle small strokes. Shift the stance only within the fixed
+  // arm's reachable range, with the pen always outside the head silhouette.
+  const initialX =
+    bodyTarget === undefined
+      ? tip[0] - 59
+      : Math.max(
+          tip[0] - 27 - horizontalReach,
+          Math.min(tip[0] - 59, bodyTarget),
+        );
   const x = initialX + (50 - initialX) * move;
   const marker: [number, number] = [
     tip[0] + (x + 35 - tip[0]) * move,
